@@ -6,13 +6,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./diski-page.component.css']
 })
 export class DiskiPageComponent implements OnInit {
+  dtOptions: DataTables.Settings = {};
 
   constructor() { }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      language: {
+        search: "Zoek:",
+        lengthMenu: "Toon _MENU_ resultaten",
+        info: "Toont _START_ tot _END_ van de _TOTAL_ resultaten",
+        infoEmpty: "Geen resultaten gevonden",
+        infoFiltered: "(gefilterd uit _MAX_ elementen)",
+        infoPostFix: "",
+        loadingRecords: "Laden van resultaten...",
+        zeroRecords: "Geen resultaten gevonden",
+        emptyTable: "Deze tabel is leeg",
+        paginate: {
+          first: "Eerste",
+          previous: "Vorige",
+          next: "Volgende",
+          last: "Laatste"
+        },
+      }
+    };
   }
 
-  persons = [
+  allKorting = [
     {
     "company": "@nakdfashion",
     "code": "JULIA20",

@@ -1,32 +1,39 @@
 <div class="container-fluid">
-  <div class="jumbotron barry">
-    <h1>diski</h1>
-    <p>instagram kortingscodes</p>
-  </div>
-
-  <div id="diski-table" class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-10">
-      <table datatable class="display compact dataTable">
-        <thead>
-        <tr>
-          <th>Korting bij</th>
-          <th>Met code</th>
-          <th>Via</th>
-          <th>Datum</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let person of persons">
-          <td>{{ person.company }}</td>
-          <td>{{ person.code }}</td>
-          <td>{{ person.via }}</td>
-          <td>{{ person.date }}</td>
-        </tr>
-        </tbody>
-      </table>
+  <div class="content">
+    <div class="jumbotron">
+      <h1>diski</h1>
+      <p>instagram kortingscodes</p>
     </div>
-    <div class="col-sm-1"></div>
+
+    <div id="diski-table" class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+        <table datatable [dtOptions]="dtOptions" class="display compact dataTable">
+          <thead>
+          <tr>
+            <th>Korting bij</th>
+            <th>Met code</th>
+            <th>Via</th>
+            <th>Datum</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let korting of allKorting">
+            <td>{{ korting.company }}</td>
+            <td>{{ korting.code }}</td>
+            <td>{{ korting.via }}</td>
+            <td>{{ korting.date }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
+  </div>
+  <div class="footer row">
+    <div class="col-sm-12 text-center">
+      © diski 2021
+    </div>
   </div>
 </div>
 

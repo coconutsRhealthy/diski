@@ -3,11 +3,21 @@
   font-size: 10px;
 }
 
-.barry {
-  text-align: center;
-}
-
 .jumbotron {
+  text-align: center;
   padding-top: 5px;
   padding-bottom: 5px;
+  background-color: rgb(246, 204, 209)
+}
+
+.content {
+  min-height: calc(100vh - 60px);
+  margin-bottom: 0px;
+}
+
+.footer {
+  color: rgb(160,160,160);
+  font-size: 13px;
+  margin-top: 17px;
+  margin-bottom: 15px;
 }
