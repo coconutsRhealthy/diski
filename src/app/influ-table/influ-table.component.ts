@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'influ-table',
@@ -9,6 +10,12 @@ import { FormArray } from '@angular/forms';
   styleUrls: ['./influ-table.component.css']
 })
 export class InfluTableComponent {
+
+  discountCodeData = [
+      {name: "apple", category: "fruit"},
+      {name: "iPhone", category: "tech"},
+      {name: "banana", category: "fruit"}
+  ];
 
   tableHeight = 500;
   tableWidth = 500;
@@ -47,7 +54,9 @@ export class InfluTableComponent {
     return this.profileForm.get('influencers') as FormArray;
   }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private http: HttpClient) {
+
+  }
 
   addDiscountCompany() {
     this.discount_companies.push(this.fb.control(''));
@@ -197,6 +206,12 @@ export class InfluTableComponent {
     }
 
     console.log(toPrint);
+  }
+
+  readAndPrintTextfile() {
+    this.http.get('assets/testtext.txt', {responseType: 'text'}).subscribe(data => {
+       console.log(data);
+    })
   }
 
   getRandomHexColour() {

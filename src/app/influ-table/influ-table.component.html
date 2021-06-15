@@ -79,24 +79,24 @@
             'background-color' : tableBackgroundColor
             }">
             <thead>
-              <tr>
-                <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : kortingDateFontSize }" class="smaller" scope="col">{{kortingDate}}</th>
-                <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize }" (click)="sortTable(1)" scope="col">Je krijgt korting bij</th>
-                <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize }" (click)="sortTable(2)" scope="col">Met code</th>
-                <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize }" (click)="sortTable(3)" scope="col">Via</th>
-              </tr>
+            <tr>
+              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : kortingDateFontSize }" class="smaller" scope="col">{{kortingDate}}</th>
+              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize }" (click)="sortTable(1)" scope="col">Je krijgt korting bij</th>
+              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize }" (click)="sortTable(2)" scope="col">Met code</th>
+              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize }" (click)="sortTable(3)" scope="col">Via</th>
+            </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let company of discount_companies.controls; let i=index" [ngStyle]="{
+            <tr *ngFor="let codeData of discountCodeData;" [ngStyle]="{
                 'height.px' : tableRowHeight,
                 'line-height.px' : tableRowLineHeight,
                 'min-height.px' : tableRowMinHeight
                 }">
-                <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }"></td>
-                <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{getDiscountCompany(i)}}</td>
-                <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{getDiscountCode(i)}}</td>
-                <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{getInfluencer(i)}}</td>
-              </tr>
+              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }"></td>
+              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{codeData.name}}</td>
+              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{codeData.name}}</td>
+              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{codeData.name}}</td>
+            </tr>
             </tbody>
           </table>
         </div>

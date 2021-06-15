@@ -9,6 +9,8 @@ import { DiskiPageComponent } from './diski-page/diski-page.component';
 import { InfluTableComponent } from './influ-table/influ-table.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     DataTablesModule,
     FormsModule,
     ReactiveFormsModule,
