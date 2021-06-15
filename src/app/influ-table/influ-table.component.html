@@ -1,0 +1,106 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-6">
+        <button type="button" (click)="addAll()" class="btn btn-primary btn-sm">Add row</button>
+
+        <form [formGroup]="profileForm">
+          <div class="row">
+            <div class="col-10">
+              <div class="row">
+                <div class="col-4">
+                  <div formArrayName="discount_companies">
+                    <div *ngFor="let company of discount_companies.controls; let i=index">
+                      <input class="working-table-fill-in-field" type="text" [formControlName]="i">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div formArrayName="discount_codes">
+                    <div *ngFor="let code of discount_codes.controls; let i=index">
+                      <input class="working-table-fill-in-field" type="text" [formControlName]="i">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div formArrayName="influencers">
+                    <div *ngFor="let code of influencers.controls; let i=index">
+                      <input class="working-table-fill-in-field" type="text" [formControlName]="i">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div *ngFor="let company of discount_companies.controls; let i=index">
+                <button class="small-delete-button" type="button" (click)="deleteRow(i)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div>
+          <button type="button" (click)="calculateTableStyle()" class="btn btn-primary btn-sm">Generate table</button>
+        </div>
+        <div>
+          <button type="button" (click)="changeTableBackgroundColour()" class="btn btn-primary btn-sm">Change color</button>
+        </div>
+        <div>
+          <button type="button" (click)="makeTableBlackYellow('black')" class="btn btn-primary btn-sm">BlackYellow</button>
+        </div>
+        <div>
+          <button type="button" (click)="makeTableBlackYellow('yellow')" class="btn btn-primary btn-sm">YellowBlack</button>
+        </div>
+        <div>
+          <button type="button" (click)="printData()" class="btn btn-primary btn-sm">PrintData</button>
+        </div>
+        <div>
+          date: <input type="text" [(ngModel)]="kortingDate">
+        </div>
+        <div>
+          date fontsize: <input type="text" [(ngModel)]="kortingDateFontSize">
+        </div>
+        <div>
+          header fontsize: <input type="text" [(ngModel)]="headerFontSize">
+        </div>
+        <div>
+          body fontsize:  <input type="text" [(ngModel)]="bodyFontSize">
+        </div>
+        <div>
+          Screenshots: 655,103 //// 500,500
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="table-outline">
+          <table id="insta-table" class="table table-dark" [ngStyle]="{
+            'height.px' : tableHeight,
+            'width.px' : tableWidth,
+            'font-size.px' : tableFontSize,
+            'color' : tableLineAndFontColor,
+            'background-color' : tableBackgroundColor
+            }">
+            <thead>
+              <tr>
+                <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : kortingDateFontSize }" class="smaller" scope="col">{{kortingDate}}</th>
+                <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize }" (click)="sortTable(1)" scope="col">Je krijgt korting bij</th>
+                <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize }" (click)="sortTable(2)" scope="col">Met code</th>
+                <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize }" (click)="sortTable(3)" scope="col">Via</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let company of discount_companies.controls; let i=index" [ngStyle]="{
+                'height.px' : tableRowHeight,
+                'line-height.px' : tableRowLineHeight,
+                'min-height.px' : tableRowMinHeight
+                }">
+                <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }"></td>
+                <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{getDiscountCompany(i)}}</td>
+                <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{getDiscountCode(i)}}</td>
+                <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{getInfluencer(i)}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+</div>
