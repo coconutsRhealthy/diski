@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { DataTablesModule } from "angular-datatables";
 import { AppComponent } from './app.component';
 import { DiskiPageComponent } from './diski-page/diski-page.component';
-import { InfluTableComponent } from './influ-table/influ-table.component';
+import { InputComponent } from './input-page/input-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     DiskiPageComponent,
-    InfluTableComponent
+    InputComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     RouterModule.forRoot([
       {path: '', component: DiskiPageComponent},
-      {path: 'input', component: InfluTableComponent}
+      {path: 'input', component: InputComponent}
     ]),
   ],
   providers: [],

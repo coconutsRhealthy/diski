@@ -5,11 +5,11 @@ import { FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'influ-table',
-  templateUrl: './influ-table.component.html',
-  styleUrls: ['./influ-table.component.css']
+  selector: 'input-page',
+  templateUrl: './input-page.component.html',
+  styleUrls: ['./input-page.component.css']
 })
-export class InfluTableComponent {
+export class InputComponent {
 
   discountCodeData = [
       {name: "apple", category: "fruit"},
