@@ -653,6 +653,158 @@ export class DiskiPageComponent implements OnInit {
     "via": "lisvanderwijst",
     "date": "2021-06-16",
     },
+
+
+    {
+    "company": "@passionforyouu",
+    "code": "janice10",
+    "via": "janiceblok",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@hellofreshnl",
+    "code": "HELLOFAJAH",
+    "via": "fayaofficial",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@onceuponapp",
+    "code": "katja25",
+    "via": "katjaschuurman",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@bymusthaves",
+    "code": "Eline15",
+    "via": "adalla.99",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@fortunateonestore",
+    "code": "FREDLOVE",
+    "via": "frederiqueligtvoet",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@margotbardot",
+    "code": "HANNAH15",
+    "via": "hannahdb_",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@agavefashio",
+    "code": "LUCA20",
+    "via": "lucaaa.xx",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@idealofsweden",
+    "code": "NISAVB",
+    "via": "nisavanbaelen",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@wietskeypmaa",
+    "code": "BLACKBANANAS",
+    "via": "wietskeypmaa",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@myproteinnl",
+    "code": "FITENFLEX",
+    "via": "marijnkuipers",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@juniqeartshop",
+    "code": "BYYAM25",
+    "via": "inspiredbyyam",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@gloryshopnl",
+    "code": "JESSICA",
+    "via": "jessicakuijpers",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@stronger",
+    "code": "lottewullink20",
+    "via": "lotte.wullink",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@itsmay.dk",
+    "code": "amber15",
+    "via": "amberdhaan",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@idealofsweden",
+    "code": "Dilianex15",
+    "via": "diliane.kwadijk",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@theofficialsafira",
+    "code": "MACY15",
+    "via": "macyymichelle",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@officialvicisupps",
+    "code": "ROWENA10",
+    "via": "rowenakonings_",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@hellofreshnl ",
+    "code": "HELLOSARAH45",
+    "via": "sarahchronis",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@lightinthebox",
+    "code": "LSAK15",
+    "via": "lisajkoster",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@stronger",
+    "code": "20DEMI20",
+    "via": "demiteeuwissen",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@remington.benelux",
+    "code": "LAURA20",
+    "via": "lauraponticorvo",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@chiquelle",
+    "code": "DANIQUE20",
+    "via": "daniqueschutjens",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@amebalance",
+    "code": "FLORIANNE20",
+    "via": "florianne.charlotte",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@happysnackbox",
+    "code": "cynthiavandoorn",
+    "via": "cynthiavandoorn",
+    "date": "2021-06-22",
+    },
+    {
+    "company": "@blackbananasnl",
+    "code": "india20",
+    "via": "indiasuy",
+    "date": "2021-06-22",
+    },
   ]
 
 }
