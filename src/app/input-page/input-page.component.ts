@@ -4,6 +4,8 @@ import { Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
+import { DataDirective } from '../data/data.directive';
+
 @Component({
   selector: 'input-page',
   templateUrl: './input-page.component.html',
@@ -105,6 +107,11 @@ export class InputComponent {
     this.http.get('assets/testtext.txt', {responseType: 'text'}).subscribe(data => {
        console.log(data);
     })
+  }
+
+  dummyDataDirectiveMethod() {
+    var dummy = DataDirective.getDataArray();
+    alert(dummy[1]);
   }
 
   removeDuplicateCodes() {

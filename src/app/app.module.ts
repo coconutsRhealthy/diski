@@ -10,12 +10,14 @@ import { InputComponent } from './input-page/input-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientModule } from '@angular/common/http';
+import { DataDirective } from './data/data.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     DiskiPageComponent,
-    InputComponent
+    InputComponent,
+    DataDirective
   ],
   imports: [
     BrowserModule,
