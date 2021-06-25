@@ -6,9 +6,9 @@ import { Directive } from "@angular/core"
 export class DataDirective {
 
   static dataArray = [
-    "aap",
-    "noot",
-    "mies"
+    "@amebalance, FLORIANNE20, florianne.charlotte, 2021-06-10",
+    "@famousstore, Annefloor10, annefloorx, 2021-06-10",
+    "@editedofficial, ROOS20JUNE, moderosaofficial, 2021-06-10"
   ];
 
   public static getDataArray() {

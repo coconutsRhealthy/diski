@@ -39,20 +39,21 @@
         </form>
       </div>
       <div class="col-6">
-        <div *ngFor="let company of discount_companies.controls; let i=index">
-          <span></span>
-          <span>{{getDiscountCompany(i)}}</span><span>,&nbsp;</span>
-          <span>{{getDiscountCode(i)}}</span><span>,&nbsp;</span>
-          <span>{{getInfluencer(i)}}</span><span>,&nbsp;</span>
-          <span>{{getDate()}}</span>
+        <h2>new</h2>
+        <div *ngFor="let newInputLine of newInput;">
+          <div>{{newInputLine}}</div>
+        </div>
+
+        <h2>duplicate</h2>
+        <div *ngFor="let existingInputLine of existingInput;">
+          <div>{{existingInputLine}}</div>
         </div>
       </div>
     </div>
 
     <div id="duplicate-codes-button" class="row">
       <div class="col-12">
-        <button type="button" (click)="removeDuplicateCodes()" class="btn btn-primary btn-sm">Remove duplicates</button>
-        <button type="button" (click)="dummyDataDirectiveMethod()" class="btn btn-primary btn-sm">Dummy DataDirective</button>
+        <button type="button" (click)="displayInput()" class="btn btn-primary btn-sm">Display input</button>
       </div>
     </div>
 

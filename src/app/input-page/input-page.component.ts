@@ -13,6 +13,9 @@ import { DataDirective } from '../data/data.directive';
 })
 export class InputComponent {
 
+  newInput = [];
+  existingInput = [];
+
   constructor(private fb: FormBuilder, private http: HttpClient) {
 
   }
@@ -114,7 +117,10 @@ export class InputComponent {
     alert(dummy[1]);
   }
 
-  removeDuplicateCodes() {
+  displayInput() {
+    this.existingInput = [];
+    this.newInput = [];
+
     var influencers = this.profileForm.get('influencers') as FormArray;
     var companies = this.profileForm.get('discount_companies') as FormArray;
     var codes = this.profileForm.get('discount_codes') as FormArray;
@@ -125,18 +131,23 @@ export class InputComponent {
       var fullNewCodeEntry = companies.at(i).value + ", " + codes.at(i).value + ", " + influencers.at(i).value;
 
       if(existing.includes(fullNewCodeEntry)) {
-        alert(fullNewCodeEntry);
+        if(!this.existingInput.includes(fullNewCodeEntry)) {
+          this.existingInput.push(fullNewCodeEntry);
+        }
       } else {
-        alert("prrt " + fullNewCodeEntry);
+        if(!this.newInput.includes(fullNewCodeEntry)) {
+          this.newInput.push(fullNewCodeEntry);
+        }
       }
     }
   }
 
   getExistingCodesWithoutDate() {
+    var existingCodeEntries = DataDirective.getDataArray();
     var existingCodesNoDate = [];
 
-    for(var i = 0; i < this.existingCodeEntries.length; i++) {
-      var lineWithoutDate = this.existingCodeEntries[i].substring(0, this.existingCodeEntries[i].lastIndexOf(", "));
+    for(var i = 0; i < existingCodeEntries.length; i++) {
+      var lineWithoutDate = existingCodeEntries[i].substring(0, existingCodeEntries[i].lastIndexOf(", "));
 
       if(lineWithoutDate.replace(/\s/g, '').length) {
         existingCodesNoDate.push(lineWithoutDate);
@@ -145,11 +156,4 @@ export class InputComponent {
 
     return existingCodesNoDate;
   }
-
-
-  existingCodeEntries = [
-    "@amebalance, FLORIANNE20, florianne.charlotte, 2021-06-10",
-    "@famousstore, Annefloor10, annefloorx, 2021-06-10",
-    "@editedofficial, ROOS20JUNE, moderosaofficial, 2021-06-10"
-  ];
 }
