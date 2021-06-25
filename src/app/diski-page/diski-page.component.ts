@@ -805,6 +805,159 @@ export class DiskiPageComponent implements OnInit {
     "via": "indiasuy",
     "date": "2021-06-22",
     },
+
+
+
+    {
+    "company": "@gutsgusto ",
+    "code": "KIYA20",
+    "via": "kiya.vanrossum",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@flowshealth",
+    "code": "FLORIANNE",
+    "via": "florianne.charlotte",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@nakdfashion",
+    "code": "20XBBKNX",
+    "via": "lunalissens",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@browboutiquebyfarah",
+    "code": "Kellycaresse",
+    "via": "kellycaresse",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@nakdfashion",
+    "code": "dyonne20",
+    "via": "xdyonnex",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@viteezynl",
+    "code": "jipp10",
+    "via": "jippheldoorn",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@stratingschoenen",
+    "code": "Robin10",
+    "via": "robinhenneke.jpeg",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@myproteinnl",
+    "code": "Nochtli",
+    "via": "nochtlii",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@nakdfashion",
+    "code": "Valerie_20",
+    "via": "valeriequirijns",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@nakdfashion",
+    "code": "Annefloor20",
+    "via": "annefloorx",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@desenio",
+    "code": "DEMI10",
+    "via": "xdemi___x",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@nakdfashion",
+    "code": "20sylvana",
+    "via": "sylvana.elling",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@sooof.nl",
+    "code": "STACY15",
+    "via": "stacydriesen",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@makeupstudioamsterdam",
+    "code": "ELIZE10",
+    "via": "mylifeaselize",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@nakdfashion",
+    "code": "milouh20",
+    "via": "milouhendriks",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@nakdfashion",
+    "code": "kellyx20",
+    "via": "kheeell",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@idealofsweden",
+    "code": "jasmijnkremer15",
+    "via": "jasmijnkremer",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@leolive",
+    "code": "KAE10",
+    "via": "kaesutherland",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@stronger",
+    "code": "beljaars20",
+    "via": "lindseybeljaars",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@idealofsweden",
+    "code": "kimberlybrands15",
+    "via": "kimberlybrands_",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@armedangels",
+    "code": "KELLYCARESSE_15",
+    "via": "kellycaresse",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@bymusthaves",
+    "code": "ROXY15",
+    "via": "roxysshizzle",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@hellofreshnl",
+    "code": "HELLOABBEY",
+    "via": "abbeyhoes",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@nakdfashion",
+    "code": "SHULA20",
+    "via": "shularoose",
+    "date": "2021-06-24",
+    },
+    {
+    "company": "@zaful",
+    "code": "DON18",
+    "via": "donnadaizy",
+    "date": "2021-06-24",
+    },
   ]
 
 }
