@@ -87,36 +87,6 @@ export class InputComponent {
     this.influencers.removeAt(index);
   }
 
-  printData() {
-    var influencers = this.profileForm.get('influencers') as FormArray;
-    var companies = this.profileForm.get('discount_companies') as FormArray;
-    var codes = this.profileForm.get('discount_codes') as FormArray;
-
-    var toPrint = "";
-
-    for (var i = 0; i < influencers.length; i++) {
-      toPrint = toPrint + "{\n" +
-                        "\"company\": \"" + companies.at(i).value + "\",\n" +
-                        "\"code\": \"" + codes.at(i).value + "\",\n" +
-                        "\"via\": \"" + influencers.at(i).value + "\",\n" +
-                        "\"date\": \"2021-06-14\",\n" +
-                        "},\n";
-    }
-
-    console.log(toPrint);
-  }
-
-  readAndPrintTextfile() {
-    this.http.get('assets/testtext.txt', {responseType: 'text'}).subscribe(data => {
-       console.log(data);
-    })
-  }
-
-  dummyDataDirectiveMethod() {
-    var dummy = DataDirective.getDataArray();
-    alert(dummy[1]);
-  }
-
   displayInput() {
     this.existingInput = [];
     this.newInput = [];
@@ -132,11 +102,12 @@ export class InputComponent {
 
       if(existing.includes(fullNewCodeEntry)) {
         if(!this.existingInput.includes(fullNewCodeEntry)) {
-          this.existingInput.push(fullNewCodeEntry);
+          this.getDateOfAlreadyExistingInput(fullNewCodeEntry);
+          this.existingInput.push(fullNewCodeEntry + ", " + this.getDateOfAlreadyExistingInput(fullNewCodeEntry));
         }
       } else {
         if(!this.newInput.includes(fullNewCodeEntry)) {
-          this.newInput.push(fullNewCodeEntry);
+          this.newInput.push(fullNewCodeEntry + ", " + this.getDate());
         }
       }
     }
@@ -155,5 +126,19 @@ export class InputComponent {
     }
 
     return existingCodesNoDate;
+  }
+
+  getDateOfAlreadyExistingInput(inputThatAlreadyExists) {
+    var dateOfExistingInputEntry = "?";
+    var existingCodeEntries = DataDirective.getDataArray();
+
+    for(var i = 0; i < existingCodeEntries.length; i++) {
+      if(existingCodeEntries[i].includes(inputThatAlreadyExists)) {
+        dateOfExistingInputEntry = existingCodeEntries[i].substring
+          (existingCodeEntries[i].lastIndexOf(", ") + 2, existingCodeEntries[i].length);
+      }
+    }
+
+    return dateOfExistingInputEntry;
   }
 }
