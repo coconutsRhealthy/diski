@@ -5,6 +5,39 @@ import { Directive } from "@angular/core"
 })
 export class DataDirective {
 
+  public static getDataArray() {
+    return this.dataArray;
+  }
+
+  public static getCompanyFromBaseInputLine(baseInputLine) {
+    var company = baseInputLine.substring(0, baseInputLine.indexOf(","));
+    return company;
+  }
+
+  public static getDiscountCodeFromBaseInputLine(baseInputLine) {
+    var firstIndexOfComma = this.getPosition(baseInputLine, ", ", 1);
+    var secondIndexOfComma = this.getPosition(baseInputLine, ", ", 2);
+    var discountCode = baseInputLine.substring(firstIndexOfComma + 2, secondIndexOfComma);
+    return discountCode;
+  }
+
+  public static getInfluencerFromBaseInputLine(baseInputLine) {
+    var secondIndexOfComma = this.getPosition(baseInputLine, ", ", 2);
+    var thirdIndexOfComma = this.getPosition(baseInputLine, ", ", 3);
+    var influencer = baseInputLine.substring(secondIndexOfComma + 2, thirdIndexOfComma);
+    return influencer;
+  }
+
+  public static getDateFromBaseInputLine(baseInputLine) {
+    var thirdIndexOfComma = this.getPosition(baseInputLine, ", ", 3);
+    var date = baseInputLine.substring(thirdIndexOfComma + 2, baseInputLine.length);
+    return date;
+  }
+
+  public static getPosition(string, subString, index) {
+    return string.split(subString, index).join(subString).length;
+  }
+
   static dataArray = [
     "@amebalance, FLORIANNE20, florianne.charlotte, 2021-06-10",
     "@famousstore, Annefloor10, annefloorx, 2021-06-10",
@@ -178,9 +211,4 @@ export class DataDirective {
     "@twistshakebaby, 55CLAUDINE, claudinebuisman, 2021-06-26",
     "@hellofreshbe, HELLOMARTA45, martaswiggers, 2021-06-26",
   ];
-
-  public static getDataArray() {
-    return this.dataArray;
-  }
-
 }

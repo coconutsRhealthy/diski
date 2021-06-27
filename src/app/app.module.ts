@@ -11,13 +11,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientModule } from '@angular/common/http';
 import { DataDirective } from './data/data.directive';
+import { InstaComponent } from './insta/insta.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DiskiPageComponent,
     InputComponent,
-    DataDirective
+    DataDirective,
+    InstaComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { DataDirective } from './data/data.directive';
     NgbModule,
     RouterModule.forRoot([
       {path: '', component: DiskiPageComponent},
-      {path: 'input', component: InputComponent}
+      {path: 'input', component: InputComponent},
+      {path: 'insta', component: InstaComponent}
     ]),
   ],
   providers: [],

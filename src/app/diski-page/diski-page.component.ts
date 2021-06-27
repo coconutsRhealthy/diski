@@ -52,31 +52,22 @@ export class DiskiPageComponent implements OnInit {
   }
 
   getCompanyFromBaseInputLine(baseInputLine) {
-    var company = baseInputLine.substring(0, baseInputLine.indexOf(","));
-    return company;
+    return DataDirective.getCompanyFromBaseInputLine(baseInputLine);
   }
 
   getDiscountCodeFromBaseInputLine(baseInputLine) {
-    var firstIndexOfComma = this.getPosition(baseInputLine, ", ", 1);
-    var secondIndexOfComma = this.getPosition(baseInputLine, ", ", 2);
-    var discountCode = baseInputLine.substring(firstIndexOfComma + 2, secondIndexOfComma);
-    return discountCode;
+    return DataDirective.getDiscountCodeFromBaseInputLine(baseInputLine);
   }
 
   getInfluencerFromBaseInputLine(baseInputLine) {
-    var secondIndexOfComma = this.getPosition(baseInputLine, ", ", 2);
-    var thirdIndexOfComma = this.getPosition(baseInputLine, ", ", 3);
-    var influencer = baseInputLine.substring(secondIndexOfComma + 2, thirdIndexOfComma);
-    return influencer;
+    return DataDirective.getInfluencerFromBaseInputLine(baseInputLine);
   }
 
   getDateFromBaseInputLine(baseInputLine) {
-    var thirdIndexOfComma = this.getPosition(baseInputLine, ", ", 3);
-    var date = baseInputLine.substring(thirdIndexOfComma + 2, baseInputLine.length);
-    return date;
+    return DataDirective.getDateFromBaseInputLine(baseInputLine);
   }
 
   getPosition(string, subString, index) {
-    return string.split(subString, index).join(subString).length;
+    return DataDirective.getPosition(string, subString, index);
   }
 }
