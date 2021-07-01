@@ -1,4 +1,4 @@
-#duplicate-codes-button {
+.client-action-button {
   margin-top: 1%;
 }
 
@@ -10,9 +10,9 @@ input[type="text"] {
   width: 100%;
 }
 
-.small-delete-button {
+.small-button {
   heigth: 8px;
-  width: 50px;
+  width: 75px;
   font-size:8px;
 }
 

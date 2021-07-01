@@ -32,15 +32,23 @@
           </div>
           <div class="col-2">
             <div *ngFor="let company of discount_companies.controls; let i=index">
-              <button class="small-delete-button" type="button" (click)="deleteRow(i)">Delete</button>
+              <button class="small-button" type="button" (click)="deleteRow(i)">Delete</button>
             </div>
           </div>
         </div>
       </form>
-      <div id="duplicate-codes-button" class="row">
+      <div class="client-action-button" class="row">
         <div class="col-12">
           <button type="button" (click)="displayInput()" class="btn btn-primary btn-sm">Display input</button>
         </div>
+      </div>
+      <div class="client-action-button" class="row">
+        <div class="col-12">
+          <button type="button" (click)="toggleShowDoubleEntries()" class="small-button">Show / hide double entries in data</button>
+        </div>
+      </div>
+      <div *ngFor="let duplicate of multipleOccurrencesInData;">
+        {{duplicate}}
       </div>
     </div>
     <div class="col-6">

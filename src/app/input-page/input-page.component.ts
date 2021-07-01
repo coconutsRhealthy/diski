@@ -15,6 +15,7 @@ export class InputComponent {
 
   newInput = [];
   existingInput = [];
+  multipleOccurrencesInData = [];
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
 
@@ -100,17 +101,22 @@ export class InputComponent {
     for(var i = 0; i < influencers.length; i++) {
       var fullNewCodeEntry = companies.at(i).value + ", " + codes.at(i).value + ", " + influencers.at(i).value;
 
-      if(existing.includes(fullNewCodeEntry)) {
-        if(!this.existingInput.includes(fullNewCodeEntry)) {
+      if(this.includesIgnoreCase(fullNewCodeEntry, existing)) {
+        if(!this.includesIgnoreCase(fullNewCodeEntry, this.existingInput)) {
           this.getDateOfAlreadyExistingInput(fullNewCodeEntry);
-          this.existingInput.push(fullNewCodeEntry + ", " + this.getDateOfAlreadyExistingInput(fullNewCodeEntry));
+          this.existingInput.push("\"" + fullNewCodeEntry + ", " + this.getDateOfAlreadyExistingInput(fullNewCodeEntry) + "\"");
         }
       } else {
-        if(!this.newInput.includes(fullNewCodeEntry)) {
-          this.newInput.push(fullNewCodeEntry + ", " + this.getDate());
+        if(!this.includesIgnoreCase(fullNewCodeEntry, this.newInput)) {
+          this.newInput.push("\"" + fullNewCodeEntry + ", " + this.getDate() + "\"");
         }
       }
     }
+  }
+
+  includesIgnoreCase(stringToCheck, arrayToCheck) {
+    var dummyFilterArray = arrayToCheck.filter((str) => str.toLowerCase().includes(stringToCheck.toLowerCase()));
+    return dummyFilterArray.length > 0;
   }
 
   getExistingCodesWithoutDate() {
@@ -133,12 +139,39 @@ export class InputComponent {
     var existingCodeEntries = DataDirective.getDataArray();
 
     for(var i = 0; i < existingCodeEntries.length; i++) {
-      if(existingCodeEntries[i].includes(inputThatAlreadyExists)) {
+      if(existingCodeEntries[i].toLowerCase().includes(inputThatAlreadyExists.toLowerCase())) {
         dateOfExistingInputEntry = existingCodeEntries[i].substring
           (existingCodeEntries[i].lastIndexOf(", ") + 2, existingCodeEntries[i].length);
       }
     }
 
     return dateOfExistingInputEntry;
+  }
+
+  toggleShowDoubleEntries() {
+    if(this.multipleOccurrencesInData.length > 0) {
+      this.multipleOccurrencesInData = [];
+    } else {
+      this.identifyDoubleDataEntries();
+    }
+  }
+
+  identifyDoubleDataEntries() {
+    var data = this.getExistingCodesWithoutDate();
+
+    for(var i = 0; i < data.length; i++) {
+      var lineToCheck = data[i];
+      var dummyFilterArray = data.filter((str) => str.toLowerCase().includes(lineToCheck.toLowerCase()));
+
+      if(dummyFilterArray.length > 1) {
+        this.multipleOccurrencesInData.push(lineToCheck);
+      }
+    }
+
+    this.multipleOccurrencesInData = this.multipleOccurrencesInData.filter((v, i, a) => a.indexOf(v) === i);
+
+    if(this.multipleOccurrencesInData.length === 0) {
+      this.multipleOccurrencesInData.push("No double data entries.");
+    }
   }
 }
