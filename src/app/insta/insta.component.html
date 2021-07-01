@@ -1,7 +1,58 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-6">
-      <button type="button" (click)="generateInstaPost()" class="btn btn-primary btn-sm">Generate post</button>
+      <div>
+        startdate: <input type="text" [(ngModel)]="startDateForPostString">
+        max amount: <input type="text" [(ngModel)]="maxAmountForPost">
+      </div>
+      <div><button type="button" (click)="generateInstaPost()" class="btn btn-primary btn-sm">Generate post</button></div>
+
+      <div class="row">
+        <div class="col-4">
+          <div>dots company</div>
+          <span>
+            <button class="small-button" type="button" (click)="addDot('company')">+</button>
+            <button class="small-button" type="button" (click)="removeDot('company')">-</button>
+          </span>
+        </div>
+        <div class="col-4">
+          <div>dots code</div>
+          <span>
+            <button class="small-button" type="button" (click)="addDot('code')">+</button>
+            <button class="small-button" type="button" (click)="removeDot('code')">-</button>
+          </span>
+        </div>
+        <div class="col-4">
+          <div>dots via</div>
+          <span>
+            <button class="small-button" type="button" (click)="addDot('via')">+</button>
+            <button class="small-button" type="button" (click)="removeDot('via')">-</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div>
+            date: <input type="text" [(ngModel)]="kortingDate">
+          </div>
+          <div>
+            date fontsize: <input type="text" [(ngModel)]="kortingDateFontSize">
+          </div>
+          <div>
+            header fontsize: <input type="text" [(ngModel)]="headerFontSize">
+          </div>
+          <div>
+            body fontsize:  <input type="text" [(ngModel)]="bodyFontSize">
+          </div>
+          <div>
+            <button class="small-button" type="button" (click)="setTableBackgroundColour('#FDEEB7')">Yellow</button>
+          </div>
+          <div>
+            <button class="small-button" type="button" (click)="setTableBackgroundColour('#F6CCD1')">Pink</button>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-6">
       <div class="table-outline">
@@ -27,9 +78,9 @@
                   'min-height.px' : tableRowMinHeight
                   }">
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }"></td>
-              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{entry.company}}</td>
-              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{entry.code}}</td>
-              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{entry.via}}</td>
+              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{entry.company}}<span [ngStyle]="{'color' : tableBackgroundColor}" class="invisible-dots">{{dotsCompany}}</span></td>
+              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{entry.code}}<span [ngStyle]="{'color' : tableBackgroundColor}" class="invisible-dots">{{dotsCode}}</span></td>
+              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{entry.via}}<span [ngStyle]="{'color' : tableBackgroundColor}" class="invisible-dots">{{dotsVia}}</span></td>
             </tr>
           </tbody>
         </table>

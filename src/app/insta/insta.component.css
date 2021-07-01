@@ -24,3 +24,17 @@ table tr td:first-child::before {
   width: 502px;
   border: 1px solid blue;
 }
+
+.invisible-dots {
+  color: blue;
+}
+
+.small-button {
+  heigth: 8px;
+  width: 50px;
+  font-size:8px;
+}
+
+input[type="text"] {
+  font-size:8px;
+}

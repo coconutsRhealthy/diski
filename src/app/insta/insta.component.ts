@@ -21,6 +21,11 @@ export class InstaComponent {
   kortingDateFontSize = 10;
   headerFontSize = 14;
   bodyFontSize = 14;
+  dotsCompany = "";
+  dotsCode = "";
+  dotsVia = "";
+  startDateForPostString = "01-01-2021";
+  maxAmountForPost = "10";
 
   instaDiscountEntries = [];
 
@@ -66,39 +71,54 @@ export class InstaComponent {
     }
   }
 
-  makeTableBlackYellow(backGroundColour) {
-    if(backGroundColour === 'black') {
-      this.tableBackgroundColor = '#000000';
-      this.tableLineAndFontColor = '#FFFF00';
-    } else if(backGroundColour === 'yellow') {
-      //yellow old
-      //this.tableBackgroundColor = '#FFA500';
-
-      //yellow
-      //this.tableBackgroundColor = '#FDEEB7';
-
-      //pink
-      this.tableBackgroundColor = '#F6CCD1';
-
-      this.tableLineAndFontColor = '#000000';
+  addDot(column) {
+    if(column === 'company') {
+      this.dotsCompany = this.dotsCompany + ".";
+    } else if(column === 'code') {
+      this.dotsCode = this.dotsCode + ".";
+    } else if(column === 'via') {
+      this.dotsVia = this.dotsVia + ".";
     }
+  }
+
+  removeDot(column) {
+    if(column === 'company') {
+      this.dotsCompany = this.dotsCompany.replace(/.$/,"");
+    } else if(column === 'code') {
+      this.dotsCode = this.dotsCode.replace(/.$/,"");
+    } else if(column === 'via') {
+      this.dotsVia = this.dotsVia.replace(/.$/,"");
+    }
+  }
+
+  setTableBackgroundColour(hex) {
+    this.tableBackgroundColor = hex;
   }
 
   generateInstaPost() {
-    this.initializeAllKorting();
-  }
-
-  initializeAllKorting() {
+    this.instaDiscountEntries = [];
     var baseKortingEntries = DataDirective.getDataArray();
+    var startDate = new Date(this.startDateForPostString);
 
-    for(var i = 0; i < 25; i++) {
-      this.instaDiscountEntries.push({
-         "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
-         "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),
-         "via": this.getInfluencerFromBaseInputLine(baseKortingEntries[i]),
-         "date": this.getDateFromBaseInputLine(baseKortingEntries[i]),
-         });
+    for(var i = 0; i < baseKortingEntries.length; i++) {
+      var dateString = this.getDateFromBaseInputLine(baseKortingEntries[i]);
+      var date = new Date(dateString);
+
+      if(date >= startDate) {
+        this.instaDiscountEntries.push({
+           "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
+           "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),
+           "via": this.getInfluencerFromBaseInputLine(baseKortingEntries[i]),
+           "date": this.getDateFromBaseInputLine(baseKortingEntries[i]),
+           });
+      }
     }
+
+    this.instaDiscountEntries.sort(function(a,b){
+      return <any>new Date(b.date) - <any>new Date(a.date);
+    });
+
+    this.instaDiscountEntries = this.instaDiscountEntries.slice(1, parseInt(this.maxAmountForPost) + 1);
   }
 
   getCompanyFromBaseInputLine(baseInputLine) {
