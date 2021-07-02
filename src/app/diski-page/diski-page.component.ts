@@ -18,6 +18,10 @@ export class DiskiPageComponent implements OnInit {
     this.initializeAllKorting();
 
     this.dtOptions = {
+      responsive: true,
+      lengthChange: false,
+      pageLength: 50,
+      order: [ 3, "desc" ],
       language: {
         search: "Zoek:",
         lengthMenu: "Toon _MENU_ resultaten",
