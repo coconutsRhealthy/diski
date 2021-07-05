@@ -99,16 +99,20 @@ export class InputComponent {
     var existing = this.getExistingCodesWithoutDate();
 
     for(var i = 0; i < influencers.length; i++) {
-      var fullNewCodeEntry = companies.at(i).value + ", " + codes.at(i).value + ", " + influencers.at(i).value;
+      var company = companies.at(i).value.replace(/\s/g, "");
+      var code = codes.at(i).value.replace(/\s/g, "");
+      var influencer = influencers.at(i).value.replace(/\s/g, "");
+
+      var fullNewCodeEntry = company + ", " + code + ", " + influencer;
 
       if(this.includesIgnoreCase(fullNewCodeEntry, existing)) {
         if(!this.includesIgnoreCase(fullNewCodeEntry, this.existingInput)) {
           this.getDateOfAlreadyExistingInput(fullNewCodeEntry);
-          this.existingInput.push("\"" + fullNewCodeEntry + ", " + this.getDateOfAlreadyExistingInput(fullNewCodeEntry) + "\"");
+          this.existingInput.push("\"" + fullNewCodeEntry + ", " + this.getDateOfAlreadyExistingInput(fullNewCodeEntry) + "\",");
         }
       } else {
         if(!this.includesIgnoreCase(fullNewCodeEntry, this.newInput)) {
-          this.newInput.push("\"" + fullNewCodeEntry + ", " + this.getDate() + "\"");
+          this.newInput.push("\"" + fullNewCodeEntry + ", " + this.getDate() + "\",");
         }
       }
     }

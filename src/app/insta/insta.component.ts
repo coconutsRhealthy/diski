@@ -118,7 +118,7 @@ export class InstaComponent {
       return <any>new Date(b.date) - <any>new Date(a.date);
     });
 
-    this.instaDiscountEntries = this.instaDiscountEntries.slice(1, parseInt(this.maxAmountForPost) + 1);
+    this.instaDiscountEntries = this.instaDiscountEntries.slice(0, parseInt(this.maxAmountForPost) + 1);
   }
 
   getCompanyFromBaseInputLine(baseInputLine) {
