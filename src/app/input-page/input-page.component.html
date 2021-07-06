@@ -57,9 +57,14 @@
         {{newInputLine}}
       </div>
 
-      <div id="input-header-existing" class="input-header">duplicate</div>
+      <div class="input-header-follow" class="input-header">duplicate</div>
       <div *ngFor="let existingInputLine of existingInput;">
         {{existingInputLine}}
+      </div>
+
+      <div class="input-header-follow" class="input-header">to check</div>
+      <div *ngFor="let toCheckInputLine of toCheckInput;">
+        {{toCheckInputLine}}
       </div>
     </div>
   </div>

@@ -15,6 +15,7 @@ export class InputComponent {
 
   newInput = [];
   existingInput = [];
+  toCheckInput = [];
   multipleOccurrencesInData = [];
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
@@ -91,6 +92,7 @@ export class InputComponent {
   displayInput() {
     this.existingInput = [];
     this.newInput = [];
+    this.toCheckInput = [];
 
     var influencers = this.profileForm.get('influencers') as FormArray;
     var companies = this.profileForm.get('discount_companies') as FormArray;
@@ -115,7 +117,21 @@ export class InputComponent {
           this.newInput.push("\"" + fullNewCodeEntry + ", " + this.getDate() + "\",");
         }
       }
+
+      if(this.stringInArrayContainsStringPart((" " + code + ","), existing)) {
+        this.toCheckInput.push(fullNewCodeEntry);
+      }
     }
+  }
+
+  stringInArrayContainsStringPart(stringPart, array) {
+    for(var i = 0; i < array.length; i++) {
+      if(this.includesIgnoreCase(stringPart, array)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   includesIgnoreCase(stringToCheck, arrayToCheck) {
