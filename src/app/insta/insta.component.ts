@@ -24,8 +24,8 @@ export class InstaComponent {
   dotsCompany = "";
   dotsCode = "";
   dotsVia = "";
-  startDateForPostString = "01-01-2021";
-  maxAmountForPost = "10";
+  startDateForPostString = "2021-07-05";
+  maxAmountForPost = "3";
 
   instaDiscountEntries = [];
 
@@ -97,7 +97,14 @@ export class InstaComponent {
 
   generateInstaPost() {
     this.instaDiscountEntries = [];
-    var baseKortingEntries = DataDirective.getDataArray();
+    var baseData = DataDirective.getDataArray();
+    var baseKortingEntries = [];
+
+    for(var i = 0; i < baseData.length; i++) {
+      baseKortingEntries.push(baseData[i]);
+    }
+
+    baseKortingEntries.reverse();
     var startDate = new Date(this.startDateForPostString);
 
     for(var i = 0; i < baseKortingEntries.length; i++) {
@@ -114,11 +121,7 @@ export class InstaComponent {
       }
     }
 
-    this.instaDiscountEntries.sort(function(a,b){
-      return <any>new Date(b.date) - <any>new Date(a.date);
-    });
-
-    this.instaDiscountEntries = this.instaDiscountEntries.slice(0, parseInt(this.maxAmountForPost) + 1);
+    this.instaDiscountEntries = this.instaDiscountEntries.slice(0, parseInt(this.maxAmountForPost));
   }
 
   getCompanyFromBaseInputLine(baseInputLine) {
