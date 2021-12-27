@@ -104,13 +104,14 @@ export class InputComponent {
       var company = companies.at(i).value.replace(/\s/g, "");
       var code = codes.at(i).value.replace(/\s/g, "");
       var influencer = influencers.at(i).value.replace(/\s/g, "");
-
       var fullNewCodeEntry = company + ", " + code + ", " + influencer;
+      var isExistingInput = false;
 
       if(this.includesIgnoreCase(fullNewCodeEntry, existing)) {
         if(!this.includesIgnoreCase(fullNewCodeEntry, this.existingInput)) {
           this.getDateOfAlreadyExistingInput(fullNewCodeEntry);
           this.existingInput.push("\"" + fullNewCodeEntry + ", " + this.getDateOfAlreadyExistingInput(fullNewCodeEntry) + "\",");
+          isExistingInput = true;
         }
       } else {
         if(!this.includesIgnoreCase(fullNewCodeEntry, this.newInput)) {
@@ -118,10 +119,16 @@ export class InputComponent {
         }
       }
 
-      if(this.stringInArrayContainsStringPart((" " + code + ","), existing)) {
-        this.toCheckInput.push(fullNewCodeEntry);
+      if(!isExistingInput) {
+        if(this.stringInArrayContainsStringPart((" " + code + ","), existing)) {
+          this.toCheckInput.push(fullNewCodeEntry);
+        }
       }
     }
+
+    this.existingInput.reverse();
+    this.newInput.reverse();
+    this.toCheckInput.reverse();
   }
 
   stringInArrayContainsStringPart(stringPart, array) {

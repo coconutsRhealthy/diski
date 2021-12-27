@@ -11,6 +11,17 @@
   background-color: rgb(246, 204, 209)
 }
 
+h2 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: rgb(125, 125, 125);
+}
+
 .content {
   min-height: calc(100vh - 60px);
   margin-bottom: 0px;
