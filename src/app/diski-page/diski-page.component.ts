@@ -5,7 +5,7 @@ import { DataDirective } from '../data/data.directive';
 @Component({
   selector: 'app-diski-page',
   templateUrl: './diski-page.component.html',
-  styleUrls: ['./diski-page.component.css']
+  styleUrls: ['./../app.component.css']
 })
 export class DiskiPageComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
@@ -23,7 +23,7 @@ export class DiskiPageComponent implements OnInit {
       responsive: true,
       lengthChange: false,
       pageLength: 50,
-      order: [ 3, "desc" ],
+      order: [],
       language: {
         search: "Zoek:",
         lengthMenu: "Toon _MENU_ resultaten",

@@ -7,7 +7,7 @@ import { MetaService } from '../../meta/meta.service';
 @Component({
   selector: 'app-nakd',
   templateUrl: './nakd.component.html',
-  styleUrls: ['./nakd.component.css']
+  styleUrls: ['./../../app.component.css']
 })
 export class NakdComponent implements OnInit {
   dtOptions: DataTables.Settings = {};

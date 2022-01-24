@@ -19,19 +19,19 @@
             <a class="nav-link" [routerLink]="'../shein'" (click)="isMenuCollapsed = true">Shein</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../loavies'" (click)="isMenuCollapsed = true">Loavies</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">My Jewellery</a>
+            <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">Loavies</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" [routerLink]="'../myjewellery'" (click)="isMenuCollapsed = true">My Jewellery</a>
+          </li>
+          <li class="nav-item active">
             <a class="nav-link" [routerLink]="'../archief'" (click)="isMenuCollapsed = true">Archief</a>
           </li>
         </ul>
       </div>
     </nav>
 
-    <h1>My Jewellery kortingscodes</h1>
+    <h1>Kortingscodes 2021</h1>
 
     <div id="diski-table" class="row">
       <div class="col-sm-1"></div>
@@ -39,15 +39,15 @@
         <table datatable [dtOptions]="dtOptions" class="display compact dataTable">
           <thead>
           <tr>
-
-            <th>My Jewellery kortingscode</th>
+            <th>Korting bij</th>
+            <th>Met code</th>
             <th class="desktop">Via</th>
             <th>Datum</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let korting of allKorting">
-
+            <td>{{ korting.company }}</td>
             <td>{{ korting.code }}</td>
             <td>{{ korting.via }}</td>
             <td>{{ korting.date }}</td>
@@ -62,7 +62,7 @@
     <div class="col-sm-1"></div>
     <div class="col-sm-10">
       <p>
-        My Jewellery textje
+        Archief textje
       </p>
     </div>
     <div class="col-sm-1"></div>
@@ -77,6 +77,7 @@
     </div>
   </div>
 </div>
+
 
 
 

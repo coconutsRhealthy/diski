@@ -7,7 +7,7 @@ import { MetaService } from '../../meta/meta.service';
 @Component({
   selector: 'app-loavies',
   templateUrl: './loavies.component.html',
-  styleUrls: ['./loavies.component.css']
+  styleUrls: ['./../../app.component.css']
 })
 export class LoaviesComponent implements OnInit {
   dtOptions: DataTables.Settings = {};

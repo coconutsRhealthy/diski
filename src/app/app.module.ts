@@ -18,6 +18,7 @@ import { MyjewelleryComponent } from './brand-pages/myjewellery/myjewellery.comp
 import { SheinComponent } from './brand-pages/shein/shein.component';
 
 import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
+import { ArchiveComponent } from './archive/archive.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
     NakdComponent,
     LoaviesComponent,
     MyjewelleryComponent,
-    SheinComponent
+    SheinComponent,
+    ArchiveComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,7 @@ import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
         path: '',
         component: DiskiPageComponent,
         data: {
-          title: 'Home'
+          title: 'Diski | Online shoppen met korting'
         }
       },
       {path: 'input', component: InputComponent},
@@ -74,6 +76,13 @@ import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
         component: SheinComponent,
         data: {
           title: 'Shein Kortingscodes'
+        }
+      },
+      {
+        path: 'archief',
+        component: ArchiveComponent,
+        data: {
+          title: 'Archief'
         }
       },
     ]),

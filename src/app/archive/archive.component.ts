@@ -1,24 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-
-import { DataDirective } from '../../data/data.directive';
-
-import { MetaService } from '../../meta/meta.service';
+import { DataDirective } from '../data/data.directive';
+import { ArchiveDataDirective } from '../data/archivedata.directive';
 
 @Component({
-  selector: 'app-shein',
-  templateUrl: './shein.component.html',
-  styleUrls: ['./../../app.component.css']
+  selector: 'app-archive',
+  templateUrl: './archive.component.html',
+  styleUrls: ['./../app.component.css']
 })
-export class SheinComponent implements OnInit {
+export class ArchiveComponent implements OnInit {
+
   dtOptions: DataTables.Settings = {};
 
   isMenuCollapsed = true;
 
   allKorting = [];
 
-  constructor(private meta: MetaService) {
-    this.meta.updateTitle();
-  }
+  constructor() { }
 
   ngOnInit(): void {
     this.initializeAllKorting();
@@ -26,9 +23,8 @@ export class SheinComponent implements OnInit {
     this.dtOptions = {
       responsive: true,
       lengthChange: false,
-      searching: false,
       pageLength: 50,
-      order: [ 2, "desc" ],
+      order: [],
       language: {
         search: "Zoek:",
         lengthMenu: "Toon _MENU_ resultaten",
@@ -50,17 +46,15 @@ export class SheinComponent implements OnInit {
   }
 
   initializeAllKorting() {
-    var baseKortingEntries = DataDirective.getDataArray();
+    var baseKortingEntries = ArchiveDataDirective.getDataArrayArchive();
 
     for(var i = 0; i < baseKortingEntries.length; i++) {
-      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@sheinofficial") {
-        this.allKorting.push({
-           "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
-           "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),
-           "via": this.getInfluencerFromBaseInputLine(baseKortingEntries[i]),
-           "date": this.getDateFromBaseInputLine(baseKortingEntries[i]),
-           });
-      }
+      this.allKorting.push({
+         "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
+         "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),
+         "via": this.getInfluencerFromBaseInputLine(baseKortingEntries[i]),
+         "date": this.getDateFromBaseInputLine(baseKortingEntries[i]),
+         });
     }
   }
 
@@ -83,4 +77,5 @@ export class SheinComponent implements OnInit {
   getPosition(string, subString, index) {
     return DataDirective.getPosition(string, subString, index);
   }
+
 }

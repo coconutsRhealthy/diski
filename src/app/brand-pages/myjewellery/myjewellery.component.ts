@@ -7,7 +7,7 @@ import { MetaService } from '../../meta/meta.service';
 @Component({
   selector: 'app-myjewellery',
   templateUrl: './myjewellery.component.html',
-  styleUrls: ['./myjewellery.component.css']
+  styleUrls: ['./../../app.component.css']
 })
 export class MyjewelleryComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
