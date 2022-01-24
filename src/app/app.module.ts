@@ -14,6 +14,8 @@ import { DataDirective } from './data/data.directive';
 import { InstaComponent } from './insta/insta.component';
 import { NakdComponent } from './brand-pages/nakd/nakd.component';
 import { LoaviesComponent } from './brand-pages/loavies/loavies.component';
+import { MyjewelleryComponent } from './brand-pages/myjewellery/myjewellery.component';
+import { SheinComponent } from './brand-pages/shein/shein.component';
 
 import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
 
@@ -25,7 +27,9 @@ import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
     DataDirective,
     InstaComponent,
     NakdComponent,
-    LoaviesComponent
+    LoaviesComponent,
+    MyjewelleryComponent,
+    SheinComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +60,20 @@ import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
         component: LoaviesComponent,
         data: {
           title: 'Loavies Kortingscodes'
+        }
+      },
+      {
+        path: 'myjewellery',
+        component: MyjewelleryComponent,
+        data: {
+          title: 'My Jewellery Kortingscodes'
+        }
+      },
+      {
+        path: 'shein',
+        component: SheinComponent,
+        data: {
+          title: 'Shein Kortingscodes'
         }
       },
     ]),
