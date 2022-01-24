@@ -12,6 +12,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { DataDirective } from './data/data.directive';
 import { InstaComponent } from './insta/insta.component';
+import { NakdComponent } from './brand-pages/nakd/nakd.component';
+import { LoaviesComponent } from './brand-pages/loavies/loavies.component';
+
+import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,9 @@ import { InstaComponent } from './insta/insta.component';
     DiskiPageComponent,
     InputComponent,
     DataDirective,
-    InstaComponent
+    InstaComponent,
+    NakdComponent,
+    LoaviesComponent
   ],
   imports: [
     BrowserModule,
@@ -29,12 +35,32 @@ import { InstaComponent } from './insta/insta.component';
     ReactiveFormsModule,
     NgbModule,
     RouterModule.forRoot([
-      {path: '', component: DiskiPageComponent},
+      {
+        path: '',
+        component: DiskiPageComponent,
+        data: {
+          title: 'Home'
+        }
+      },
       {path: 'input', component: InputComponent},
-      {path: 'insta', component: InstaComponent}
+      {path: 'insta', component: InstaComponent},
+      {
+        path: 'nakd',
+        component: NakdComponent,
+        data: {
+          title: 'Nakd Kortingscodes'
+        }
+      },
+      {
+        path: 'loavies',
+        component: LoaviesComponent,
+        data: {
+          title: 'Loavies Kortingscodes'
+        }
+      },
     ]),
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

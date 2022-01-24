@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataDirective } from '../data/data.directive';
+import { DataDirective } from '../../data/data.directive';
+
+import { MetaService } from '../../meta/meta.service';
 
 @Component({
-  selector: 'app-diski-page',
-  templateUrl: './diski-page.component.html',
-  styleUrls: ['./diski-page.component.css']
+  selector: 'app-nakd',
+  templateUrl: './nakd.component.html',
+  styleUrls: ['./nakd.component.css']
 })
-export class DiskiPageComponent implements OnInit {
+export class NakdComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
 
   isMenuCollapsed = true;
 
   allKorting = [];
 
-  constructor() { }
+  constructor(private meta: MetaService) {
+    this.meta.updateTitle();
+  }
 
   ngOnInit(): void {
     this.initializeAllKorting();
@@ -22,8 +26,9 @@ export class DiskiPageComponent implements OnInit {
     this.dtOptions = {
       responsive: true,
       lengthChange: false,
+      searching: false,
       pageLength: 50,
-      order: [ 3, "desc" ],
+      order: [ 2, "desc" ],
       language: {
         search: "Zoek:",
         lengthMenu: "Toon _MENU_ resultaten",
@@ -48,12 +53,14 @@ export class DiskiPageComponent implements OnInit {
     var baseKortingEntries = DataDirective.getDataArray();
 
     for(var i = 0; i < baseKortingEntries.length; i++) {
-      this.allKorting.push({
-         "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
-         "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),
-         "via": this.getInfluencerFromBaseInputLine(baseKortingEntries[i]),
-         "date": this.getDateFromBaseInputLine(baseKortingEntries[i]),
-         });
+      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@nakdfashion") {
+        this.allKorting.push({
+           "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
+           "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),
+           "via": this.getInfluencerFromBaseInputLine(baseKortingEntries[i]),
+           "date": this.getDateFromBaseInputLine(baseKortingEntries[i]),
+           });
+      }
     }
   }
 
