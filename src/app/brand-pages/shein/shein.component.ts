@@ -28,7 +28,7 @@ export class SheinComponent implements OnInit {
       lengthChange: false,
       searching: false,
       pageLength: 50,
-      order: [ 2, "desc" ],
+      order: [],
       language: {
         search: "Zoek:",
         lengthMenu: "Toon _MENU_ resultaten",
