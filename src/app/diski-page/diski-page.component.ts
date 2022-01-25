@@ -21,7 +21,7 @@ export class DiskiPageComponent implements OnInit {
       responsive: true,
       lengthChange: false,
       pageLength: 50,
-      order: [ 3, "desc" ],
+      order: [],
       language: {
         search: "Zoek:",
         lengthMenu: "Toon _MENU_ resultaten",
