@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataDirective } from '../data/data.directive';
-import { MetaService } from '../meta/meta.service';
+import { DataDirective } from '../../data/data.directive';
+
+import { MetaService } from '../../meta/meta.service';
 
 @Component({
-  selector: 'app-diski-page',
-  templateUrl: './diski-page.component.html',
-  styleUrls: ['./../app.component.css']
+  selector: 'app-myjewellery',
+  templateUrl: './myjewellery.component.html',
+  styleUrls: ['./../../app.component.css']
 })
-export class DiskiPageComponent implements OnInit {
+export class MyjewelleryComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
 
   isMenuCollapsed = true;
@@ -17,7 +18,7 @@ export class DiskiPageComponent implements OnInit {
 
   constructor(private meta: MetaService) {
     this.meta.updateTitle();
-    this.meta.updateMetaInfo("De nieuwste werkende kortingscodes van een groot aantal webshops; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, Korting");
+    this.meta.updateMetaInfo("Nu 10 kortingscodes online; Deze kortingscode geeft vandaag 25% korting bij My Jewellery; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, My Jewellery, Korting");
   }
 
   ngOnInit(): void {
@@ -26,6 +27,7 @@ export class DiskiPageComponent implements OnInit {
     this.dtOptions = {
       responsive: true,
       lengthChange: false,
+      searching: false,
       pageLength: 50,
       order: [],
       language: {
@@ -52,12 +54,14 @@ export class DiskiPageComponent implements OnInit {
     var baseKortingEntries = DataDirective.getDataArray();
 
     for(var i = 0; i < baseKortingEntries.length; i++) {
-      this.allKorting.push({
-         "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
-         "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),
-         "via": this.getInfluencerFromBaseInputLine(baseKortingEntries[i]),
-         "date": this.getDateFromBaseInputLine(baseKortingEntries[i]),
-         });
+      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@myjewellery") {
+        this.allKorting.push({
+           "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
+           "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),
+           "via": this.getInfluencerFromBaseInputLine(baseKortingEntries[i]),
+           "date": this.getDateFromBaseInputLine(baseKortingEntries[i]),
+           });
+      }
     }
   }
 

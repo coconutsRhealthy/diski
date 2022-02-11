@@ -109,7 +109,6 @@ export class InputComponent {
 
       if(this.includesIgnoreCase(fullNewCodeEntry, existing)) {
         if(!this.includesIgnoreCase(fullNewCodeEntry, this.existingInput)) {
-          this.getDateOfAlreadyExistingInput(fullNewCodeEntry);
           this.existingInput.push("\"" + fullNewCodeEntry + ", " + this.getDateOfAlreadyExistingInput(fullNewCodeEntry) + "\",");
           isExistingInput = true;
         }
@@ -166,9 +165,13 @@ export class InputComponent {
     var existingCodeEntries = DataDirective.getDataArray();
 
     for(var i = 0; i < existingCodeEntries.length; i++) {
-      if(existingCodeEntries[i].toLowerCase().includes(inputThatAlreadyExists.toLowerCase())) {
-        dateOfExistingInputEntry = existingCodeEntries[i].substring
-          (existingCodeEntries[i].lastIndexOf(", ") + 2, existingCodeEntries[i].length);
+      if(dateOfExistingInputEntry === "?") {
+        if(existingCodeEntries[i].toLowerCase().includes(inputThatAlreadyExists.toLowerCase())) {
+          dateOfExistingInputEntry = existingCodeEntries[i].substring
+            (existingCodeEntries[i].lastIndexOf(", ") + 2, existingCodeEntries[i].length);
+        }
+      } else {
+        break;
       }
     }
 

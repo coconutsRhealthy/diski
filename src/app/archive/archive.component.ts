@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-
 import { DataDirective } from '../data/data.directive';
+import { ArchiveDataDirective } from '../data/archivedata.directive';
 import { MetaService } from '../meta/meta.service';
 
 @Component({
-  selector: 'app-diski-page',
-  templateUrl: './diski-page.component.html',
+  selector: 'app-archive',
+  templateUrl: './archive.component.html',
   styleUrls: ['./../app.component.css']
 })
-export class DiskiPageComponent implements OnInit {
+export class ArchiveComponent implements OnInit {
+
   dtOptions: DataTables.Settings = {};
 
   isMenuCollapsed = true;
@@ -17,7 +18,7 @@ export class DiskiPageComponent implements OnInit {
 
   constructor(private meta: MetaService) {
     this.meta.updateTitle();
-    this.meta.updateMetaInfo("De nieuwste werkende kortingscodes van een groot aantal webshops; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, Korting");
+    this.meta.updateMetaInfo("Alle kortingscodes van 2021 en 2022; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscodes 2021");
   }
 
   ngOnInit(): void {
@@ -49,7 +50,7 @@ export class DiskiPageComponent implements OnInit {
   }
 
   initializeAllKorting() {
-    var baseKortingEntries = DataDirective.getDataArray();
+    var baseKortingEntries = ArchiveDataDirective.getDataArrayArchive();
 
     for(var i = 0; i < baseKortingEntries.length; i++) {
       this.allKorting.push({
@@ -80,4 +81,5 @@ export class DiskiPageComponent implements OnInit {
   getPosition(string, subString, index) {
     return DataDirective.getPosition(string, subString, index);
   }
+
 }

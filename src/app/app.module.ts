@@ -12,6 +12,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { DataDirective } from './data/data.directive';
 import { InstaComponent } from './insta/insta.component';
+import { NakdComponent } from './brand-pages/nakd/nakd.component';
+import { LoaviesComponent } from './brand-pages/loavies/loavies.component';
+import { MyjewelleryComponent } from './brand-pages/myjewellery/myjewellery.component';
+import { SheinComponent } from './brand-pages/shein/shein.component';
+
+import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
+import { ArchiveComponent } from './archive/archive.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +26,12 @@ import { InstaComponent } from './insta/insta.component';
     DiskiPageComponent,
     InputComponent,
     DataDirective,
-    InstaComponent
+    InstaComponent,
+    NakdComponent,
+    LoaviesComponent,
+    MyjewelleryComponent,
+    SheinComponent,
+    ArchiveComponent
   ],
   imports: [
     BrowserModule,
@@ -29,12 +41,53 @@ import { InstaComponent } from './insta/insta.component';
     ReactiveFormsModule,
     NgbModule,
     RouterModule.forRoot([
-      {path: '', component: DiskiPageComponent},
+      {
+        path: '',
+        component: DiskiPageComponent,
+        data: {
+          title: 'Diski | Online shoppen met kortingscodes'
+        }
+      },
       {path: 'input', component: InputComponent},
-      {path: 'insta', component: InstaComponent}
+      {path: 'insta', component: InstaComponent},
+      {
+        path: 'nakd',
+        component: NakdComponent,
+        data: {
+          title: 'NAKD kortingscode: 25% korting in februari 2022'
+        }
+      },
+      {
+        path: 'loavies',
+        component: LoaviesComponent,
+        data: {
+          title: 'Loavies kortingscode: 30% korting in februari 2022'
+        }
+      },
+      {
+        path: 'myjewellery',
+        component: MyjewelleryComponent,
+        data: {
+          title: 'My Jewellery kortingscode: 25% korting in februari 2022'
+        }
+      },
+      {
+        path: 'shein',
+        component: SheinComponent,
+        data: {
+          title: 'Shein kortingscode: 25% korting in februari 2022'
+        }
+      },
+      {
+        path: 'archief',
+        component: ArchiveComponent,
+        data: {
+          title: 'Kortingscode archief'
+        }
+      },
     ]),
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
