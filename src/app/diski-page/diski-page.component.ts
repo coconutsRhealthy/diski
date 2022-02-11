@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DataDirective } from '../data/data.directive';
+import { MetaService } from '../meta/meta.service';
 
 @Component({
   selector: 'app-diski-page',
@@ -14,7 +15,10 @@ export class DiskiPageComponent implements OnInit {
 
   allKorting = [];
 
-  constructor() { }
+  constructor(private meta: MetaService) {
+    this.meta.updateTitle();
+    this.meta.updateMetaInfo("De nieuwste werkende kortingscodes van een groot aantal webshops; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, Korting");
+  }
 
   ngOnInit(): void {
     this.initializeAllKorting();

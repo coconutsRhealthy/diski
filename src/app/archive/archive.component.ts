@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataDirective } from '../data/data.directive';
 import { ArchiveDataDirective } from '../data/archivedata.directive';
+import { MetaService } from '../meta/meta.service';
 
 @Component({
   selector: 'app-archive',
@@ -15,7 +16,10 @@ export class ArchiveComponent implements OnInit {
 
   allKorting = [];
 
-  constructor() { }
+  constructor(private meta: MetaService) {
+    this.meta.updateTitle();
+    this.meta.updateMetaInfo("Alle kortingscodes van 2021 en 2022; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscodes 2021");
+  }
 
   ngOnInit(): void {
     this.initializeAllKorting();

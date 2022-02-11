@@ -18,6 +18,7 @@ export class SheinComponent implements OnInit {
 
   constructor(private meta: MetaService) {
     this.meta.updateTitle();
+    this.meta.updateMetaInfo("Nu 28 kortingscodes online; Deze kortingscode geeft vandaag 25% korting bij Shein; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, Shein, Korting");
   }
 
   ngOnInit(): void {

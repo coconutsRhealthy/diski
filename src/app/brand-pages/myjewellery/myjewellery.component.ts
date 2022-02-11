@@ -18,6 +18,7 @@ export class MyjewelleryComponent implements OnInit {
 
   constructor(private meta: MetaService) {
     this.meta.updateTitle();
+    this.meta.updateMetaInfo("Nu 10 kortingscodes online; Deze kortingscode geeft vandaag 25% korting bij My Jewellery; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, My Jewellery, Korting");
   }
 
   ngOnInit(): void {

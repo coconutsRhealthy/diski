@@ -18,6 +18,7 @@ export class NakdComponent implements OnInit {
 
   constructor(private meta: MetaService) {
     this.meta.updateTitle();
+    this.meta.updateMetaInfo("Nu 50 kortingscodes online; Deze kortingscode geeft vandaag 25% korting bij NAKD; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, Nakd, Korting");
   }
 
   ngOnInit(): void {

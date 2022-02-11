@@ -45,7 +45,7 @@ import { ArchiveComponent } from './archive/archive.component';
         path: '',
         component: DiskiPageComponent,
         data: {
-          title: 'Diski | Online shoppen met korting'
+          title: 'Diski | Online shoppen met kortingscodes'
         }
       },
       {path: 'input', component: InputComponent},
@@ -54,35 +54,35 @@ import { ArchiveComponent } from './archive/archive.component';
         path: 'nakd',
         component: NakdComponent,
         data: {
-          title: 'Nakd Kortingscodes'
+          title: 'NAKD kortingscode: 25% korting in februari 2022'
         }
       },
       {
         path: 'loavies',
         component: LoaviesComponent,
         data: {
-          title: 'Loavies Kortingscodes'
+          title: 'Loavies kortingscode: 30% korting in februari 2022'
         }
       },
       {
         path: 'myjewellery',
         component: MyjewelleryComponent,
         data: {
-          title: 'My Jewellery Kortingscodes'
+          title: 'My Jewellery kortingscode: 25% korting in februari 2022'
         }
       },
       {
         path: 'shein',
         component: SheinComponent,
         data: {
-          title: 'Shein Kortingscodes'
+          title: 'Shein kortingscode: 25% korting in februari 2022'
         }
       },
       {
         path: 'archief',
         component: ArchiveComponent,
         data: {
-          title: 'Archief'
+          title: 'Kortingscode archief'
         }
       },
     ]),

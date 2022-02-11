@@ -18,6 +18,7 @@ export class LoaviesComponent implements OnInit {
 
   constructor(private meta: MetaService) {
     this.meta.updateTitle();
+    this.meta.updateMetaInfo("Nu 44 kortingscodes online; Deze kortingscode geeft vandaag 30% korting bij Loavies; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, Loavies, Korting");
   }
 
   ngOnInit(): void {
