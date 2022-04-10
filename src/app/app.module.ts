@@ -14,7 +14,8 @@ import { DataDirective } from './data/data.directive';
 import { InstaComponent } from './insta/insta.component';
 import { NakdComponent } from './brand-pages/nakd/nakd.component';
 import { LoaviesComponent } from './brand-pages/loavies/loavies.component';
-import { MyjewelleryComponent } from './brand-pages/myjewellery/myjewellery.component';
+import { HellofreshComponent } from './brand-pages/hellofresh/hellofresh.component';
+import { IdealofswedenComponent } from './brand-pages/idealofsweden/idealofsweden.component';
 import { SheinComponent } from './brand-pages/shein/shein.component';
 
 import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
@@ -29,7 +30,8 @@ import { ArchiveComponent } from './archive/archive.component';
     InstaComponent,
     NakdComponent,
     LoaviesComponent,
-    MyjewelleryComponent,
+    HellofreshComponent,
+    IdealofswedenComponent,
     SheinComponent,
     ArchiveComponent
   ],
@@ -65,10 +67,17 @@ import { ArchiveComponent } from './archive/archive.component';
         }
       },
       {
-        path: 'myjewellery',
-        component: MyjewelleryComponent,
+        path: 'idealofsweden',
+        component: IdealofswedenComponent,
         data: {
-          title: 'De nieuwste My Jewellery kortingscodes'
+          title: 'De nieuwste Ideal Of Sweden kortingscodes'
+        }
+      },
+      {
+        path: 'hellofresh',
+        component: HellofreshComponent,
+        data: {
+          title: 'De nieuwste Hellofresh kortingscodes'
         }
       },
       {

@@ -5,11 +5,11 @@ import { DataDirective } from '../../data/data.directive';
 import { MetaService } from '../../meta/meta.service';
 
 @Component({
-  selector: 'app-loavies',
-  templateUrl: './loavies.component.html',
+  selector: 'app-hellofresh',
+  templateUrl: './hellofresh.component.html',
   styleUrls: ['./../../app.component.css']
 })
-export class LoaviesComponent implements OnInit {
+export class HellofreshComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
 
   isMenuCollapsed = true;
@@ -18,7 +18,7 @@ export class LoaviesComponent implements OnInit {
 
   constructor(private meta: MetaService) {
     this.meta.updateTitle();
-    this.meta.updateMetaInfo("De nieuwste Loavies kortingscodes", "diski.nl", "Kortingscode, Loavies, Korting");
+    this.meta.updateMetaInfo("De nieuwste HelloFresh kortingscodes", "diski.nl", "Kortingscode, HelloFresh, Korting");
   }
 
   ngOnInit(): void {
@@ -54,7 +54,7 @@ export class LoaviesComponent implements OnInit {
     var baseKortingEntries = DataDirective.getDataArray();
 
     for(var i = 0; i < baseKortingEntries.length; i++) {
-      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@loavies") {
+      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@hellofreshnl") {
         this.allKorting.push({
            "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
            "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),

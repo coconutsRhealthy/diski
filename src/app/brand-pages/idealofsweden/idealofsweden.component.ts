@@ -5,11 +5,11 @@ import { DataDirective } from '../../data/data.directive';
 import { MetaService } from '../../meta/meta.service';
 
 @Component({
-  selector: 'app-myjewellery',
-  templateUrl: './myjewellery.component.html',
+  selector: 'app-idealofsweden',
+  templateUrl: './idealofsweden.component.html',
   styleUrls: ['./../../app.component.css']
 })
-export class MyjewelleryComponent implements OnInit {
+export class IdealofswedenComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
 
   isMenuCollapsed = true;
@@ -18,7 +18,7 @@ export class MyjewelleryComponent implements OnInit {
 
   constructor(private meta: MetaService) {
     this.meta.updateTitle();
-    this.meta.updateMetaInfo("Nu 10 kortingscodes online; Deze kortingscode geeft vandaag 25% korting bij My Jewellery; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, My Jewellery, Korting");
+    this.meta.updateMetaInfo("De nieuwste Ideal Of Sweden kortingscodes", "diski.nl", "Kortingscode, Ideal Of Sweden, Korting");
   }
 
   ngOnInit(): void {
@@ -54,7 +54,7 @@ export class MyjewelleryComponent implements OnInit {
     var baseKortingEntries = DataDirective.getDataArray();
 
     for(var i = 0; i < baseKortingEntries.length; i++) {
-      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@myjewellery") {
+      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@idealofsweden") {
         this.allKorting.push({
            "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
            "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),
