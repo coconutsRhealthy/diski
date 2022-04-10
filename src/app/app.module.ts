@@ -54,28 +54,28 @@ import { ArchiveComponent } from './archive/archive.component';
         path: 'nakd',
         component: NakdComponent,
         data: {
-          title: 'NAKD kortingscode: 25% korting in februari 2022'
+          title: 'De nieuwste NAKD kortingscodes'
         }
       },
       {
         path: 'loavies',
         component: LoaviesComponent,
         data: {
-          title: 'Loavies kortingscode: 30% korting in februari 2022'
+          title: 'De nieuwste Loavies kortingscodes'
         }
       },
       {
         path: 'myjewellery',
         component: MyjewelleryComponent,
         data: {
-          title: 'My Jewellery kortingscode: 25% korting in februari 2022'
+          title: 'De nieuwste My Jewellery kortingscodes'
         }
       },
       {
         path: 'shein',
         component: SheinComponent,
         data: {
-          title: 'Shein kortingscode: 25% korting in februari 2022'
+          title: 'De nieuwste Shein kortingscodes'
         }
       },
       {
@@ -84,6 +84,10 @@ import { ArchiveComponent } from './archive/archive.component';
         data: {
           title: 'Kortingscode archief'
         }
+      },
+      {
+        path: '**',
+        redirectTo: ''
       },
     ]),
   ],
