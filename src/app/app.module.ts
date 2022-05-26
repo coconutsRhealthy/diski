@@ -16,6 +16,24 @@ import { InstaComponent } from './insta/insta.component';
 import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
 import { ArchiveComponent } from './archive/archive.component';
 
+import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
+
+const cookieConfig:NgcCookieConsentConfig = {
+  cookie: {
+    domain: 'localhost' // or 'your.domain.com'
+  },
+  palette: {
+    popup: {
+      background: '#000'
+    },
+    button: {
+      background: '#f1d600'
+    }
+  },
+  theme: 'edgeless',
+  type: 'opt-out'
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +44,7 @@ import { ArchiveComponent } from './archive/archive.component';
     ArchiveComponent
   ],
   imports: [
+    NgcCookieConsentModule.forRoot(cookieConfig),
     BrowserModule,
     HttpClientModule,
     DataTablesModule,
