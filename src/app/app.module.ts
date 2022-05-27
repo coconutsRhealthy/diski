@@ -31,7 +31,33 @@ const cookieConfig:NgcCookieConsentConfig = {
     }
   },
   theme: 'edgeless',
-  type: 'opt-out'
+  type: 'opt-out',
+    layout: 'my-custom-layout',
+    layouts: {
+      "my-custom-layout": '{{messagelink}}{{compliance}}'
+    },
+    elements:{
+      messagelink: `
+      <span id="cookieconsent:desc" class="cc-message">{{message}}
+        <a aria-label="learn more about cookies" tabindex="0" class="cc-link" href="{{cookiePolicyHref}}" target="_blank" rel="noopener">{{cookiePolicyLink}}</a>
+      </span>
+      `,
+    },
+    content:{
+      message: 'Deze website maakt gebruik van cookies om advertenties te personaliseren. ',
+
+      cookiePolicyLink: 'Meer informatie',
+      cookiePolicyHref: 'https://cookie.com',
+
+      privacyPolicyLink: 'Privacy Policy',
+      privacyPolicyHref: 'https://privacy.com',
+
+      tosLink: 'Terms of Service',
+      tosHref: 'https://tos.com',
+
+      allow: 'Accepteer',
+      deny: 'Weigeren'
+    }
 };
 
 @NgModule({
