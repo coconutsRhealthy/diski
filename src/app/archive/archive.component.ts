@@ -18,7 +18,7 @@ export class ArchiveComponent implements OnInit {
 
   constructor(private meta: MetaService) {
     this.meta.updateTitle();
-    this.meta.updateMetaInfo("Alle kortingscodes van Q1 2022; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscodes Q1 2022");
+    this.meta.updateMetaInfo("Recent archief kortingscodes 2022; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscodes 2022");
   }
 
   ngOnInit(): void {
