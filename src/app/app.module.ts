@@ -18,6 +18,7 @@ import { ArchiveComponent } from './archive/archive.component';
 
 import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { ContactComponent } from './contact/contact.component';
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -35,29 +36,24 @@ const cookieConfig:NgcCookieConsentConfig = {
   type: 'opt-out',
     layout: 'my-custom-layout',
     layouts: {
-      "my-custom-layout": '{{messagelink}}'
+      "my-custom-layout": '{{messagelink}}{{compliance}}'
     },
     elements:{
       messagelink: `
       <span id="cookieconsent:desc" class="cc-message">{{message}}
-        <a aria-label="learn more about cookies" tabindex="0" class="cc-link" href="{{privacyPolicyHref}}" target="_blank"
-         rel="noopener">{{privacyPolicyLink}}</a>
+        <a aria-label="learn more about cookies" tabindex="0" class="cc-link" href="{{cookiePolicyHref}}" target="_blank" rel="noopener">{{cookiePolicyLink}}</a>
       </span>
-      <div class="cc-compliance cc-highlight">
-        <a aria-label="allow cookies" role="button" tabindex="0" class="cc-btn cc-allow"
-        style="background-color: rgb(241, 214, 0); color: rgb(0, 0, 0);">Accepteer</a>
-      </div>
       `,
-    },
-    content:{
-      message: 'Deze website maakt gebruik van cookies om advertenties te personaliseren. ',
+  },
+  content:{
+    message: 'Deze website maakt gebruik van cookies om advertenties te personaliseren. ',
 
-      privacyPolicyLink: 'Meer informatie',
-      privacyPolicyHref: '/privacy',
+    cookiePolicyLink: 'Meer informatie',
+    cookiePolicyHref: '/privacy',
 
-      allow: 'Accepteer',
-      deny: 'Weigeren'
-    }
+    allow: 'Accepteer',
+    deny: 'Weigeren'
+  }
 };
 
 @NgModule({
@@ -68,7 +64,8 @@ const cookieConfig:NgcCookieConsentConfig = {
     DataDirective,
     InstaComponent,
     ArchiveComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    ContactComponent
   ],
   imports: [
     NgcCookieConsentModule.forRoot(cookieConfig),
@@ -100,6 +97,13 @@ const cookieConfig:NgcCookieConsentConfig = {
         component: PrivacyComponent,
         data: {
           title: 'Privacy'
+        }
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
+        data: {
+          title: 'Contact'
         }
       },
       {
