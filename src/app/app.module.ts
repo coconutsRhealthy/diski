@@ -22,7 +22,7 @@ import { ContactComponent } from './contact/contact.component';
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
-    domain: 'localhost' // or 'your.domain.com'
+    domain: 'diski.nl' // or 'your.domain.com'
   },
   palette: {
     popup: {
@@ -89,21 +89,21 @@ const cookieConfig:NgcCookieConsentConfig = {
         path: 'archief',
         component: ArchiveComponent,
         data: {
-          title: 'Kortingscode archief'
+          title: 'Diski | Kortingscode archief'
         }
       },
       {
         path: 'privacy',
         component: PrivacyComponent,
         data: {
-          title: 'Privacy'
+          title: 'Diski | Privacy policy'
         }
       },
       {
         path: 'contact',
         component: ContactComponent,
         data: {
-          title: 'Contact'
+          title: 'Diski | Contact'
         }
       },
       {
