@@ -51,6 +51,9 @@
           <div>
             <button class="small-button" type="button" (click)="setTableBackgroundColour('#F6CCD1')">Pink</button>
           </div>
+          <div>
+            <button class="small-button" type="button" (click)="toggleTableLayout()">Toggle</button>
+          </div>
         </div>
       </div>
 
@@ -73,10 +76,10 @@
             }">
           <thead>
             <tr>
-              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : kortingDateFontSize }" class="smaller" scope="col">{{kortingDate}}</th>
-              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize }" (click)="sortTable(1)" scope="col">Je krijgt korting bij</th>
-              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize }" (click)="sortTable(2)" scope="col">Met code</th>
-              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize }" (click)="sortTable(3)" scope="col">Via</th>
+              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : kortingDateFontSize, 'padding-left' : tablePaddingLeft, 'padding-top' : tablePaddingTop }" scope="col">{{kortingDate}}</th>
+              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize, 'padding-top' : tablePaddingTop }" (click)="sortTable(1)" scope="col">Je krijgt korting bij</th>
+              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize, 'padding-top' : tablePaddingTop }" (click)="sortTable(2)" scope="col" class="tablePaddingTop">Met code</th>
+              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize, 'padding-right' : tablePaddingRight, 'padding-top' : tablePaddingTop  }" (click)="sortTable(3)" scope="col">Via</th>
             </tr>
           </thead>
           <tbody>
@@ -85,10 +88,10 @@
                   'line-height.px' : tableRowLineHeight,
                   'min-height.px' : tableRowMinHeight
                   }">
-              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }"></td>
+              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-left' : tablePaddingLeft }"></td>
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{entry.company}}<span [ngStyle]="{'color' : tableBackgroundColor}" class="invisible-dots">{{dotsCompany}}</span></td>
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{entry.code}}<span [ngStyle]="{'color' : tableBackgroundColor}" class="invisible-dots">{{dotsCode}}</span></td>
-              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{entry.via}}<span [ngStyle]="{'color' : tableBackgroundColor}" class="invisible-dots">{{dotsVia}}</span></td>
+              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.via}}<span [ngStyle]="{'color' : tableBackgroundColor}" class="invisible-dots">{{dotsVia}}</span></td>
             </tr>
           </tbody>
         </table>

@@ -27,6 +27,11 @@ export class InstaComponent {
   startDateForPostString = "2021-07-05";
   maxAmountForPost = "3";
 
+  tiktokSize = false;
+  tablePaddingLeft = "12px";
+  tablePaddingTop = "12px";
+  tablePaddingRight = "12px";
+
   instaDiscountEntries = [];
 
   constructor() { }
@@ -93,6 +98,29 @@ export class InstaComponent {
 
   setTableBackgroundColour(hex) {
     this.tableBackgroundColor = hex;
+  }
+
+  toggleTableLayout() {
+    this.tiktokSize = !this.tiktokSize;
+
+    if(this.tiktokSize) {
+      this.tablePaddingLeft = "30px";
+      this.tablePaddingTop = "45px";
+      this.tablePaddingRight = "30px";
+
+      var element = document.querySelector('#insta-table') as HTMLElement;
+      var tableWidth = element.offsetWidth;
+
+      var desiredTiktokTableHeight = ((tableWidth / 9) * 16) * 0.94;
+      this.tableHeight = desiredTiktokTableHeight;
+    } else {
+      this.tablePaddingLeft = "12px";
+      this.tablePaddingTop = "12px";
+      this.tablePaddingRight = "12px";
+
+      this.tableWidth = 500;
+      this.tableHeight = 500;
+    }
   }
 
   generateInstaPost() {
