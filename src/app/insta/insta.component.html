@@ -54,6 +54,7 @@
           <div>
             <button class="small-button" type="button" (click)="toggleTableLayout()">Toggle</button>
           </div>
+          <button (click)="sortTable()">Sorteer</button>
         </div>
       </div>
 
@@ -77,9 +78,9 @@
           <thead>
             <tr>
               <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : kortingDateFontSize, 'padding-left' : tablePaddingLeft, 'padding-top' : tablePaddingTop }" scope="col">{{kortingDate}}</th>
-              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize, 'padding-top' : tablePaddingTop }" (click)="sortTable(1)" scope="col">Je krijgt korting bij</th>
-              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize, 'padding-top' : tablePaddingTop }" (click)="sortTable(2)" scope="col" class="tablePaddingTop">Met code</th>
-              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize, 'padding-right' : tablePaddingRight, 'padding-top' : tablePaddingTop  }" (click)="sortTable(3)" scope="col">Via</th>
+              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize, 'padding-top' : tablePaddingTop }" scope="col">Je krijgt korting bij</th>
+              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize, 'padding-top' : tablePaddingTop }" scope="col" class="tablePaddingTop">Met code</th>
+              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize, 'padding-right' : tablePaddingRight, 'padding-top' : tablePaddingTop  }" scope="col">Via</th>
             </tr>
           </thead>
           <tbody>
