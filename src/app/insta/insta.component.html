@@ -52,9 +52,25 @@
             <button class="small-button" type="button" (click)="setTableBackgroundColour('#F6CCD1')">Pink</button>
           </div>
           <div>
+            <span>
+              <button class="small-button" type="button" (click)="calculateAspectRatio()">asp ratio</button>
+            </span>
+            <span>
+              current aspect ratio: {{aspectRatio}}
+            </span>
+          </div>
+          <div>
+            <button class="small-button" type="button" (click)="defaultSizeTable()">default</button>
+          </div>
+          <div>
+            <button class="small-button" type="button" (click)="setAspectRatio45()">4:5</button>
+          </div>
+          <div>
             <button class="small-button" type="button" (click)="toggleTableLayout()">Toggle</button>
           </div>
-          <button (click)="sortTable()">Sorteer</button>
+          <div>
+            <button class="small-button" type="button" (click)="sortTable()">Sorteer</button>
+          </div>
         </div>
       </div>
 

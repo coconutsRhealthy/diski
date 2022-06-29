@@ -36,6 +36,8 @@ export class InstaComponent {
 
   instaDiscountEntries = [];
 
+  aspectRatio = "-1";
+
   constructor() { }
 
   addDot(column) {
@@ -83,6 +85,34 @@ export class InstaComponent {
       this.tableWidth = 500;
       this.tableHeight = 500;
     }
+  }
+
+  setAspectRatio45() {
+      var element = document.querySelector('#insta-table') as HTMLElement;
+      var tableHeight = element.offsetHeight;
+      var desiredTableWidth = ((tableHeight / 5) * 4);
+      this.tableWidth = desiredTableWidth;
+  }
+
+  setAspectRatio1on1() {
+      var element = document.querySelector('#insta-table') as HTMLElement;
+      var tableHeight = element.offsetHeight;
+      var desiredTableWidth = ((tableHeight / 5) * 4);
+      this.tableWidth = desiredTableWidth;
+  }
+
+  calculateAspectRatio() {
+      var element = document.querySelector('#insta-table') as HTMLElement;
+      var tableHeight = element.offsetHeight;
+      var tableWidth = element.offsetWidth;
+      var calcTableWidth = 4 as const;
+      var calcTableHeight = (tableHeight / tableWidth) * 4;
+      this.aspectRatio = "" + calcTableWidth + " : " + calcTableHeight;
+  }
+
+  defaultSizeTable() {
+    this.tableWidth = 500;
+    this.tableHeight = 500;
   }
 
   generateInstaPost() {
