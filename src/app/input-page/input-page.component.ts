@@ -110,6 +110,7 @@ export class InputComponent {
       if(this.includesIgnoreCase(fullNewCodeEntry, existing)) {
         if(!this.includesIgnoreCase(fullNewCodeEntry, this.existingInput)) {
           this.existingInput.push("\"" + fullNewCodeEntry + ", " + this.getDateOfAlreadyExistingInput(fullNewCodeEntry) + "\",");
+          this.newInput.push("\"..." + fullNewCodeEntry + ", " + this.getDate() + "\",");
           isExistingInput = true;
         }
       } else {

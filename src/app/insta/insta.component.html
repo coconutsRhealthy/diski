@@ -100,7 +100,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let entry of instaDiscountEntries" [ngStyle]="{
+            <tr *ngFor="let entry of instaDiscountEntries; let last = last" [ngClass]="{ last : last && tiktokSize }" [ngStyle]="{
                   'height.px' : tableRowHeight,
                   'line-height.px' : tableRowLineHeight,
                   'min-height.px' : tableRowMinHeight

@@ -38,3 +38,7 @@ table tr td:first-child::before {
 input[type="text"] {
   font-size:8px;
 }
+
+.last td {
+  padding-bottom: 45px !important;
+}
