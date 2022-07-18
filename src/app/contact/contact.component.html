@@ -24,46 +24,36 @@
           <li class="nav-item">
             <a class="nav-link" [routerLink]="'../idealofsweden'" (click)="isMenuCollapsed = true">Ideal</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">HelloFresh</a>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'../hellofresh'" (click)="isMenuCollapsed = true">HelloFresh</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="'../archief'" (click)="isMenuCollapsed = true">Archief</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" [routerLink]="'../contact'" (click)="isMenuCollapsed = true">Contact</a>
           </li>
         </ul>
       </div>
     </nav>
 
-    <h1>HelloFresh kortingscodes</h1>
+    <h1>Contact</h1>
 
-    <div id="diski-table" class="row">
+    <div class="row">
       <div class="col-sm-1"></div>
       <div class="col-sm-10">
-        <table datatable [dtOptions]="dtOptions" class="display compact dataTable">
-          <thead>
-          <tr>
+        <p>Code gespot? Vraag of opmerking? Stuur ons een berichtje via:</p>
 
-            <th>HelloFresh kortingscode</th>
-            <th class="desktop">Via</th>
-            <th>Datum</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let korting of allKorting">
-
-            <td>{{ korting.code }}</td>
-            <td>{{ korting.via }}</td>
-            <td>{{ korting.date }}</td>
-          </tr>
-          </tbody>
-        </table>
+        <ul>
+          <li>diskicontact@gmail.com</li>
+          <li>instagram <a href="https://www.instagram.com/wiegeeftkorting">@wiegeeftkorting</a> (via DM)</li>
+          <li>tiktok <a href="https://tiktok.com/@wiegeeftkorting">@wiegeeftkorting</a> (via DM)</li>
+        </ul>
       </div>
       <div class="col-sm-1"></div>
     </div>
   </div>
+
   <div class="footer row">
     <div class="col-sm-12 text-center">
       <a href="https://www.instagram.com/wiegeeftkorting">
@@ -74,9 +64,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-

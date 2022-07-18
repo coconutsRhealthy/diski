@@ -20,6 +20,7 @@ import { SheinComponent } from './brand-pages/shein/shein.component';
 
 import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
 import { ArchiveComponent } from './archive/archive.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ArchiveComponent } from './archive/archive.component';
     HellofreshComponent,
     IdealofswedenComponent,
     SheinComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +94,13 @@ import { ArchiveComponent } from './archive/archive.component';
         component: ArchiveComponent,
         data: {
           title: 'Kortingscode archief'
+        }
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
+        data: {
+          title: 'Contact'
         }
       },
       {
