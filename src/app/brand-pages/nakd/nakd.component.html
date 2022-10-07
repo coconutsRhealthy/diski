@@ -49,7 +49,7 @@
           <tr>
 
             <th>Nakd kortingscode</th>
-            <th class="desktop">Via</th>
+            <th class="desktop">%</th>
             <th>Datum</th>
           </tr>
           </thead>
@@ -57,7 +57,7 @@
           <tr *ngFor="let korting of allKorting">
 
             <td>{{ korting.code }}</td>
-            <td>{{ korting.via }}</td>
+            <td>{{ korting.percentage }}</td>
             <td>{{ korting.date }}</td>
           </tr>
           </tbody>
