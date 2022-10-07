@@ -21,16 +21,23 @@ export class DataDirective {
     return discountCode;
   }
 
-  public static getInfluencerFromBaseInputLine(baseInputLine) {
+  public static getDiscountPercentageFromBaseInputLine(baseInputLine) {
     var secondIndexOfComma = this.getPosition(baseInputLine, ", ", 2);
     var thirdIndexOfComma = this.getPosition(baseInputLine, ", ", 3);
-    var influencer = baseInputLine.substring(secondIndexOfComma + 2, thirdIndexOfComma);
+    var discountCode = baseInputLine.substring(secondIndexOfComma + 2, thirdIndexOfComma);
+    return discountCode;
+  }
+
+  public static getInfluencerFromBaseInputLine(baseInputLine) {
+    var thirdIndexOfComma = this.getPosition(baseInputLine, ", ", 3);
+    var fourthIndexOfComma = this.getPosition(baseInputLine, ", ", 4);
+    var influencer = baseInputLine.substring(thirdIndexOfComma + 2, fourthIndexOfComma);
     return influencer;
   }
 
   public static getDateFromBaseInputLine(baseInputLine) {
-    var thirdIndexOfComma = this.getPosition(baseInputLine, ", ", 3);
-    var date = baseInputLine.substring(thirdIndexOfComma + 2, baseInputLine.length);
+    var fourthIndexOfComma = this.getPosition(baseInputLine, ", ", 4);
+    var date = baseInputLine.substring(fourthIndexOfComma + 2, baseInputLine.length);
     return date;
   }
 
@@ -39,8 +46,8 @@ export class DataDirective {
   }
 
   static dataArray = [
-    "@myjewellery, Shopping15,  , amelie_weissenberger, 2022-10-07",
-    "@idealofsweden, BBTREE,  , janedoe, 2022-10-07",
+    "@myjewellery, Shopping15, 15, amelie_weissenberger, 2022-10-07",
+    "@idealofsweden, BBTREE, 7, janedoe, 2022-10-07",
     "@nakdfashion, demi,  , deminugteren, 2022-10-07",
     "@loavies, rmdnbs.20,  , rmdnbs, 2022-10-07",
     "@chiquelle, OFF35,  , chiquelle, 2022-10-07",

@@ -24,7 +24,7 @@ export class DiskiPageComponent implements OnInit {
     this.initializeAllKorting();
 
     this.dtOptions = {
-      responsive: true,
+      responsive: false,
       lengthChange: false,
       pageLength: 50,
       order: [],
@@ -55,7 +55,7 @@ export class DiskiPageComponent implements OnInit {
       this.allKorting.push({
          "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
          "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),
-         "via": this.getInfluencerFromBaseInputLine(baseKortingEntries[i]),
+         "percentage": this.getDiscountPercentageFromBaseInputLine(baseKortingEntries[i]),
          "date": this.getDateFromBaseInputLine(baseKortingEntries[i]),
          });
     }
@@ -67,6 +67,10 @@ export class DiskiPageComponent implements OnInit {
 
   getDiscountCodeFromBaseInputLine(baseInputLine) {
     return DataDirective.getDiscountCodeFromBaseInputLine(baseInputLine);
+  }
+
+  getDiscountPercentageFromBaseInputLine(baseInputLine) {
+    return DataDirective.getDiscountPercentageFromBaseInputLine(baseInputLine);
   }
 
   getInfluencerFromBaseInputLine(baseInputLine) {
