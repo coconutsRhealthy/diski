@@ -95,8 +95,8 @@
             <tr>
               <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : kortingDateFontSize, 'padding-left' : tablePaddingLeft, 'padding-top' : tablePaddingTop }" scope="col">{{kortingDate}}</th>
               <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize, 'padding-top' : tablePaddingTop }" scope="col">Je krijgt korting bij</th>
-              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize, 'padding-top' : tablePaddingTop }" scope="col" class="tablePaddingTop">Met code</th>
-              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize, 'padding-right' : tablePaddingRight, 'padding-top' : tablePaddingTop  }" scope="col">Via</th>
+              <th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize, 'padding-right' : tablePaddingRight, 'padding-top' : tablePaddingTop  }" scope="col" class="tablePaddingTop">Met code</th>
+              <!--<th [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : headerFontSize, 'padding-right' : tablePaddingRight, 'padding-top' : tablePaddingTop  }" scope="col">Via</th>-->
             </tr>
           </thead>
           <tbody>
@@ -107,8 +107,8 @@
                   }">
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-left' : tablePaddingLeft }"></td>
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{entry.company}}<span [ngStyle]="{'color' : tableBackgroundColor}" class="invisible-dots">{{dotsCompany}}</span></td>
-              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{entry.code}}<span [ngStyle]="{'color' : tableBackgroundColor}" class="invisible-dots">{{dotsCode}}</span></td>
-              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.via}}<span [ngStyle]="{'color' : tableBackgroundColor}" class="invisible-dots">{{dotsVia}}</span></td>
+              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.code}}<span [ngStyle]="{'color' : tableBackgroundColor}" class="invisible-dots">{{dotsCode}}</span></td>
+              <!--<td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.via}}<span [ngStyle]="{'color' : tableBackgroundColor}" class="invisible-dots">{{dotsVia}}</span></td>-->
             </tr>
           </tbody>
         </table>
