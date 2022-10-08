@@ -32,9 +32,9 @@ export class ArchiveDataDirective {
   }
 
   static dataArrayArchive = [
-    "@nakdfashion, alena.hnt20,  , alena.hnt, 2022-08-20",
-    "@loavies, NISAVANBAELEN-20,  , nisavanbaelen, 2022-08-20",
-    "@veromoda, lindivh15,  , lindivh, 2022-08-20",
+    "@nakdfashion, alena.hnt20, 10, alena.hnt, 2022-08-20",
+    "@loavies, NISAVANBAELEN-20, 20, nisavanbaelen, 2022-08-20",
+    "@veromoda, lindivh15, 15, lindivh, 2022-08-20",
     "@gymsupply, IRIS20,  , irismarkerink, 2022-08-20",
     "@idealofsweden, Bente15V,  , bente.visser, 2022-08-20",
     "@sellpy, elise2,  , eliseboers, 2022-08-20",
