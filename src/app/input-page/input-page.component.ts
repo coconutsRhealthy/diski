@@ -15,7 +15,6 @@ export class InputComponent {
 
   newInput = [];
   existingInput = [];
-  toCheckInput = [];
   multipleOccurrencesInData = [];
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
@@ -30,6 +29,9 @@ export class InputComponent {
       this.fb.control('')
     ]),
     influencers: this.fb.array([
+      this.fb.control('')
+    ]),
+    percentages: this.fb.array([
       this.fb.control('')
     ])
   });
@@ -46,6 +48,10 @@ export class InputComponent {
     return this.profileForm.get('influencers') as FormArray;
   }
 
+  get percentages() {
+    return this.profileForm.get('percentages') as FormArray;
+  }
+
   addDiscountCompany() {
     this.discount_companies.push(this.fb.control(''));
   }
@@ -58,10 +64,15 @@ export class InputComponent {
     this.influencers.push(this.fb.control(''));
   }
 
+  addPercentage() {
+    this.percentages.push(this.fb.control(''));
+  }
+
   addAll() {
     this.discount_companies.push(this.fb.control(''));
     this.discount_codes.push(this.fb.control(''));
     this.influencers.push(this.fb.control(''));
+    this.percentages.push(this.fb.control(''));
   }
 
   getDiscountCompany(index) {
@@ -79,32 +90,40 @@ export class InputComponent {
     return formArray.at(index).value;
   }
 
+  getPercentage(index) {
+    var formArray = this.profileForm.get('percentages') as FormArray;
+    return formArray.at(index).value;
+  }
+
   getDate() {
-    return new Date().toISOString().slice(0, 10);
+    return new Date().toISOString().slice(5, 10);
   }
 
   deleteRow(index) {
     this.discount_companies.removeAt(index);
     this.discount_codes.removeAt(index);
     this.influencers.removeAt(index);
+    this.percentages.removeAt(index);
   }
 
+  //tot hier...
   displayInput() {
     this.existingInput = [];
     this.newInput = [];
-    this.toCheckInput = [];
 
     var influencers = this.profileForm.get('influencers') as FormArray;
     var companies = this.profileForm.get('discount_companies') as FormArray;
     var codes = this.profileForm.get('discount_codes') as FormArray;
+    var percentages = this.profileForm.get('percentages') as FormArray;
 
     var existing = this.getExistingCodesWithoutDate();
 
     for(var i = 0; i < influencers.length; i++) {
       var company = companies.at(i).value.replace(/\s/g, "");
       var code = codes.at(i).value.replace(/\s/g, "");
+      var percentage = percentages.at(i).value.replace(/\s/g, "");
       var influencer = influencers.at(i).value.replace(/\s/g, "");
-      var fullNewCodeEntry = company + ", " + code + ", " + influencer;
+      var fullNewCodeEntry = company + ", " + code + ", " + percentage + ", " + influencer;
       var isExistingInput = false;
 
       if(this.includesIgnoreCase(fullNewCodeEntry, existing)) {
@@ -118,17 +137,10 @@ export class InputComponent {
           this.newInput.push("\"" + fullNewCodeEntry + ", " + this.getDate() + "\",");
         }
       }
-
-      if(!isExistingInput) {
-        if(this.stringInArrayContainsStringPart((" " + code + ","), existing)) {
-          this.toCheckInput.push(fullNewCodeEntry);
-        }
-      }
     }
 
     this.existingInput.reverse();
     this.newInput.reverse();
-    this.toCheckInput.reverse();
   }
 
   stringInArrayContainsStringPart(stringPart, array) {
