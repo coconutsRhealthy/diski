@@ -46,6 +46,52 @@ export class DataDirective {
   }
 
   static dataArray = [
+    "@loavies, JADEANNA25, 25, jadeanna, 2022-10-30",
+        "@nakdfashion, lisanneblonk, 15, janedoe, 2022-10-30",
+            "@sheinofficial, snx1390, 15, janedoe, 2022-10-30",
+
+    "@hunkemoller, BBHKMKV6, 15, janedoe, 2022-10-30",
+"@idealofsweden, BBFREDE, 15, janedoe, 2022-10-30",
+"@idealofsweden, BBYFXVD7, 15, janedoe, 2022-10-30",
+"@byrokko, DVREZ, 20, janedoe, 2022-10-30",
+"@desenio, XCUSE, 10, janedoe, 2022-10-30",
+
+    "@loavies, 20.NOELKAPTEIJNS, 20, janedoe, 2022-10-30",
+    "@loavies, 20.rowenakortelandx, 20, janedoe, 2022-10-30",
+    "@loavies, MANON.RSSIXFALL20, 20, janedoe, 2022-10-30",
+    "@kidsbrandstore, IMANI20, 20, janedoe, 2022-10-30",
+    "@theofficialsafira, BB35D, 20, janedoe, 2022-10-30",
+    "@theofficialsafira, LUISAS20, 20, janedoe, 2022-10-30",
+    "@chiquelle, online30, 30, chiquelle, 2022-10-30",
+    "@gutsgusto, ANNELIJN15, 15, janedoe, 2022-10-30",
+    "@stronger, natascha10, 10, janedoe, 2022-10-30",
+    "@stronger, samira20, 20, janedoe, 2022-10-30",
+    "@icaniwill, annastrong20, 20, janedoe, 2022-10-30",
+    "@icaniwill, paulaj20, 20, janedoe, 2022-10-30",
+    "@veromoda, MURI20, 20, janedoe, 2022-10-30",
+    "@sheinofficial, snx1390, 15, janedoe, 2022-10-30",
+    "@sheinofficial, 15lavya, 15, janedoe, 2022-10-30",
+    "@hunkemoller, BBHKMXXOCTOBER, 15, janedoe, 2022-10-30",
+    "@hunkemoller, BBHKMBLK, 15, janedoe, 2022-10-30",
+    "@nakdfashion, boujlil, 15, janedoe, 2022-10-30",
+    "@nakdfashion, nicoline, 15, janedoe, 2022-10-30",
+    "@nakdfashion, lenawxsm, 15, janedoe, 2022-10-30",
+    "@nakdfashion, inessa, 15, janedoe, 2022-10-30",
+
+
+    "@bynouck_jewelry, CHANTAL20, 20, chantbaltes, 2022-10-30",
+    "@azukanl, BOO15, 15, azukanl, 2022-10-30",
+    "@flinknederland, SERENA, , serenaverbon, 2022-10-30",
+    "@veromoda, michellefleur20, 20, michellefleur, 2022-10-30",
+    "@buddha_ibiza, SYLVANA20, 20, sylvanadejong, 2022-10-30",
+    "@hellofreshnl, HELLOSOOF, , sofiegraafland, 2022-10-30",
+    "@waterdrop, RIANNE10, 10, rianne.meijer, 2022-10-30",
+    "@farfetch, FLEURFF, , fleurnijbacker, 2022-10-30",
+
+
+
+
+
     "@myjewellery, Shopping15, 15, amelie_weissenberger, 2022-10-07",
     "@idealofsweden, BBTREE, 7, janedoe, 2022-10-07",
     "@nakdfashion, demi, 15, deminugteren, 2022-10-07",

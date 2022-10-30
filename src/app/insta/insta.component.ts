@@ -136,7 +136,7 @@ export class InstaComponent {
            "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
            "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),
            "via": this.getInfluencerFromBaseInputLine(baseKortingEntries[i]),
-           "date": this.getDateFromBaseInputLine(baseKortingEntries[i]),
+           "percentage": this.getDiscountPercentageFromBaseInputLine(baseKortingEntries[i]),
            "tracker": i,
            });
       }
@@ -163,6 +163,10 @@ export class InstaComponent {
 
   getPosition(string, subString, index) {
     return DataDirective.getPosition(string, subString, index);
+  }
+
+  getDiscountPercentageFromBaseInputLine(baseInputLine) {
+    return DataDirective.getDiscountPercentageFromBaseInputLine(baseInputLine);
   }
 
   sortTable() {
