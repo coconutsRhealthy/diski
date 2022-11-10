@@ -49,11 +49,6 @@
           <button type="button" (click)="displayInput()" class="btn btn-primary btn-sm">Display input</button>
         </div>
       </div>
-      <div class="client-action-button" class="row">
-        <div class="col-12">
-          <button type="button" (click)="toggleShowDoubleEntries()" class="small-button">Show / hide double entries in data</button>
-        </div>
-      </div>
       <div *ngFor="let duplicate of multipleOccurrencesInData;">
         {{duplicate}}
       </div>
