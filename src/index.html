@@ -16,6 +16,14 @@
       <!--ga('create', 'UA-104362522-1', 'auto');-->
       <!--ga('send', 'pageview');-->
   <!--</script>-->
+
+  <script>
+    function copyToClipboard(textToCopy) {
+      navigator.clipboard.writeText(textToCopy).then(function(x) {
+          alert("Copied to clipboard: " + textToCopy);
+        });
+    }
+  </script>
 </head>
 <body>
   <app-root></app-root>

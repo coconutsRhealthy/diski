@@ -28,6 +28,14 @@ export class LoaviesComponent implements OnInit {
       responsive: false,
       lengthChange: false,
       searching: false,
+      columns: [
+          { render: function(data: any, type: any, full: any) {
+              return "<button onclick=copyToClipboard('" + data + "')>" + data + "</button>";
+            }
+          },
+          { },
+          { }
+      ],
       pageLength: 50,
       order: [],
       language: {
@@ -63,6 +71,14 @@ export class LoaviesComponent implements OnInit {
            });
       }
     }
+  }
+
+  public onClipboardCopy(successful: boolean): void {
+      alert(successful);
+  }
+
+  eije() {
+    alert("hmm");
   }
 
   getCompanyFromBaseInputLine(baseInputLine) {
