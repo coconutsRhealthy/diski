@@ -54,7 +54,8 @@ export class SheinComponent implements OnInit {
     var baseKortingEntries = DataDirective.getDataArray();
 
     for(var i = 0; i < baseKortingEntries.length; i++) {
-      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@sheinofficial") {
+      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@sheinofficial" ||
+          this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@shein") {
         this.allKorting.push({
            "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
            "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),
