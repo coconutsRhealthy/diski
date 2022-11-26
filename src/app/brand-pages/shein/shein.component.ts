@@ -25,7 +25,7 @@ export class SheinComponent implements OnInit {
     this.initializeAllKorting();
 
     this.dtOptions = {
-      responsive: true,
+      responsive: false,
       lengthChange: false,
       searching: false,
       pageLength: 50,
@@ -54,11 +54,12 @@ export class SheinComponent implements OnInit {
     var baseKortingEntries = DataDirective.getDataArray();
 
     for(var i = 0; i < baseKortingEntries.length; i++) {
-      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@sheinofficial") {
+      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@sheinofficial" ||
+          this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@shein") {
         this.allKorting.push({
            "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
            "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),
-           "via": this.getInfluencerFromBaseInputLine(baseKortingEntries[i]),
+           "percentage": this.getDiscountPercentageFromBaseInputLine(baseKortingEntries[i]),
            "date": this.getDateFromBaseInputLine(baseKortingEntries[i]),
            });
       }
@@ -71,6 +72,10 @@ export class SheinComponent implements OnInit {
 
   getDiscountCodeFromBaseInputLine(baseInputLine) {
     return DataDirective.getDiscountCodeFromBaseInputLine(baseInputLine);
+  }
+
+  getDiscountPercentageFromBaseInputLine(baseInputLine) {
+    return DataDirective.getDiscountPercentageFromBaseInputLine(baseInputLine);
   }
 
   getInfluencerFromBaseInputLine(baseInputLine) {

@@ -7,23 +7,30 @@
         <div class="row">
           <div class="col-10">
             <div class="row">
-              <div class="col-4">
+              <div class="col-3">
                 <div formArrayName="discount_companies">
                   <div *ngFor="let company of discount_companies.controls; let i=index">
                     <input class="working-table-fill-in-field" type="text" [formControlName]="i">
                   </div>
                 </div>
               </div>
-              <div class="col-4">
+              <div class="col-3">
                 <div formArrayName="discount_codes">
                   <div *ngFor="let code of discount_codes.controls; let i=index">
                     <input class="working-table-fill-in-field" type="text" [formControlName]="i">
                   </div>
                 </div>
               </div>
-              <div class="col-4">
+              <div class="col-3">
+                <div formArrayName="percentages">
+                  <div *ngFor="let percentage of percentages.controls; let i=index">
+                    <input class="working-table-fill-in-field" type="text" [formControlName]="i">
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
                 <div formArrayName="influencers">
-                  <div *ngFor="let code of influencers.controls; let i=index">
+                  <div *ngFor="let influencer of influencers.controls; let i=index">
                     <input class="working-table-fill-in-field" type="text" [formControlName]="i">
                   </div>
                 </div>
@@ -42,11 +49,6 @@
           <button type="button" (click)="displayInput()" class="btn btn-primary btn-sm">Display input</button>
         </div>
       </div>
-      <div class="client-action-button" class="row">
-        <div class="col-12">
-          <button type="button" (click)="toggleShowDoubleEntries()" class="small-button">Show / hide double entries in data</button>
-        </div>
-      </div>
       <div *ngFor="let duplicate of multipleOccurrencesInData;">
         {{duplicate}}
       </div>
@@ -60,11 +62,6 @@
       <div class="input-header-follow" class="input-header">duplicate</div>
       <div *ngFor="let existingInputLine of existingInput;">
         {{existingInputLine}}
-      </div>
-
-      <div class="input-header-follow" class="input-header">to check</div>
-      <div *ngFor="let toCheckInputLine of toCheckInput;">
-        {{toCheckInputLine}}
       </div>
     </div>
   </div>

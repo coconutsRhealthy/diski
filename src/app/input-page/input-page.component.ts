@@ -15,7 +15,6 @@ export class InputComponent {
 
   newInput = [];
   existingInput = [];
-  toCheckInput = [];
   multipleOccurrencesInData = [];
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
@@ -30,6 +29,9 @@ export class InputComponent {
       this.fb.control('')
     ]),
     influencers: this.fb.array([
+      this.fb.control('')
+    ]),
+    percentages: this.fb.array([
       this.fb.control('')
     ])
   });
@@ -46,6 +48,10 @@ export class InputComponent {
     return this.profileForm.get('influencers') as FormArray;
   }
 
+  get percentages() {
+    return this.profileForm.get('percentages') as FormArray;
+  }
+
   addDiscountCompany() {
     this.discount_companies.push(this.fb.control(''));
   }
@@ -58,10 +64,15 @@ export class InputComponent {
     this.influencers.push(this.fb.control(''));
   }
 
+  addPercentage() {
+    this.percentages.push(this.fb.control(''));
+  }
+
   addAll() {
     this.discount_companies.push(this.fb.control(''));
     this.discount_codes.push(this.fb.control(''));
     this.influencers.push(this.fb.control(''));
+    this.percentages.push(this.fb.control(''));
   }
 
   getDiscountCompany(index) {
@@ -79,37 +90,46 @@ export class InputComponent {
     return formArray.at(index).value;
   }
 
+  getPercentage(index) {
+    var formArray = this.profileForm.get('percentages') as FormArray;
+    return formArray.at(index).value;
+  }
+
   getDate() {
-    return new Date().toISOString().slice(0, 10);
+    return new Date().toISOString().slice(5, 10);
   }
 
   deleteRow(index) {
     this.discount_companies.removeAt(index);
     this.discount_codes.removeAt(index);
     this.influencers.removeAt(index);
+    this.percentages.removeAt(index);
   }
 
+  //tot hier...
   displayInput() {
     this.existingInput = [];
     this.newInput = [];
-    this.toCheckInput = [];
 
     var influencers = this.profileForm.get('influencers') as FormArray;
     var companies = this.profileForm.get('discount_companies') as FormArray;
     var codes = this.profileForm.get('discount_codes') as FormArray;
+    var percentages = this.profileForm.get('percentages') as FormArray;
 
-    var existing = this.getExistingCodesWithoutDate();
+    var existing = this.getExistingCodesWithoutDateAndPercentage();
 
     for(var i = 0; i < influencers.length; i++) {
       var company = companies.at(i).value.replace(/\s/g, "");
       var code = codes.at(i).value.replace(/\s/g, "");
+      var percentage = percentages.at(i).value.replace(/\s/g, "");
       var influencer = influencers.at(i).value.replace(/\s/g, "");
-      var fullNewCodeEntry = company + ", " + code + ", " + influencer;
+      var fullNewCodeEntryNoPercentage = company + ", " + code + ", " + influencer;
+      var fullNewCodeEntry = company + ", " + code + ", " + percentage + ", " + influencer;
       var isExistingInput = false;
 
-      if(this.includesIgnoreCase(fullNewCodeEntry, existing)) {
+      if(this.includesIgnoreCase(fullNewCodeEntryNoPercentage, existing)) {
         if(!this.includesIgnoreCase(fullNewCodeEntry, this.existingInput)) {
-          this.existingInput.push("\"" + fullNewCodeEntry + ", " + this.getDateOfAlreadyExistingInput(fullNewCodeEntry) + "\",");
+          this.existingInput.push("\"" + fullNewCodeEntryNoPercentage + ", " + this.getDateOfAlreadyExistingInput(fullNewCodeEntryNoPercentage) + "\",");
           this.newInput.push("\"..." + fullNewCodeEntry + ", " + this.getDate() + "\",");
           isExistingInput = true;
         }
@@ -118,17 +138,10 @@ export class InputComponent {
           this.newInput.push("\"" + fullNewCodeEntry + ", " + this.getDate() + "\",");
         }
       }
-
-      if(!isExistingInput) {
-        if(this.stringInArrayContainsStringPart((" " + code + ","), existing)) {
-          this.toCheckInput.push(fullNewCodeEntry);
-        }
-      }
     }
 
     this.existingInput.reverse();
     this.newInput.reverse();
-    this.toCheckInput.reverse();
   }
 
   stringInArrayContainsStringPart(stringPart, array) {
@@ -146,19 +159,19 @@ export class InputComponent {
     return dummyFilterArray.length > 0;
   }
 
-  getExistingCodesWithoutDate() {
+  getExistingCodesWithoutDateAndPercentage() {
     var existingCodeEntries = DataDirective.getDataArray();
-    var existingCodesNoDate = [];
+    var existingCodesNoDateAndPercentages = [];
 
     for(var i = 0; i < existingCodeEntries.length; i++) {
-      var lineWithoutDate = existingCodeEntries[i].substring(0, existingCodeEntries[i].lastIndexOf(", "));
+      var lineWithoutDateAndPercentage = this.removeDateAndPercentageFromBaseCodeEntry(existingCodeEntries[i]);
 
-      if(lineWithoutDate.replace(/\s/g, '').length) {
-        existingCodesNoDate.push(lineWithoutDate);
+      if(lineWithoutDateAndPercentage.replace(/\s/g, '').length) {
+        existingCodesNoDateAndPercentages.push(lineWithoutDateAndPercentage);
       }
     }
 
-    return existingCodesNoDate;
+    return existingCodesNoDateAndPercentages;
   }
 
   getDateOfAlreadyExistingInput(inputThatAlreadyExists) {
@@ -167,7 +180,9 @@ export class InputComponent {
 
     for(var i = 0; i < existingCodeEntries.length; i++) {
       if(dateOfExistingInputEntry === "?") {
-        if(existingCodeEntries[i].toLowerCase().includes(inputThatAlreadyExists.toLowerCase())) {
+        var existingBaseCodeEntryNoPercentage = this.removeDateAndPercentageFromBaseCodeEntry(existingCodeEntries[i].toLowerCase());
+
+        if(existingBaseCodeEntryNoPercentage.includes(inputThatAlreadyExists.toLowerCase())) {
           dateOfExistingInputEntry = existingCodeEntries[i].substring
             (existingCodeEntries[i].lastIndexOf(", ") + 2, existingCodeEntries[i].length);
         }
@@ -179,30 +194,12 @@ export class InputComponent {
     return dateOfExistingInputEntry;
   }
 
-  toggleShowDoubleEntries() {
-    if(this.multipleOccurrencesInData.length > 0) {
-      this.multipleOccurrencesInData = [];
-    } else {
-      this.identifyDoubleDataEntries();
-    }
-  }
-
-  identifyDoubleDataEntries() {
-    var data = this.getExistingCodesWithoutDate();
-
-    for(var i = 0; i < data.length; i++) {
-      var lineToCheck = data[i];
-      var dummyFilterArray = data.filter((str) => str.toLowerCase().includes(lineToCheck.toLowerCase()));
-
-      if(dummyFilterArray.length > 1) {
-        this.multipleOccurrencesInData.push(lineToCheck);
-      }
-    }
-
-    this.multipleOccurrencesInData = this.multipleOccurrencesInData.filter((v, i, a) => a.indexOf(v) === i);
-
-    if(this.multipleOccurrencesInData.length === 0) {
-      this.multipleOccurrencesInData.push("No double data entries.");
-    }
+  removeDateAndPercentageFromBaseCodeEntry(baseCodeEntry) {
+    var lineWithoutDate = baseCodeEntry.substring(0, baseCodeEntry.lastIndexOf(", "));
+    var codegiver = lineWithoutDate.substring(lineWithoutDate.lastIndexOf(", ") + 2, lineWithoutDate.length);
+    var firstpart = lineWithoutDate.substring(0, lineWithoutDate.lastIndexOf(", "));
+    firstpart = firstpart.substring(0, firstpart.lastIndexOf(", "));
+    var lineWithoutDateAndPercentage = firstpart + ", " + codegiver;
+    return lineWithoutDateAndPercentage;
   }
 }
