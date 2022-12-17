@@ -30,9 +30,9 @@ export class LoaviesComponent implements OnInit {
       searching: false,
       columns: [
           { render: function(data: any, type: any, full: any, meta: any) {
-              return data + "<button type=button class=btn btn-secondary btn-sm id='copybutton" + meta.row + "'" +
+              return data + "<button type=button class='btn sjaak' id='copybutton" + meta.row + "'" +
               "onclick=copyToClipboard('" + data + "','" + meta.row + "')>" +
-              "<i class='fa fa-copy'></i><span class='done' aria-hidden='true'>copied " + data + "</span>" + "</button>";
+              "<i class='fa fa-copy'></i><span class='done' aria-hidden='true'>Copied " + data + "</span>" + "</button>";
             }
           },
           { },
