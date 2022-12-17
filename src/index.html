@@ -20,9 +20,18 @@
 
   <script>
     function copyToClipboard(textToCopy) {
-      navigator.clipboard.writeText(textToCopy).then(function(x) {
-          alert("Copied to clipboard: " + textToCopy);
-        });
+      navigator.clipboard.writeText(textToCopy).then(function() {
+        var btnCopy = document.getElementById('copybutton')
+
+        if(document.execCommand('copy')) {
+          btnCopy.classList.add('copied');
+
+          var temp = setInterval(function() {
+            btnCopy.classList.remove('copied');
+            clearInterval(temp);
+          }, 600 );
+        }
+      });
     }
   </script>
 </head>
