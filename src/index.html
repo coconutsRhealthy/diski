@@ -19,9 +19,9 @@
   <!--</script>-->
 
   <script>
-    function copyToClipboard(textToCopy) {
+    function copyToClipboard(textToCopy, index) {
       navigator.clipboard.writeText(textToCopy).then(function() {
-        var btnCopy = document.getElementById('copybutton')
+        var btnCopy = document.getElementById(textToCopy)
 
         if(document.execCommand('copy')) {
           btnCopy.classList.add('copied');
