@@ -28,16 +28,6 @@ export class LoaviesComponent implements OnInit {
       responsive: false,
       lengthChange: false,
       searching: false,
-      columns: [
-          { render: function(data: any, type: any, full: any, meta: any) {
-              return data + "<button type=button class='btn copy_code_button' id='copybutton" + meta.row + "'" +
-              "onclick=copyToClipboard('" + data + "','" + meta.row + "')>" +
-              "<i class='fa fa-copy'></i><span class='done' aria-hidden='true'>Copied " + data + "</span>" + "</button>";
-            }
-          },
-          { },
-          { }
-      ],
       pageLength: 50,
       order: [],
       language: {

@@ -27,6 +27,18 @@ export class DiskiPageComponent implements OnInit {
       responsive: false,
       lengthChange: false,
       pageLength: 50,
+      columns: [
+          { },
+          { render: function(data: any, type: any, full: any, meta: any) {
+              return data + "<button type=button class='btn copy_code_button' id='copybutton" + meta.row + "'" +
+              "onclick=copyToClipboard('" + data + "','" + meta.row + "');" +
+              "ga('send','event','CopyCode','CopyCode','CopyCode');>" +
+              "<i class='fa fa-copy'></i><span class='done' aria-hidden='true'>Copied " + data + "</span>" + "</button>";
+            }
+          },
+          { },
+          { }
+      ],
       order: [],
       language: {
         search: "Zoek:",
