@@ -54,7 +54,7 @@ export class HellofreshComponent implements OnInit {
     var baseKortingEntries = DataDirective.getDataArray();
 
     for(var i = 0; i < baseKortingEntries.length; i++) {
-      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@hellofreshnl") {
+      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "hellofreshnl") {
         this.allKorting.push({
            "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
            "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),

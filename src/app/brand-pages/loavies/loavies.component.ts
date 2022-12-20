@@ -54,7 +54,7 @@ export class LoaviesComponent implements OnInit {
     var baseKortingEntries = DataDirective.getDataArray();
 
     for(var i = 0; i < baseKortingEntries.length; i++) {
-      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "@loavies") {
+      if(this.getCompanyFromBaseInputLine(baseKortingEntries[i]) === "loavies") {
         this.allKorting.push({
            "company": this.getCompanyFromBaseInputLine(baseKortingEntries[i]),
            "code": this.getDiscountCodeFromBaseInputLine(baseKortingEntries[i]),
@@ -63,6 +63,14 @@ export class LoaviesComponent implements OnInit {
            });
       }
     }
+  }
+
+  public onClipboardCopy(successful: boolean): void {
+      alert(successful);
+  }
+
+  eije() {
+    alert("hmm");
   }
 
   getCompanyFromBaseInputLine(baseInputLine) {
