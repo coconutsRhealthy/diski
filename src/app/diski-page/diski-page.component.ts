@@ -31,37 +31,14 @@ export class DiskiPageComponent implements OnInit {
       pageLength: 50,
       columns: [
           { },
-          //{ render: function(data: any, type: any, full: any, meta: any) {
-          //    new ClipboardJS('.btn');
-          //    //return data + "<button type=zzbutton class='btn copy_code_button' data-clipboard-text='lekkazzzbezig'>eije</button>";
-          //    return data + "<button type=button class='btn copy_code_button' data-clipboard-text='" + data + "'>eiffje</button>";
-          //
-          //
-          //  }
-          //},
-
           { render: function(data: any, type: any, full: any, meta: any) {
-              //var clipboard = new ClipboardJS('.btn');
-
-              //console.log("sjaakie!");
-
-              //var eije = clipboard;
-
-              sjaak();
-
               return data + "<button type=button class='btn copy_code_button' id='copybutton" + meta.row + "'" +
               "data-clipboard-text='" + data + "'" +
-              "onclick=copyToClipboard('" + data + "','" + meta.row + "');" +
+              "onclick=copyAnimation('" + meta.row + "');" +
               "ga('send','event','CopyCode','CopyCode','CopyCode');>" +
               "<i class='fa fa-copy'></i><span class='done' aria-hidden='true'>Copied " + data + "</span>" + "</button>";
-
-              function sjaak() {
-
-              }
             }
-
           },
-
           { },
           { }
       ],
