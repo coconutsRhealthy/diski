@@ -54,8 +54,8 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let korting of allKorting">
-            <td>{{ korting.company }}</td>
+          <tr *ngFor="let korting of allKorting; let i=index">
+            <td id="companyRow{{i}}">{{ korting.company }}</td>
             <td>{{ korting.code }}</td>
             <td>{{ korting.percentage }}</td>
             <td>{{ korting.date }}</td>

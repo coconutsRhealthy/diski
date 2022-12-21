@@ -31,6 +31,15 @@
       }, 600 );
     }
   </script>
+  <script>
+    function sendToGa(element_id_index) {
+      var company = document.getElementById('companyRow' + element_id_index).textContent;
+      if(company === undefined) {
+        company = "unknown";
+      }
+      ga('send','event','CopyCode',' + company + ',' + company + ');
+    }
+  </script>
 </head>
 <body>
   <app-root></app-root>

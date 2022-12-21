@@ -35,7 +35,7 @@ export class DiskiPageComponent implements OnInit {
               return data + "<button type=button class='btn copy_code_button' id='copybutton" + meta.row + "'" +
               "data-clipboard-text='" + data + "'" +
               "onclick=copyAnimation('" + meta.row + "');" +
-              "ga('send','event','CopyCode','CopyCode','CopyCode');>" +
+              "sendToGa('" + meta.row + "');>" +
               "<i class='fa fa-copy'></i><span class='done' aria-hidden='true'>Copied " + data + "</span>" + "</button>";
             }
           },
