@@ -8,6 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js"></script>
+
   <!--<script>-->
       <!--(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){-->
       <!--(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),-->
@@ -18,24 +21,43 @@
       <!--ga('send', 'pageview');-->
   <!--</script>-->
 
+  <!--<script>-->
+    <!--new ClipboardJS('.btn');-->
+  <!--</script>-->
+
+  <!--<script>-->
+    <!--var clipboard = new ClipboardJS('.btn');-->
+
+  <!--</script>-->
+
   <script>
     function copyToClipboard(textToCopy, element_id_index) {
-      navigator.clipboard.writeText(textToCopy).then(function() {
+
+        var idtje = "#copybutton" + element_id_index;
+
+        //new ClipboardJS('.btn')
+        new ClipboardJS(idtje)
+
         var btnCopy = document.getElementById('copybutton' + element_id_index)
 
-        if(document.execCommand('copy')) {
+
+
+
+
           btnCopy.classList.add('copied');
 
           var temp = setInterval(function() {
             btnCopy.classList.remove('copied');
             clearInterval(temp);
           }, 600 );
-        }
-      });
+
+
     }
   </script>
+
 </head>
 <body>
+
   <app-root></app-root>
 </body>
 </html>
