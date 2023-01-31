@@ -12,11 +12,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { DataDirective } from './data/data.directive';
 import { InstaComponent } from './insta/insta.component';
-import { NakdComponent } from './brand-pages/nakd/nakd.component';
-import { LoaviesComponent } from './brand-pages/loavies/loavies.component';
-import { HellofreshComponent } from './brand-pages/hellofresh/hellofresh.component';
-import { IdealofswedenComponent } from './brand-pages/idealofsweden/idealofsweden.component';
-import { SheinComponent } from './brand-pages/shein/shein.component';
 
 import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
 import { ArchiveComponent } from './archive/archive.component';
@@ -29,11 +24,6 @@ import { ContactComponent } from './contact/contact.component';
     InputComponent,
     DataDirective,
     InstaComponent,
-    NakdComponent,
-    LoaviesComponent,
-    HellofreshComponent,
-    IdealofswedenComponent,
-    SheinComponent,
     ArchiveComponent,
     ContactComponent
   ],
@@ -54,41 +44,6 @@ import { ContactComponent } from './contact/contact.component';
       },
       {path: 'input', component: InputComponent},
       {path: 'insta', component: InstaComponent},
-      {
-        path: 'nakd',
-        component: NakdComponent,
-        data: {
-          title: 'De nieuwste NAKD kortingscodes'
-        }
-      },
-      {
-        path: 'loavies',
-        component: LoaviesComponent,
-        data: {
-          title: 'De nieuwste Loavies kortingscodes'
-        }
-      },
-      {
-        path: 'idealofsweden',
-        component: IdealofswedenComponent,
-        data: {
-          title: 'De nieuwste Ideal Of Sweden kortingscodes'
-        }
-      },
-      {
-        path: 'hellofresh',
-        component: HellofreshComponent,
-        data: {
-          title: 'De nieuwste Hellofresh kortingscodes'
-        }
-      },
-      {
-        path: 'shein',
-        component: SheinComponent,
-        data: {
-          title: 'De nieuwste Shein kortingscodes'
-        }
-      },
       {
         path: 'archief',
         component: ArchiveComponent,
