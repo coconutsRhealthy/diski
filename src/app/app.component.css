@@ -49,6 +49,14 @@ h3 {
   border-radius: 50%;
 }
 
+#social-banner {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 5px;
+  padding: 3px;
+}
+
 @media (max-width: 767px) {
     .container-fluid {
       padding-left: 0px !important;
