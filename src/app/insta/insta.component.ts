@@ -75,7 +75,7 @@ export class InstaComponent {
       var element = document.querySelector('#insta-table') as HTMLElement;
       var tableWidth = element.offsetWidth;
 
-      var desiredTiktokTableHeight = ((tableWidth / 9) * 16) * 0.94;
+      var desiredTiktokTableHeight = ((tableWidth / 9) * 16);
       this.tableHeight = desiredTiktokTableHeight;
     } else {
       this.tablePaddingLeft = "12px";
@@ -125,11 +125,11 @@ export class InstaComponent {
     }
 
     baseKortingEntries.reverse();
-    var startDate = new Date(this.startDateForPostString);
+    var startDate = this.getDateFromDateString(this.startDateForPostString);
 
     for(var i = 0; i < baseKortingEntries.length; i++) {
       var dateString = this.getDateFromBaseInputLine(baseKortingEntries[i]);
-      var date = new Date(dateString);
+      var date = this.getDateFromDateString(dateString);
 
       if(date >= startDate) {
         this.instaDiscountEntries.push({
@@ -143,6 +143,14 @@ export class InstaComponent {
     }
 
     this.instaDiscountEntries = this.instaDiscountEntries.slice(0, parseInt(this.maxAmountForPost));
+  }
+
+  getDateFromDateString(dateString) {
+    dateString = dateString + "";
+    var dateStringArray = dateString.split("-");
+    var month = dateStringArray[0];
+    var day = dateStringArray[1];
+    return new Date(2023, month, day);
   }
 
   getCompanyFromBaseInputLine(baseInputLine) {
