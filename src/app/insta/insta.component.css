@@ -25,10 +25,6 @@ table tr td:first-child::before {
   border: 1px solid blue;
 }
 
-.invisible-dots {
-  color: blue;
-}
-
 .small-button {
   heigth: 8px;
   width: 50px;

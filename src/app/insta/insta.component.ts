@@ -23,9 +23,6 @@ export class InstaComponent {
   kortingDateFontSize = 10;
   headerFontSize = 14;
   bodyFontSize = 14;
-  dotsCompany = "";
-  dotsCode = "";
-  dotsVia = "";
   startDateForPostString = "2021-07-05";
   maxAmountForPost = "3";
 
@@ -39,26 +36,6 @@ export class InstaComponent {
   aspectRatio = "-1";
 
   constructor() { }
-
-  addDot(column) {
-    if(column === 'company') {
-      this.dotsCompany = this.dotsCompany + ".";
-    } else if(column === 'code') {
-      this.dotsCode = this.dotsCode + ".";
-    } else if(column === 'via') {
-      this.dotsVia = this.dotsVia + ".";
-    }
-  }
-
-  removeDot(column) {
-    if(column === 'company') {
-      this.dotsCompany = this.dotsCompany.replace(/.$/,"");
-    } else if(column === 'code') {
-      this.dotsCode = this.dotsCode.replace(/.$/,"");
-    } else if(column === 'via') {
-      this.dotsVia = this.dotsVia.replace(/.$/,"");
-    }
-  }
 
   setTableBackgroundColour(hex) {
     this.tableBackgroundColor = hex;
