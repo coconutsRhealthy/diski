@@ -52,7 +52,7 @@
           <tbody>
           <tr *ngFor="let korting of allKorting; let i=index">
             <td id="companyRow{{i}}">{{ korting.company }}</td>
-            <td>{{ korting.code }}</td>
+            <td><button (click)="goToCodeDetailPage(korting.code)">Pak Code</button></td>
             <td>{{ korting.percentage }}</td>
             <td>{{ korting.date }}</td>
           </tr>

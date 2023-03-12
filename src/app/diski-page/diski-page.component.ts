@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DataDirective } from '../data/data.directive';
 import { MetaService } from '../meta/meta.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-diski-page',
@@ -15,7 +16,7 @@ export class DiskiPageComponent implements OnInit {
 
   allKorting = [];
 
-  constructor(private meta: MetaService) {
+  constructor(private meta: MetaService, private router: Router) {
     this.meta.updateTitle();
     this.meta.updateMetaInfo("De nieuwste werkende kortingscodes van een groot aantal webshops; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, Korting");
   }
@@ -31,14 +32,7 @@ export class DiskiPageComponent implements OnInit {
       pageLength: 50,
       columns: [
           { },
-          { render: function(data: any, type: any, full: any, meta: any) {
-              return data + "<button type=button class='btn copy_code_button' id='copybutton" + meta.row + "'" +
-              "data-clipboard-text='" + data + "'" +
-              "onclick=copyAnimation('" + meta.row + "');" +
-              "sendToGa('" + meta.row + "');>" +
-              "<i class='fa fa-copy'></i><span class='done' aria-hidden='true'>Copied " + data + "</span>" + "</button>";
-            }
-          },
+          { },
           { },
           { }
       ],
@@ -74,6 +68,11 @@ export class DiskiPageComponent implements OnInit {
          "date": this.getDateFromBaseInputLine(baseKortingEntries[i]),
          });
     }
+  }
+
+  goToCodeDetailPage(code) {
+    window.open('/code-detailpage', '_blank');
+    location.href = 'https://example.com/';
   }
 
   getCompanyFromBaseInputLine(baseInputLine) {
