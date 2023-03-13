@@ -12,12 +12,12 @@ export class CodeDetailPageComponent implements OnInit {
 
   isMenuCollapsed = true;
 
-  myVar: string;
+  discountCode: string;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.myVar = this.route.snapshot.queryParamMap.get('myVar');
+    this.discountCode = this.route.snapshot.queryParamMap.get('discountCode');
   }
 
 }

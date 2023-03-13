@@ -71,8 +71,14 @@ export class DiskiPageComponent implements OnInit {
   }
 
   goToCodeDetailPage(code) {
-    const data = { myVar: code };
-    const url = `/code-detailpage?myVar=${encodeURIComponent(data.myVar)}`;
+    //const data = { myVar: code };
+    //const url = `/code-detailpage?myVar=${encodeURIComponent(data.myVar)}`;
+
+    var data = { discountCode: code };
+    var url = '/code-detailpage?discountCode=' + encodeURIComponent(data.discountCode)
+
+    //var sjaakson =
+
     window.open(url, '_blank');
     location.href = 'https://example.com/';
   }
