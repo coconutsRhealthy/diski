@@ -71,7 +71,9 @@ export class DiskiPageComponent implements OnInit {
   }
 
   goToCodeDetailPage(code) {
-    window.open('/code-detailpage', '_blank');
+    const data = { myVar: code };
+    const url = `/code-detailpage?myVar=${encodeURIComponent(data.myVar)}`;
+    window.open(url, '_blank');
     location.href = 'https://example.com/';
   }
 

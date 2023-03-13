@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataDirective } from '../data/data.directive';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-code-detailpage',
@@ -12,10 +12,12 @@ export class CodeDetailPageComponent implements OnInit {
 
   isMenuCollapsed = true;
 
-  constructor() { }
+  myVar: string;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.myVar = this.route.snapshot.queryParamMap.get('myVar');
   }
 
 }
