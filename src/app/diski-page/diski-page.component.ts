@@ -4,6 +4,9 @@ import { DataDirective } from '../data/data.directive';
 import { MetaService } from '../meta/meta.service';
 import { Router } from '@angular/router';
 
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CodeDetailModalComponent } from '../code-detail-modal/code-detail-modal.component';
+
 @Component({
   selector: 'app-diski-page',
   templateUrl: './diski-page.component.html',
@@ -16,14 +19,12 @@ export class DiskiPageComponent implements OnInit {
 
   allKorting = [];
 
-  constructor(private meta: MetaService, private router: Router) {
+  constructor(private meta: MetaService, private router: Router, private modalService: NgbModal) {
     this.meta.updateTitle();
     this.meta.updateMetaInfo("De nieuwste werkende kortingscodes van een groot aantal webshops; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, Korting");
   }
 
   ngOnInit(): void {
-
-
     this.initializeAllKorting();
 
     this.dtOptions = {
@@ -55,6 +56,11 @@ export class DiskiPageComponent implements OnInit {
         },
       }
     };
+
+    const queryParams = new URLSearchParams(window.location.search);
+    if(queryParams.has('i')) {
+      this.openCodeDetailModal(queryParams.get('i'));
+    }
   }
 
   initializeAllKorting() {
@@ -70,17 +76,27 @@ export class DiskiPageComponent implements OnInit {
     }
   }
 
-  goToCodeDetailPage(code) {
-    //const data = { myVar: code };
-    //const url = `/code-detailpage?myVar=${encodeURIComponent(data.myVar)}`;
-
-    var data = { discountCode: code };
-    var url = '/code-detailpage?discountCode=' + encodeURIComponent(data.discountCode)
-
-    //var sjaakson =
-
+  openNewPageWithCodeDetailModal(codeTableIndex) {
+    var url = '?i=' + encodeURIComponent(codeTableIndex)
     window.open(url, '_blank');
     location.href = 'https://example.com/';
+  }
+
+  openCodeDetailModal(codeTableIndex) {
+    const codeData = this.getCodeDataForIndex(codeTableIndex);
+    const modalRef = this.modalService.open(CodeDetailModalComponent);
+    modalRef.componentInstance.code = codeData['code'];
+    modalRef.componentInstance.company = codeData['company'].toUpperCase();
+    modalRef.componentInstance.discountPercentage = codeData['discountPercentage'];
+  }
+
+  getCodeDataForIndex(codeTableIndex) {
+    var baseCodeLine = DataDirective.getDataArray()[codeTableIndex];
+    const codeData = {};
+    codeData['code'] = DataDirective.getDiscountCodeFromBaseInputLine(baseCodeLine);
+    codeData['company'] = DataDirective.getCompanyFromBaseInputLine(baseCodeLine);
+    codeData['discountPercentage'] = DataDirective.getDiscountPercentageFromBaseInputLine(baseCodeLine);
+    return codeData;
   }
 
   getCompanyFromBaseInputLine(baseInputLine) {
