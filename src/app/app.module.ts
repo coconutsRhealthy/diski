@@ -16,7 +16,6 @@ import { InstaComponent } from './insta/insta.component';
 import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
 import { ArchiveComponent } from './archive/archive.component';
 import { ContactComponent } from './contact/contact.component';
-import { CodeDetailPageComponent } from './code-detailpage/code-detailpage.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +25,7 @@ import { CodeDetailPageComponent } from './code-detailpage/code-detailpage.compo
     DataDirective,
     InstaComponent,
     ArchiveComponent,
-    ContactComponent,
-    CodeDetailPageComponent
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -58,13 +56,6 @@ import { CodeDetailPageComponent } from './code-detailpage/code-detailpage.compo
         component: ContactComponent,
         data: {
           title: 'Contact'
-        }
-      },
-      {
-        path: 'code-detailpage',
-        component: CodeDetailPageComponent,
-        data: {
-          title: 'CodeDetailPageComponent'
         }
       },
       {
