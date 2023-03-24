@@ -30,14 +30,7 @@ export class ArchiveComponent implements OnInit {
       pageLength: 50,
       columns: [
           { },
-          { render: function(data: any, type: any, full: any, meta: any) {
-              return data + "<button type=button class='btn copy_code_button' id='copybutton" + meta.row + "'" +
-              "data-clipboard-text='" + data + "'" +
-              "onclick=copyAnimation('" + meta.row + "');" +
-              "sendToGa('" + meta.row + "');>" +
-              "<i class='fa fa-copy'></i><span class='done' aria-hidden='true'>Copied " + data + "</span>" + "</button>";
-            }
-          },
+          { },
           { },
           { }
       ],
