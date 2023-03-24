@@ -5,7 +5,10 @@
   </button>
 </div>
 <div class="modal-body">
-  <div>Code: {{code}}</div>
+  <div>
+    <span>Code: {{code}}</span>
+    <span><button (click)="copyToClipboard(code)">Copy</button></span>
+  </div>
   <div>Korting: {{discountPercentage}}</div>
 </div>
 <div class="modal-footer">

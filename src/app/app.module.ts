@@ -17,6 +17,8 @@ import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
 import { ArchiveComponent } from './archive/archive.component';
 import { ContactComponent } from './contact/contact.component';
 
+import { ClipboardModule } from 'ngx-clipboard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,7 @@ import { ContactComponent } from './contact/contact.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    ClipboardModule,
     RouterModule.forRoot([
       {
         path: '',
