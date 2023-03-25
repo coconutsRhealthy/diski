@@ -88,6 +88,7 @@ export class DiskiPageComponent implements OnInit {
     modalRef.componentInstance.code = codeData['code'];
     modalRef.componentInstance.company = codeData['company'].toUpperCase();
     modalRef.componentInstance.discountPercentage = codeData['discountPercentage'];
+    modalRef.componentInstance.codeDate = codeData['codeDate'];
   }
 
   getCodeDataForIndex(codeTableIndex) {
@@ -96,6 +97,7 @@ export class DiskiPageComponent implements OnInit {
     codeData['code'] = DataDirective.getDiscountCodeFromBaseInputLine(baseCodeLine);
     codeData['company'] = DataDirective.getCompanyFromBaseInputLine(baseCodeLine);
     codeData['discountPercentage'] = DataDirective.getDiscountPercentageFromBaseInputLine(baseCodeLine);
+    codeData['codeDate'] = DataDirective.getDateFromBaseInputLine(baseCodeLine);
     return codeData;
   }
 
