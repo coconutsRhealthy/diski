@@ -7,7 +7,11 @@
 <div class="modal-body">
   <div>
     <span>Code: {{code}}</span>
-    <span><button (click)="copyToClipboard(code)">Copy</button></span>
+    <span>
+      <button type="button" class="btn btn-outline-secondary" (click)="copyToClipboard(code)" ngbTooltip="Copied!" triggers="click:blur">
+        Copy
+      </button>
+    </span>
   </div>
   <div>Korting: {{discountPercentage}}</div>
 </div>
