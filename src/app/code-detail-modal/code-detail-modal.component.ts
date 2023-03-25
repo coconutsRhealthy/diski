@@ -4,7 +4,8 @@ import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-modal-content',
-  templateUrl: './code-detail-modal.component.html'
+  templateUrl: './code-detail-modal.component.html',
+  styleUrls: ['./../app.component.css']
 })
 export class CodeDetailModalComponent implements OnInit {
   code: String;

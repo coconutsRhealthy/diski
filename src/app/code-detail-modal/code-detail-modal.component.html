@@ -5,17 +5,21 @@
   </button>
 </div>
 <div class="modal-body">
-  <div>
-    <span>Code: {{code}}</span>
-    <span>
-      <button type="button" class="btn btn-outline-secondary" (click)="copyToClipboard(code)" ngbTooltip="Copied!" triggers="click:blur">
-        Copy
+  <div class="modal-row row">
+    <div class="col-6">Code:</div>
+    <div class="col-6">
+      {{code}}
+      <button type="button" id="modal-copy-button" class="btn btn-outline-secondary" (click)="copyToClipboard(code)" ngbTooltip="Copied!" triggers="click:blur">
+        <i class='fa fa-copy'></i>
       </button>
-    </span>
+    </div>
   </div>
-  <div>Korting: {{discountPercentage}}</div>
-  <div>Gespot en getest op: {{codeDate}}</div>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Close</button>
+  <div class="modal-row row">
+    <div class="col-6">Korting:</div>
+    <div class="col-6">{{discountPercentage}}</div>
+  </div>
+  <div class="modal-row row">
+    <div class="col-6">Gespot en getest op:</div>
+    <div class="col-6">{{codeDate}}</div>
+  </div>
 </div>
