@@ -52,7 +52,7 @@
           <tbody>
           <tr *ngFor="let korting of allKorting; let i=index">
             <td id="companyRow{{i}}">{{ korting.company }}</td>
-            <td><button (click)="openNewPageWithCodeDetailModal(i)">Pak Code</button></td>
+            <td><button class="diski-table-button btn btn-outline-secondary" (click)="openNewPageWithCodeDetailModal(i)">pak code</button></td>
             <td>{{ korting.percentage }}</td>
             <td>{{ korting.date }}</td>
           </tr>
