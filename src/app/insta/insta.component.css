@@ -10,7 +10,7 @@ table tr {
   counter-increment: row-num;
   border: yellow !important;
 }
-table tr td:first-child::before {
+table tr:not(:last-child) td:first-child::before {
   content: counter(row-num);
 }
 

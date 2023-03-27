@@ -83,6 +83,13 @@
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.code}}</td>
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.percentage}}</td>
             </tr>
+            <tr [ngStyle]="{
+                  'height.px' : tableRowHeight,
+                  'line-height.px' : tableRowLineHeight,
+                  'min-height.px' : tableRowMinHeight
+                  }">
+              <td colspan="4" class="last-rowwww" [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight, 'text-align' : 'center' }">google 'diski kortingscode' voor meer codes</td>
+            </tr>
           </tbody>
         </table>
       </div>
