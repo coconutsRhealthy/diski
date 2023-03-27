@@ -67,13 +67,28 @@ h3 {
 
 .modal-row {
   height: 35px;
+  font-size: 14px;
 }
 
-#modal-copy-button {
-  font-size: 15px;
+.copy-button {
+  background-color: #8BC34A;
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
   padding-top: 0px;
   padding-bottom: 0px;
-  border: none;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.copy-button:hover {
+  background-color: #9CCC65;
+}
+
+.copy-button:active {
+  background-color: #7CB342;
 }
 
 @media (max-width: 767px) {
