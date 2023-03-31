@@ -3,6 +3,9 @@ import { DataDirective } from '../data/data.directive';
 import { ArchiveDataDirective } from '../data/archivedata.directive';
 import { MetaService } from '../meta/meta.service';
 
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CodeDetailModalComponent } from '../code-detail-modal/code-detail-modal.component';
+
 @Component({
   selector: 'app-archive',
   templateUrl: './archive.component.html',
@@ -16,7 +19,7 @@ export class ArchiveComponent implements OnInit {
 
   allKorting = [];
 
-  constructor(private meta: MetaService) {
+  constructor(private meta: MetaService, private modalService: NgbModal) {
     this.meta.updateTitle();
     this.meta.updateMetaInfo("Alle kortingscodes van Q1 2022; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscodes Q1 2022");
   }
@@ -53,6 +56,11 @@ export class ArchiveComponent implements OnInit {
         },
       }
     };
+
+    const queryParams = new URLSearchParams(window.location.search);
+    if(queryParams.has('i')) {
+      this.openCodeDetailModal(queryParams.get('i'));
+    }
   }
 
   initializeAllKorting() {
@@ -66,6 +74,31 @@ export class ArchiveComponent implements OnInit {
          "date": this.getDateFromBaseInputLine(baseKortingEntries[i]),
          });
     }
+  }
+
+  openNewPageWithCodeDetailModal(codeTableIndex) {
+    var url = '/archief?i=' + encodeURIComponent(codeTableIndex)
+    window.open(url, '_blank');
+    location.href = 'https://example.com/';
+  }
+
+  openCodeDetailModal(codeTableIndex) {
+    const codeData = this.getCodeDataForIndex(codeTableIndex);
+    const modalRef = this.modalService.open(CodeDetailModalComponent);
+    modalRef.componentInstance.code = codeData['code'];
+    modalRef.componentInstance.company = codeData['company'].toUpperCase();
+    modalRef.componentInstance.discountPercentage = codeData['discountPercentage'];
+    modalRef.componentInstance.codeDate = codeData['codeDate'];
+  }
+
+  getCodeDataForIndex(codeTableIndex) {
+    var baseCodeLine = ArchiveDataDirective.getDataArrayArchive()[codeTableIndex];
+    const codeData = {};
+    codeData['code'] = DataDirective.getDiscountCodeFromBaseInputLine(baseCodeLine);
+    codeData['company'] = DataDirective.getCompanyFromBaseInputLine(baseCodeLine);
+    codeData['discountPercentage'] = DataDirective.getDiscountPercentageFromBaseInputLine(baseCodeLine);
+    codeData['codeDate'] = DataDirective.getDateFromBaseInputLine(baseCodeLine);
+    return codeData;
   }
 
   getCompanyFromBaseInputLine(baseInputLine) {

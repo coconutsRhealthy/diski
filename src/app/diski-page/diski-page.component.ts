@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { DataDirective } from '../data/data.directive';
 import { MetaService } from '../meta/meta.service';
-import { Router } from '@angular/router';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CodeDetailModalComponent } from '../code-detail-modal/code-detail-modal.component';
@@ -19,7 +18,7 @@ export class DiskiPageComponent implements OnInit {
 
   allKorting = [];
 
-  constructor(private meta: MetaService, private router: Router, private modalService: NgbModal) {
+  constructor(private meta: MetaService, private modalService: NgbModal) {
     this.meta.updateTitle();
     this.meta.updateMetaInfo("De nieuwste werkende kortingscodes van een groot aantal webshops; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, Korting");
   }
