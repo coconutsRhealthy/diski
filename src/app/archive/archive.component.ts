@@ -6,6 +6,12 @@ import { MetaService } from '../meta/meta.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CodeDetailModalComponent } from '../code-detail-modal/code-detail-modal.component';
 
+declare global {
+  interface Window {
+    sendToGa: (element_id_index: number) => void;
+  }
+}
+
 @Component({
   selector: 'app-archive',
   templateUrl: './archive.component.html',
@@ -18,6 +24,8 @@ export class ArchiveComponent implements OnInit {
   isMenuCollapsed = true;
 
   allKorting = [];
+
+  sendToGa = window.sendToGa;
 
   constructor(private meta: MetaService, private modalService: NgbModal) {
     this.meta.updateTitle();
