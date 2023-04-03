@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{company}}</h4>
+  <button type="button" class="close" aria-label="Close" style="outline: none;" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="modal-row row">
+    <div class="col-4">Code:</div>
+    <div class="col-8">
+      {{code}}
+      <button type="button" class="copy-button btn btn-outline-secondary" (click)="copyToClipboard(code)" ngbTooltip="Copied!" triggers="click:blur">
+        Copy
+      </button>
+    </div>
+  </div>
+  <div class="modal-row row">
+    <div class="col-4">Korting:</div>
+    <div class="col-8">{{discountPercentage}}</div>
+  </div>
+  <div class="modal-row row">
+    <div class="col-4">Gespot op:</div>
+    <div class="col-8">{{codeDate}}</div>
+  </div>
+</div>

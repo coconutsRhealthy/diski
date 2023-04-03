@@ -3,6 +3,14 @@
   font-size: 10px;
 }
 
+.diski-table-button {
+  font-size: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
 .navbar {
   background-color: rgb(246, 204, 209) !important;
 }
@@ -55,6 +63,32 @@ h3 {
   margin-top: 4px;
   margin-bottom: 5px;
   padding: 3px;
+}
+
+.modal-row {
+  height: 35px;
+  font-size: 14px;
+}
+
+.copy-button {
+  background-color: #8BC34A;
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.copy-button:hover {
+  background-color: #9CCC65;
+}
+
+.copy-button:active {
+  background-color: #7CB342;
 }
 
 @media (max-width: 767px) {

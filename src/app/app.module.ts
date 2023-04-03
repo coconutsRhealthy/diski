@@ -8,14 +8,14 @@ import { AppComponent } from './app.component';
 import { DiskiPageComponent } from './diski-page/diski-page.component';
 import { InputComponent } from './input-page/input-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { HttpClientModule } from '@angular/common/http';
 import { DataDirective } from './data/data.directive';
 import { InstaComponent } from './insta/insta.component';
-
 import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
 import { ArchiveComponent } from './archive/archive.component';
 import { ContactComponent } from './contact/contact.component';
+import { CodeDetailModalComponent } from './code-detail-modal/code-detail-modal.component';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { ContactComponent } from './contact/contact.component';
     DataDirective,
     InstaComponent,
     ArchiveComponent,
-    ContactComponent
+    ContactComponent,
+    CodeDetailModalComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +35,7 @@ import { ContactComponent } from './contact/contact.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    ClipboardModule,
     RouterModule.forRoot([
       {
         path: '',
