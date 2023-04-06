@@ -87,7 +87,7 @@ export class ArchiveComponent implements OnInit {
   openNewPageWithCodeDetailModal(codeTableIndex) {
     var url = 'https://www.diski.nl/archief?i=' + encodeURIComponent(codeTableIndex)
     window.open(url, '_blank');
-    location.href = 'https://www.asos.com/nl/';
+    location.href = 'https://www.linkmaker.io/PMee1tGDeg';
   }
 
   openCodeDetailModal(codeTableIndex) {

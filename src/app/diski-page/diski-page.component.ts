@@ -3,6 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { DataDirective } from '../data/data.directive';
 import { MetaService } from '../meta/meta.service';
 
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CodeDetailModalComponent } from '../code-detail-modal/code-detail-modal.component';
+
+declare global {
+  interface Window {
+    sendToGa: (element_id_index: number) => void;
+  }
+}
+
 @Component({
   selector: 'app-diski-page',
   templateUrl: './diski-page.component.html',
@@ -15,14 +24,14 @@ export class DiskiPageComponent implements OnInit {
 
   allKorting = [];
 
-  constructor(private meta: MetaService) {
+  sendToGa = window.sendToGa;
+
+  constructor(private meta: MetaService, private modalService: NgbModal) {
     this.meta.updateTitle();
     this.meta.updateMetaInfo("De nieuwste werkende kortingscodes van een groot aantal webshops; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, Korting");
   }
 
   ngOnInit(): void {
-
-
     this.initializeAllKorting();
 
     this.dtOptions = {
@@ -31,14 +40,7 @@ export class DiskiPageComponent implements OnInit {
       pageLength: 50,
       columns: [
           { },
-          { render: function(data: any, type: any, full: any, meta: any) {
-              return data + "<button type=button class='btn copy_code_button' id='copybutton" + meta.row + "'" +
-              "data-clipboard-text='" + data + "'" +
-              "onclick=copyAnimation('" + meta.row + "');" +
-              "sendToGa('" + meta.row + "');>" +
-              "<i class='fa fa-copy'></i><span class='done' aria-hidden='true'>Copied " + data + "</span>" + "</button>";
-            }
-          },
+          { },
           { },
           { }
       ],
@@ -61,6 +63,11 @@ export class DiskiPageComponent implements OnInit {
         },
       }
     };
+
+    const queryParams = new URLSearchParams(window.location.search);
+    if(queryParams.has('i')) {
+      this.openCodeDetailModal(queryParams.get('i'));
+    }
   }
 
   initializeAllKorting() {
@@ -74,6 +81,31 @@ export class DiskiPageComponent implements OnInit {
          "date": this.getDateFromBaseInputLine(baseKortingEntries[i]),
          });
     }
+  }
+
+  openNewPageWithCodeDetailModal(codeTableIndex) {
+    var url = 'https://www.diski.nl?i=' + encodeURIComponent(codeTableIndex)
+    window.open(url, '_blank');
+    location.href = 'https://www.linkmaker.io/xaNN0saRgG';
+  }
+
+  openCodeDetailModal(codeTableIndex) {
+    const codeData = this.getCodeDataForIndex(codeTableIndex);
+    const modalRef = this.modalService.open(CodeDetailModalComponent);
+    modalRef.componentInstance.code = codeData['code'];
+    modalRef.componentInstance.company = codeData['company'].toUpperCase();
+    modalRef.componentInstance.discountPercentage = codeData['discountPercentage'];
+    modalRef.componentInstance.codeDate = codeData['codeDate'];
+  }
+
+  getCodeDataForIndex(codeTableIndex) {
+    var baseCodeLine = DataDirective.getDataArray()[codeTableIndex];
+    const codeData = {};
+    codeData['code'] = DataDirective.getDiscountCodeFromBaseInputLine(baseCodeLine);
+    codeData['company'] = DataDirective.getCompanyFromBaseInputLine(baseCodeLine);
+    codeData['discountPercentage'] = DataDirective.getDiscountPercentageFromBaseInputLine(baseCodeLine);
+    codeData['codeDate'] = DataDirective.getDateFromBaseInputLine(baseCodeLine);
+    return codeData;
   }
 
   getCompanyFromBaseInputLine(baseInputLine) {
