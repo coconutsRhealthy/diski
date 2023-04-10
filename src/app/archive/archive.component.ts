@@ -6,6 +6,8 @@ import { MetaService } from '../meta/meta.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CodeDetailModalComponent } from '../code-detail-modal/code-detail-modal.component';
 
+import { AffiliateLinkService } from '../data/affiliate-link.service';
+
 declare global {
   interface Window {
     sendToGa: (element_id_index: number) => void;
@@ -27,7 +29,7 @@ export class ArchiveComponent implements OnInit {
 
   sendToGa = window.sendToGa;
 
-  constructor(private meta: MetaService, private modalService: NgbModal) {
+  constructor(private meta: MetaService, private modalService: NgbModal, private affiliateLinkService: AffiliateLinkService) {
     this.meta.updateTitle();
     this.meta.updateMetaInfo("Alle kortingscodes van Q1 2022; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscodes Q1 2022");
   }
@@ -87,7 +89,7 @@ export class ArchiveComponent implements OnInit {
   openNewPageWithCodeDetailModal(codeTableIndex) {
     var url = 'https://www.diski.nl/archief?i=' + encodeURIComponent(codeTableIndex)
     window.open(url, '_blank');
-    location.href = 'https://www.linkmaker.io/PMee1tGDeg';
+    location.href = this.affiliateLinkService.giveAffiliateLink();
   }
 
   openCodeDetailModal(codeTableIndex) {

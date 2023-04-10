@@ -16,6 +16,7 @@ import { ArchiveComponent } from './archive/archive.component';
 import { ContactComponent } from './contact/contact.component';
 import { CodeDetailModalComponent } from './code-detail-modal/code-detail-modal.component';
 import { ClipboardModule } from 'ngx-clipboard';
+import { AffiliateLinkService } from './data/affiliate-link.service';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,10 @@ import { ClipboardModule } from 'ngx-clipboard';
       },
     ]),
   ],
-  providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
+  providers: [
+    {provide: LocationStrategy, useClass: PathLocationStrategy},
+    AffiliateLinkService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
