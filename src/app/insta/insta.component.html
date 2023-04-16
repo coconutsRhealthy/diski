@@ -73,7 +73,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let entry of instaDiscountEntries; let last = last" [ngClass]="{ last : last && tiktokSize }" [ngStyle]="{
+            <tr *ngFor="let entry of instaDiscountEntries" [ngStyle]="{
                   'height.px' : tableRowHeight,
                   'line-height.px' : tableRowLineHeight,
                   'min-height.px' : tableRowMinHeight
@@ -83,7 +83,7 @@
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.code}}</td>
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.percentage}}</td>
             </tr>
-            <tr [ngStyle]="{
+            <tr [ngClass]="{ last : tiktokSize }" [ngStyle]="{
                   'height.px' : tableRowHeight,
                   'line-height.px' : tableRowLineHeight,
                   'min-height.px' : tableRowMinHeight
