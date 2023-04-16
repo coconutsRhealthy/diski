@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ClipboardService } from 'ngx-clipboard';
 
+import { AnalyticsEventService } from '../data/analytics-event.service';
+
 @Component({
   selector: 'app-modal-content',
   templateUrl: './code-detail-modal.component.html',
@@ -13,7 +15,7 @@ export class CodeDetailModalComponent implements OnInit {
   discountPercentage: String;
   codeDate: String;
 
-  constructor(public activeModal: NgbActiveModal, private clipboardService: ClipboardService) {}
+  constructor(public activeModal: NgbActiveModal, private clipboardService: ClipboardService, private analyticsEventService: AnalyticsEventService) {}
 
   ngOnInit(): void {
     this.setCorrectFormatOfCodeDate(this.codeDate);
@@ -78,6 +80,11 @@ export class CodeDetailModalComponent implements OnInit {
     if(!rawDiscountPercentage.includes("€") && !rawDiscountPercentage.includes("vzk")) {
       this.discountPercentage = this.discountPercentage + "%";
     }
+  }
+
+  sendEventToGa(eventName, eventLabel) {
+    var eventLabelToUse = "zz" + eventLabel.toLowerCase();
+    this.analyticsEventService.sendEventToGa(eventName, eventLabelToUse);
   }
 
 }

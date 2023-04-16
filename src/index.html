@@ -40,6 +40,13 @@
       gtag('event', 'CopyCode', {'event_category': 'CopyCode', 'event_label': company});
     }
   </script>
+
+  <script>
+    function sendEventToGa(eventName, eventLabel) {
+      ga('send','event',eventName,eventLabel,eventLabel);
+      gtag('event', eventName, {'event_category': eventName, eventLabel: eventLabel});
+    }
+  </script>
 </head>
 <body>
   <app-root></app-root>

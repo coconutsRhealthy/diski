@@ -9,7 +9,7 @@
     <div class="col-4">Code:</div>
     <div class="col-8">
       {{code}}
-      <button type="button" class="copy-button btn btn-outline-secondary" (click)="copyToClipboard(code)" ngbTooltip="Copied!" triggers="click:blur">
+      <button type="button" class="copy-button btn btn-outline-secondary" (click)="copyToClipboard(code); sendEventToGa('CodeDetailModal', company)" ngbTooltip="Copied!" triggers="click:blur">
         Copy
       </button>
     </div>
