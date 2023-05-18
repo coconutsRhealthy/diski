@@ -1,0 +1,22 @@
+<h1>{{ company }} Discount Codes</h1>
+
+<table class="table table-bordered table-hover">
+  <thead>
+  <tr>
+    <th>Code</th>
+    <th>Discount</th>
+    <th>Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let code of discountCodes">
+    <td>{{ code.code }}</td>
+    <td>{{ code.discount }}%</td>
+    <td>{{ formatDate(code.date) }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<div *ngIf="discountCodes.length === 0">
+  <p>No discount codes available for this company.</p>
+</div>

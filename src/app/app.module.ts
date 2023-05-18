@@ -17,6 +17,10 @@ import { ContactComponent } from './contact/contact.component';
 import { CodeDetailModalComponent } from './code-detail-modal/code-detail-modal.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import { AffiliateLinkService } from './data/affiliate-link.service';
+import { CompanyCodesComponent } from './company-codes/company-codes.component';
+
+import { registerLocaleData } from '@angular/common';
+import localeNl from '@angular/common/locales/nl';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import { AffiliateLinkService } from './data/affiliate-link.service';
     InstaComponent,
     ArchiveComponent,
     ContactComponent,
-    CodeDetailModalComponent
+    CodeDetailModalComponent,
+    CompanyCodesComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +67,10 @@ import { AffiliateLinkService } from './data/affiliate-link.service';
         }
       },
       {
+        path: ':company',
+        component: CompanyCodesComponent
+      },
+      {
         path: '**',
         redirectTo: ''
       },
@@ -73,4 +82,8 @@ import { AffiliateLinkService } from './data/affiliate-link.service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    registerLocaleData(localeNl, 'nl');
+  }
+}
