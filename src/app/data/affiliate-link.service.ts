@@ -5,36 +5,19 @@ import { Injectable } from '@angular/core';
 })
 export class AffiliateLinkService {
 
-  private eligibleCompanies = [
-    'OTTO'
-  ];
-
   private affiliateLinks = {
-    'ARKET': 'https://www.linkmaker.io/q2zzPclJav',
-    'ASOS': 'https://www.linkmaker.io/kPJJ0HwvYo',
-    'C&A': 'https://www.linkmaker.io/q2zzPcl64X',
-    'FOOTLOCKER': 'https://www.linkmaker.io/QPGG1H2kZ9',
-    'MONKI': 'https://www.linkmaker.io/NMooxtRw42',
-    'OMODA': 'https://www.linkmaker.io/6ZVVMFbwPR',
-    'P&C': 'https://www.linkmaker.io/YQBBkteGNR',
-    'PIECES': 'https://www.linkmaker.io/OMlljt9wJp',
-    'SSENSE': 'https://www.linkmaker.io/3ZVV2FBmnr',
-    'VEROMODA': 'https://www.linkmaker.io/xaNN0saRgG',
-    'VILA': 'https://www.linkmaker.io/wpBBncQ5L7',
-    'DESIGUAL': 'https://www.linkmaker.io/kPJJ0HwwMb',
-    'WESTWING': 'https://www.linkmaker.io/GQVV2txx0D',
-    'NIKE': 'https://www.linkmaker.io/q2zzPcllO4',
-    'ONLY': 'https://www.linkmaker.io/7wVVdtZZ04',
-    'COS': 'https://www.linkmaker.io/JrVV6S99QA',
-    'SNIPES': 'https://www.linkmaker.io/ojGGPCeeQq',
-    'OTTO': 'https://www.linkmaker.io/PMee1tG4Ra'
+    'bylashbabe': 'https://bylashbabe.com?sca_ref=3638091.TQRuyJNRG1',
+    'myproteinnl': 'https://www.stylink.it/L3q2QUyG0l',
+    'veromoda': 'https://www.stylink.it/AdZbXhpwmw',
+    'bjornborg': 'https://www.stylink.it/e7pw4T79X9',
+    'hunkemoller': 'https://www.stylink.it/7oZm3T2Y0n',
+    'yesstyle': 'https://www.yesstyle.com/en/home.html?rco=YESGIRL23&utm_term=YESGIRL23&utm_medium=Influencer&utm_source=dynamic&mcg=influencer',
+    'asos': 'https://www.stylink.it/lg3mpUa423',
   };
 
   constructor() { }
 
-  giveAffiliateLink() {
-    const eligibleIndex = Math.floor(Math.random() * this.eligibleCompanies.length);
-    const companyName = this.eligibleCompanies[eligibleIndex];
-    return this.affiliateLinks[companyName];
+  public getAffiliateLink(company: string): string | undefined {
+    return this.affiliateLinks[company];
   }
 }

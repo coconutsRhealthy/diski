@@ -85,10 +85,18 @@ export class DiskiPageComponent implements OnInit {
     }
   }
 
-  openNewPageWithCodeDetailModal(codeTableIndex) {
+  affiliateModalAction(company, codeTableIndex) {
+    if(this.affiliateLinkService.getAffiliateLink(company) !== undefined) {
+      this.openNewPageWithCodeDetailModal(codeTableIndex, this.affiliateLinkService.getAffiliateLink(company));
+    } else {
+      this.openCodeDetailModal(codeTableIndex);
+    }
+  }
+
+  openNewPageWithCodeDetailModal(codeTableIndex, affiliateLink) {
     var url = 'https://www.diski.nl?i=' + encodeURIComponent(codeTableIndex)
     window.open(url, '_blank');
-    location.href = this.affiliateLinkService.giveAffiliateLink();
+    location.href = affiliateLink;
   }
 
   openCodeDetailModal(codeTableIndex) {
