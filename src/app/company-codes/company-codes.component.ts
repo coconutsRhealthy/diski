@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 import { DataDirective } from '../data/data.directive';
+import { MetaService } from '../meta/meta.service';
 
 import { LOCALE_ID } from '@angular/core';
 
@@ -20,11 +21,13 @@ export class CompanyCodesComponent implements OnInit {
   company: string;
   discountCodes: { code: string, discount: string, date: string }[] = [];
 
-  constructor(private route: ActivatedRoute, private datePipe: DatePipe) { }
+  constructor(private route: ActivatedRoute, private datePipe: DatePipe, private meta: MetaService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.company = params.get('company');
+      this.meta.updateTitle("sjaakie! " + this.company);
+      this.meta.updateMetaInfo("Bertus! " + this.company);
       this.extractDiscountCodes(this.company);
     });
   }
@@ -42,8 +45,15 @@ export class CompanyCodesComponent implements OnInit {
   }
 
   formatDate(date: string): string {
-    const formattedDate = new Date(date);
-    //return this.datePipe.transform(formattedDate, 'd MMM');
+    const formattedDate = this.getDateFromDateString(date);
     return this.datePipe.transform(formattedDate, 'd MMM', '', 'nl');
+  }
+
+  getDateFromDateString(dateString) {
+    dateString = dateString + "";
+    var dateStringArray = dateString.split("-");
+    var month = dateStringArray[0];
+    var day = dateStringArray[1];
+    return new Date(2023, month, day);
   }
 }

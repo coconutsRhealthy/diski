@@ -22,6 +22,8 @@ import { CompanyCodesComponent } from './company-codes/company-codes.component';
 import { registerLocaleData } from '@angular/common';
 import localeNl from '@angular/common/locales/nl';
 
+import { CompanyGuard } from './company-codes/company.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +70,8 @@ import localeNl from '@angular/common/locales/nl';
       },
       {
         path: ':company',
-        component: CompanyCodesComponent
+        component: CompanyCodesComponent,
+        canActivate: [CompanyGuard]
       },
       {
         path: '**',
@@ -78,7 +81,8 @@ import localeNl from '@angular/common/locales/nl';
   ],
   providers: [
     {provide: LocationStrategy, useClass: PathLocationStrategy},
-    AffiliateLinkService
+    AffiliateLinkService,
+    CompanyGuard
   ],
   bootstrap: [AppComponent]
 })
