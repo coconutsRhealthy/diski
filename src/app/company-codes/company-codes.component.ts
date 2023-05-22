@@ -10,7 +10,7 @@ import { LOCALE_ID } from '@angular/core';
 @Component({
   selector: 'app-company-codes',
   templateUrl: './company-codes.component.html',
-  styleUrls: ['./company-codes.component.css'],
+  styleUrls: ['./../app.component.css'],
   providers: [
     DatePipe,
     { provide: LOCALE_ID, useValue: 'nl' }, // Set the locale to Dutch
@@ -21,13 +21,16 @@ export class CompanyCodesComponent implements OnInit {
   company: string;
   discountCodes: { code: string, discount: string, date: string }[] = [];
 
+  isMenuCollapsed = true;
+
   constructor(private route: ActivatedRoute, private datePipe: DatePipe, private meta: MetaService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.company = params.get('company');
-      this.meta.updateTitle("sjaakie! " + this.company);
-      this.meta.updateMetaInfo("Bertus! " + this.company);
+      var companyInString = this.capitalizeFirstLetter(this.company);
+      this.meta.updateTitle("Werkende " + companyInString + " kortingscode in mei 2023");
+      this.meta.updateMetaInfo("De nieuwste werkende kortingscode van " + companyInString + "; Bespaar met deze kortingscode op online shoppen bij " + companyInString, "diski.nl", companyInString + ", Kortingscode, Korting");
       this.extractDiscountCodes(this.company);
     });
   }
@@ -55,5 +58,9 @@ export class CompanyCodesComponent implements OnInit {
     var month = dateStringArray[0];
     var day = dateStringArray[1];
     return new Date(2023, month, day);
+  }
+
+  capitalizeFirstLetter(value: string): string {
+    return value.charAt(0).toUpperCase() + value.slice(1);
   }
 }

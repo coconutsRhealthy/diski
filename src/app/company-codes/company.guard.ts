@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 
 @Injectable({ providedIn: 'root' })
 export class CompanyGuard implements CanActivate {
-  private allowedCompanies = ['desenio', 'nakdfashion', 'idealofsweden'];
+  private allowedCompanies = ['desenio', 'nakdfashion', 'idealofsweden', 'bylashbabe'];
 
   constructor(private router: Router) {}
 
@@ -11,11 +11,9 @@ export class CompanyGuard implements CanActivate {
     const company = route.paramMap.get('company');
 
     if (this.allowedCompanies.includes(company)) {
-      return true; // Allow navigation to the component
+      return true;
     } else {
-      //this.router.navigate(['contact']); // Redirect to default route
-      //this.router.navigate(['/']); // Redirect to default route
-      this.router.navigate(['']); // Redirect to default route
+      this.router.navigate(['']);
       return false;
     }
   }
