@@ -55,7 +55,7 @@ export class CompanyCodesComponent implements OnInit {
   getDateFromDateString(dateString) {
     dateString = dateString + "";
     var dateStringArray = dateString.split("-");
-    var month = dateStringArray[0];
+    var month = dateStringArray[0] - 1;
     var day = dateStringArray[1];
     return new Date(2023, month, day);
   }
