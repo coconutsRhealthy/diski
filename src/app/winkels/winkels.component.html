@@ -1,0 +1,6 @@
+<h1>Alle winkels</h1>
+<ul>
+  <li *ngFor="let winkel of winkels">
+    <a [routerLink]="['/', winkel.toLowerCase()]">{{ winkel }}</a>
+  </li>
+</ul>

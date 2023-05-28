@@ -23,6 +23,7 @@ import { registerLocaleData } from '@angular/common';
 import localeNl from '@angular/common/locales/nl';
 
 import { CompanyGuard } from './company-codes/company.guard';
+import { WinkelsComponent } from './winkels/winkels.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CompanyGuard } from './company-codes/company.guard';
     ArchiveComponent,
     ContactComponent,
     CodeDetailModalComponent,
-    CompanyCodesComponent
+    CompanyCodesComponent,
+    WinkelsComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +69,10 @@ import { CompanyGuard } from './company-codes/company.guard';
         data: {
           title: 'Contact'
         }
+      },
+      {
+        path: 'winkels',
+        component: WinkelsComponent
       },
       {
         path: ':company',

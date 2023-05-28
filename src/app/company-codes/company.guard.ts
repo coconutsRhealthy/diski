@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 
+import { DataDirective } from '../data/data.directive';
+
 @Injectable({ providedIn: 'root' })
 export class CompanyGuard implements CanActivate {
-  private allowedCompanies = ['desenio', 'nakdfashion', 'idealofsweden', 'bylashbabe'];
+  private allowedCompanies = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.allowedCompanies = DataDirective.getUniqueWebshops();
+  }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const company = route.paramMap.get('company');

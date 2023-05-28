@@ -45,6 +45,17 @@ export class DataDirective {
     return string.split(subString, index).join(subString).length;
   }
 
+  public static getUniqueWebshops(): string[] {
+    const webshopsSet = new Set<string>();
+
+    this.dataArray.forEach(entry => {
+      const webshop = entry.split(',')[0].trim();
+      webshopsSet.add(webshop);
+    });
+
+    return Array.from(webshopsSet).sort();
+  }
+
   static dataArray = [
     "zalando, ICONIC25, 25, zalando, 05-27",
 
