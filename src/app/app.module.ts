@@ -22,8 +22,8 @@ import { CompanyCodesComponent } from './company-codes/company-codes.component';
 import { registerLocaleData } from '@angular/common';
 import localeNl from '@angular/common/locales/nl';
 
-import { CompanyGuard } from './company-codes/company.guard';
 import { WinkelsComponent } from './winkels/winkels.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { WinkelsComponent } from './winkels/winkels.component';
     ContactComponent,
     CodeDetailModalComponent,
     CompanyCodesComponent,
-    WinkelsComponent
+    WinkelsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -76,19 +77,17 @@ import { WinkelsComponent } from './winkels/winkels.component';
       },
       {
         path: ':company',
-        component: CompanyCodesComponent,
-        canActivate: [CompanyGuard]
+        component: CompanyCodesComponent
       },
       {
         path: '**',
-        redirectTo: ''
+        component: NotFoundComponent
       },
     ]),
   ],
   providers: [
     {provide: LocationStrategy, useClass: PathLocationStrategy},
-    AffiliateLinkService,
-    CompanyGuard
+    AffiliateLinkService
   ],
   bootstrap: [AppComponent]
 })
