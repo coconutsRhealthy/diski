@@ -20,6 +20,11 @@ export class AffiliateLinkService {
     'bodyandfit_nl': 'https://www.bodyandfit.com/nl-nl/bodyfit?tt=11113_12_448474_disbw&r=',
     'westwing': 'https://www.stylink.it/ZqG7gSdn0q',
     'lightinthebox': 'https://www.stylink.it/nkP3nIRNj0',
+    'desenio': 'https://www.desenio.com/?ref=bb-rb7z23',
+    'idealofsweden': 'https://www.idealofsweden.eu/?utm_medium=brand-ambassador&ref=bb-rb7z23',
+    'rihoas': 'https://www.dpbolvw.net/click-100864181-15289205',
+    'zaful': 'https://lt45.net/c/?si=14546&li=1774866&wi=387380&ws=zaful',
+    'superdry': 'https://rkn3.net/c/?si=14965&li=1650750&wi=387380&ws=superdry',
   };
 
   constructor() { }
