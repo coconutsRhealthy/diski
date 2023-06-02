@@ -30,7 +30,7 @@ export class ArchiveComponent implements OnInit {
   sendToGa = window.sendToGa;
 
   constructor(private meta: MetaService, private modalService: NgbModal, private affiliateLinkService: AffiliateLinkService) {
-    this.meta.updateTitle();
+    this.meta.updateTitle("Kortingscode archief diski.nl");
     this.meta.updateMetaInfo("Archief van recente kortingscodes; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, Korting");
   }
 

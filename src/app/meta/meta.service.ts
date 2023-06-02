@@ -1,18 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { filter, map, mergeMap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
 })
 export class MetaService {
-    constructor(
-        private titleService: Title,
-        private meta: Meta,
-        private router: Router,
-        private activatedRoute: ActivatedRoute
-    ) { }
+    constructor(private titleService: Title, private meta: Meta) { }
 
     updateMetaInfo(content, author, category) {
         this.meta.updateTag({ name: 'description', content: content });
@@ -20,22 +13,21 @@ export class MetaService {
         this.meta.updateTag({ name: 'keywords', content: category });
     }
 
-    updateTitle(title?: string) {
-        if (!title) {
-            this.router.events
-                .pipe(
-                    filter((event) => event instanceof NavigationEnd),
-                    map(() => this.activatedRoute),
-                    map((route) => {
-                        while (route.firstChild) { route = route.firstChild; }
-                        return route;
-                    }),
-                    filter((route) => route.outlet === 'primary'),
-                    mergeMap((route) => route.data)).subscribe((event) => {
-                        this.titleService.setTitle(event['title']);
-                    });
-        } else {
-            this.titleService.setTitle(title);
-        }
+    updateTitle(title: string) {
+        this.titleService.setTitle(title);
+    }
+
+    getDateString() {
+      const currentDate = new Date();
+      const monthNames = [
+        'januari', 'februari', 'maart', 'april', 'mei', 'juni',
+        'juli', 'augustus', 'september', 'oktober', 'november', 'december'
+      ];
+
+      const month = monthNames[currentDate.getMonth()];
+      const year = currentDate.getFullYear();
+
+      const dateString = month + " " + year;
+      return dateString;
     }
 }

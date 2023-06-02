@@ -7,6 +7,8 @@ import { MetaService } from '../meta/meta.service';
 
 import { LOCALE_ID } from '@angular/core';
 
+import { WebshopNameService } from '../data/webshop-name.service';
+
 @Component({
   selector: 'app-company-codes',
   templateUrl: './company-codes.component.html',
@@ -19,18 +21,20 @@ import { LOCALE_ID } from '@angular/core';
 export class CompanyCodesComponent implements OnInit {
 
   company: string;
+  webshopName: string;
   discountCodes: { code: string, discount: string, date: string }[] = [];
 
   isMenuCollapsed = true;
 
-  constructor(private route: ActivatedRoute, private datePipe: DatePipe, private meta: MetaService) { }
+  constructor(private route: ActivatedRoute, private datePipe: DatePipe, private meta: MetaService, private webshopNameService: WebshopNameService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.company = params.get('company');
-      var companyInString = this.capitalizeFirstLetter(this.company);
-      this.meta.updateTitle("Werkende " + companyInString + " kortingscode in juni 2023");
-      this.meta.updateMetaInfo("De nieuwste werkende kortingscode van " + companyInString + "; Bespaar met deze kortingscode op online shoppen bij " + companyInString, "diski.nl", companyInString + ", Kortingscode, Korting");
+      this.webshopName = this.getWebshopName(this.company);
+      var monthYear = this.meta.getDateString();
+      this.meta.updateTitle("Werkende " + this.webshopName + " kortingscode in " + monthYear);
+      this.meta.updateMetaInfo("De nieuwste werkende kortingscode van " + this.webshopName + " in " + monthYear + "; Bespaar met deze kortingscode op online shoppen bij " + this.webshopName, "diski.nl", this.webshopName + ", Kortingscode, Korting");
       this.extractDiscountCodes(this.company);
     });
   }
@@ -60,7 +64,13 @@ export class CompanyCodesComponent implements OnInit {
     return new Date(2023, month, day);
   }
 
-  capitalizeFirstLetter(value: string): string {
-    return value.charAt(0).toUpperCase() + value.slice(1);
+  getWebshopName(companyName: string): string {
+    var webshopName = this.webshopNameService.getWebshopName(companyName);
+
+    if(webshopName === undefined) {
+      webshopName = companyName.charAt(0).toUpperCase() + companyName.slice(1);
+    }
+
+    return webshopName;
   }
 }

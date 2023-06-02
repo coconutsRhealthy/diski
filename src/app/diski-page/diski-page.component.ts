@@ -29,8 +29,9 @@ export class DiskiPageComponent implements OnInit {
   sendToGa = window.sendToGa;
 
   constructor(private meta: MetaService, private modalService: NgbModal, private affiliateLinkService: AffiliateLinkService) {
-    this.meta.updateTitle();
-    this.meta.updateMetaInfo("De nieuwste werkende kortingscodes van een groot aantal webshops; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, Korting");
+    var monthYear = this.meta.getDateString();
+    this.meta.updateTitle("Diski | Online shoppen met kortingscodes in " + monthYear);
+    this.meta.updateMetaInfo("De nieuwste werkende kortingscodes van een groot aantal webshops; Bespaar op online shoppen in " + monthYear + " via diski.nl", "diski.nl", "Kortingscode, Korting");
   }
 
   ngOnInit(): void {

@@ -17,6 +17,7 @@ import { ContactComponent } from './contact/contact.component';
 import { CodeDetailModalComponent } from './code-detail-modal/code-detail-modal.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import { AffiliateLinkService } from './data/affiliate-link.service';
+import { WebshopNameService } from './data/webshop-name.service';
 import { CompanyCodesComponent } from './company-codes/company-codes.component';
 
 import { registerLocaleData } from '@angular/common';
@@ -50,26 +51,17 @@ import { NotFoundComponent } from './not-found/not-found.component';
     RouterModule.forRoot([
       {
         path: '',
-        component: DiskiPageComponent,
-        data: {
-          title: 'Diski | Online shoppen met kortingscodes'
-        }
+        component: DiskiPageComponent
       },
       {path: 'input', component: InputComponent},
       {path: 'insta', component: InstaComponent},
       {
         path: 'archief',
-        component: ArchiveComponent,
-        data: {
-          title: 'Kortingscode archief'
-        }
+        component: ArchiveComponent
       },
       {
         path: 'contact',
-        component: ContactComponent,
-        data: {
-          title: 'Diski.nl Contact'
-        }
+        component: ContactComponent
       },
       {
         path: 'winkels',
@@ -87,7 +79,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   providers: [
     {provide: LocationStrategy, useClass: PathLocationStrategy},
-    AffiliateLinkService
+    AffiliateLinkService,
+    WebshopNameService
   ],
   bootstrap: [AppComponent]
 })

@@ -23,8 +23,9 @@ export class WinkelsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.meta.updateTitle("Alle winkels met kortingscodes in juni 2023");
-    this.meta.updateMetaInfo("Overzicht van webshops met werkende kortingscodes in juni 2023; Bespaar met deze kortingscodes op online shoppen", "diski.nl", "Kortingscode, Korting");
+    var monthYear = this.meta.getDateString();
+    this.meta.updateTitle("Alle winkels met kortingscodes in " + monthYear);
+    this.meta.updateMetaInfo("Overzicht van webshops met werkende kortingscodes in " + monthYear + "; Bespaar met deze kortingscodes op online shoppen via diski.nl", "diski.nl", "Kortingscode, Korting");
   }
 
   groupWinkelsByLetter(winkels: string[]): { letter: string, winkels: string[] }[] {
