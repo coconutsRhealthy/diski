@@ -6,11 +6,26 @@ import { Injectable } from '@angular/core';
 export class WebshopNameService {
 
   private webshopNames = {
-    'bylashbabe': 'Bylashbabe',
-    'myproteinnl': 'MyProtein',
-    'veromoda': 'Veromoda',
-    'bjornborg': 'Bjorn Borg',
-    'hunkemoller': 'Hunkemoller'
+    'airup': 'air up',
+    'bathandbodyworksnl': 'Bath and Body Works',
+    'bjornborg': 'Björn Borg',
+    'bodyandfit.com': 'Body en Fit',
+    'christineleduc': 'Christine le Duc',
+    'danielwellington': 'Daniel Wellington',
+    'emmasleepnl': 'Emma Sleep',
+    'ginatricot': 'Gina Tricot',
+    'gutsgusto': 'Guts en Gusto',
+    'hellofresh.nl': 'HelloFresh',
+    'hm': 'H&M',
+    'hunkemoller': 'Hunkemöller',
+    'icaniwill': 'ICANIWILL',
+    'idealofsweden': 'iDeal of Sweden',
+    'leolive': 'Le Olive',
+    'myproteinnl': 'Myprotein',
+    'nakdfashion': 'NAKD',
+    'stevemaddeneu': 'Steve Madden',
+    'wefashionstories': 'WE Fashion',
+    'zonnebrillen.com': 'Zonnebrillen.com',
   };
 
   constructor() { }
