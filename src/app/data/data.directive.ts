@@ -469,7 +469,7 @@ export class DataDirective {
     "safira, BB20MAY, 20, dilara.muz99, 05-12",
     "bodyandfit_nl, FLEURGRAAF, 10, fleuerr, 05-12",
     "vitakruid, Crista10, 10, keepingupwith.cris, 05-12",
-    "andotherstories(jurk), DRESSES20, 20, andotherstories, 05-12",
+    "andotherstories, DRESSES20, 20, andotherstories, 05-12",
     "only, JCD12, 12, jamilya.2009.official, 05-12",
   ];
 }

@@ -31,7 +31,7 @@ export class ArchiveComponent implements OnInit {
 
   constructor(private meta: MetaService, private modalService: NgbModal, private affiliateLinkService: AffiliateLinkService) {
     this.meta.updateTitle();
-    this.meta.updateMetaInfo("Alle kortingscodes van Q1 2022; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscodes Q1 2022");
+    this.meta.updateMetaInfo("Archief van recente kortingscodes; Bespaar op online shoppen via diski.nl", "diski.nl", "Kortingscode, Korting");
   }
 
   ngOnInit(): void {

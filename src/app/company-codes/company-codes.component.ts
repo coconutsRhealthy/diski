@@ -29,7 +29,7 @@ export class CompanyCodesComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.company = params.get('company');
       var companyInString = this.capitalizeFirstLetter(this.company);
-      this.meta.updateTitle("Werkende " + companyInString + " kortingscode in mei 2023");
+      this.meta.updateTitle("Werkende " + companyInString + " kortingscode in juni 2023");
       this.meta.updateMetaInfo("De nieuwste werkende kortingscode van " + companyInString + "; Bespaar met deze kortingscode op online shoppen bij " + companyInString, "diski.nl", companyInString + ", Kortingscode, Korting");
       this.extractDiscountCodes(this.company);
     });

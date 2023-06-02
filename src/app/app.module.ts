@@ -68,7 +68,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
         path: 'contact',
         component: ContactComponent,
         data: {
-          title: 'Contact'
+          title: 'Diski.nl Contact'
         }
       },
       {
