@@ -31,17 +31,23 @@ export class CompanyCodesComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.company = params.get('company');
-      this.webshopName = this.getWebshopName(this.company);
-      var monthYear = this.meta.getDateString();
-      this.meta.updateTitle("Werkende " + this.webshopName + " kortingscode in " + monthYear);
-      this.meta.updateMetaInfo("De nieuwste werkende kortingscode van " + this.webshopName + " in " + monthYear + "; Bespaar met deze kortingscode op online shoppen bij " + this.webshopName, "diski.nl", this.webshopName + ", Kortingscode, Korting");
       this.extractDiscountCodes(this.company);
+
+      if(this.discountCodes.length > 0) {
+        this.webshopName = this.getWebshopName(this.company);
+        var monthYear = this.meta.getDateString();
+        this.meta.updateTitle("Werkende " + this.webshopName + " kortingscode in " + monthYear);
+        this.meta.updateMetaInfo("De nieuwste werkende kortingscode van " + this.webshopName + " in " + monthYear + "; Bespaar met deze kortingscode op online shoppen bij " + this.webshopName, "diski.nl", this.webshopName + ", Kortingscode, Korting");
+      } else {
+        this.meta.updateTitle("404 Deze pagina is niet gevonden op diski.nl");
+        this.meta.updateMetaInfo("404 Deze pagina bestaat niet op diski.nl", "diski.nl", "404");
+      }
     });
   }
 
   private extractDiscountCodes(company: string): void {
     this.discountCodes = DataDirective.getDataArray()
-      .filter(line => line.startsWith(company))
+      .filter(line => line.startsWith(company + ', '))
       .map(line => {
         const elements = line.split(', ');
         const code = elements[1];
