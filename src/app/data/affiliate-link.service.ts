@@ -25,6 +25,9 @@ export class AffiliateLinkService {
     'rihoas': 'https://www.dpbolvw.net/click-100864181-15289205',
     'zaful': 'https://lt45.net/c/?si=14546&li=1774866&wi=387380&ws=zaful',
     'superdry': 'https://rkn3.net/c/?si=14965&li=1650750&wi=387380&ws=superdry',
+    'geurwolkje': 'https://tc.tradetracker.net/?c=35006&m=12&a=448474&r=disgw&u=%2F',
+    'aliexpress': 'https://tc.tradetracker.net/?c=15640&m=12&a=448474&r=disax&u=%2F',
+    'adidas.nl': 'https://tc.tradetracker.net/?c=31384&m=1634602&a=448474&r=disad&u=',
   };
 
   constructor() { }
