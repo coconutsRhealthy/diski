@@ -28,6 +28,9 @@ export class AffiliateLinkService {
     'geurwolkje': 'https://tc.tradetracker.net/?c=35006&m=12&a=448474&r=disgw&u=%2F',
     'aliexpress': 'https://tc.tradetracker.net/?c=15640&m=12&a=448474&r=disax&u=%2F',
     'adidas.nl': 'https://tc.tradetracker.net/?c=31384&m=1634602&a=448474&r=disad&u=',
+    'nanabeebi': 'https://tc.tradetracker.net/?c=30770&m=12&a=448474&r=disna&u=%2F',
+    'farfetch': 'https://tc.tradetracker.net/?c=34152&m=12&a=448474&r=disfa&u=%2F',
+    'burga': 'https://jdt8.net/c/?si=17538&li=1759473&wi=387380&ws=burga',
   };
 
   constructor() { }
