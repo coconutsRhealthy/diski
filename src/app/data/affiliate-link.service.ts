@@ -13,14 +13,14 @@ export class AffiliateLinkService {
     'hunkemoller': 'https://www.stylink.it/7oZm3T2Y0n',
     'yesstyle': 'https://www.yesstyle.com/en/home.html?rco=YESGIRL23&utm_term=YESGIRL23&utm_medium=Influencer&utm_source=dynamic&mcg=influencer',
     'asos': 'https://www.stylink.it/lg3mpUa423',
+    'asos(outlet)': 'https://www.stylink.it/lg3mpUa423',
     'stevemaddeneu': 'https://www.stylink.it/AdZbXh7gYM',
     'lookfantastic': 'https://www.stylink.it/b46wYiyYx3',
     'hm': 'https://www.stylink.it/jnNwDTowPY',
     'bodyandfit.com': 'https://www.bodyandfit.com/nl-nl/bodyfit?tt=11113_12_448474_disbw&r=',
     'westwing': 'https://www.stylink.it/ZqG7gSdn0q',
     'lightinthebox': 'https://www.stylink.it/nkP3nIRNj0',
-    'desenio': 'https://www.desenio.com/?ref=bb-rb7z23',
-    'idealofsweden': 'https://www.idealofsweden.eu/?utm_medium=brand-ambassador&ref=bb-dwe1x2',
+    'idealofsweden': 'https://www.idealofsweden.eu/?utm_medium=brand-ambassador&ref=bb-m47m59',
     'rihoas': 'https://www.dpbolvw.net/click-100864181-15289205',
     'zaful': 'https://lt45.net/c/?si=14546&li=1774866&wi=387380&ws=zaful',
     'superdry': 'https://rkn3.net/c/?si=14965&li=1650750&wi=387380&ws=superdry',
@@ -30,6 +30,9 @@ export class AffiliateLinkService {
     'nanabeebi': 'https://tc.tradetracker.net/?c=30770&m=12&a=448474&r=disna&u=%2F',
     'farfetch': 'https://tc.tradetracker.net/?c=34152&m=12&a=448474&r=disfa&u=%2F',
     'burga': 'https://jdt8.net/c/?si=17538&li=1759473&wi=387380&ws=burga',
+    'reginajewelry': 'www.reginajewelry.co/?ref=bb-jezj8p',
+    'only': 'https://www.stylink.it/5xZndfMoYe',
+    'nike': 'https://www.stylink.it/vR0jnhYnlR',
   };
 
   constructor() { }

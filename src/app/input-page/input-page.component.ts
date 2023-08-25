@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
@@ -11,7 +11,7 @@ import { DataDirective } from '../data/data.directive';
   templateUrl: './input-page.component.html',
   styleUrls: ['./input-page.component.css']
 })
-export class InputComponent {
+export class InputComponent implements OnInit {
 
   newInput = [];
   existingInput = [];
@@ -19,6 +19,18 @@ export class InputComponent {
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
 
+  }
+
+  ngOnInit(): void {
+    window.addEventListener('beforeunload', this.beforeUnloadHandler);
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('beforeunload', this.beforeUnloadHandler);
+  }
+
+  beforeUnloadHandler(event: BeforeUnloadEvent): void {
+    event.returnValue = 'Are you sure you want to leave? Your changes may not be saved.';
   }
 
   profileForm = this.fb.group({
