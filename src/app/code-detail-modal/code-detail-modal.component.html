@@ -28,4 +28,9 @@
   <div *ngIf="company === 'ADIDAS.NL'" class="modal-row row">
     <div class="col-12" style="color: blue;">Code geldig op geselecteerde producten. Zie <a href="https://www.adidas.nl/selected_items" target="_blank" style="text-decoration: underline;">hier</a></div>
   </div>
+  <div *ngIf="company.startsWith('TEMU')" class="modal-row row">
+    <div class="col-12" style="color: blue;">
+      Code te gebruiken in de Temu app met een nieuwe account. Download de app <a href="https://temu.to/m/u0p32ew176i" target="_blank" style="text-decoration: underline;">hier</a>
+    </div>
+  </div>
 </div>

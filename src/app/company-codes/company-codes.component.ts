@@ -55,6 +55,10 @@ export class CompanyCodesComponent implements OnInit {
         const date = elements[elements.length - 1];
         return { code, discount, date };
       });
+
+    if (company === 'desenio' || company === 'bodyandfit.com') {
+      this.discountCodes.shift();
+    }
   }
 
   formatDate(date: string): string {
