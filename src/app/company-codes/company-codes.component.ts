@@ -8,6 +8,7 @@ import { MetaService } from '../meta/meta.service';
 import { LOCALE_ID } from '@angular/core';
 
 import { WebshopNameService } from '../data/webshop-name.service';
+import { CompanySeoTextService } from '../data/company-seo-text.service';
 
 @Component({
   selector: 'app-company-codes',
@@ -22,11 +23,13 @@ export class CompanyCodesComponent implements OnInit {
 
   company: string;
   webshopName: string;
+  companySeoText: string;
   discountCodes: { code: string, discount: string, date: string }[] = [];
 
   isMenuCollapsed = true;
 
-  constructor(private route: ActivatedRoute, private datePipe: DatePipe, private meta: MetaService, private webshopNameService: WebshopNameService) { }
+  constructor(private route: ActivatedRoute, private datePipe: DatePipe, private meta: MetaService,
+      private webshopNameService: WebshopNameService, private companySeoTextService: CompanySeoTextService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -35,6 +38,7 @@ export class CompanyCodesComponent implements OnInit {
 
       if(this.discountCodes.length > 0) {
         this.webshopName = this.getWebshopName(this.company);
+        this.companySeoText = this.companySeoTextService.getCompanySeoText(this.company);
         var monthYear = this.meta.getDateString();
         this.meta.updateTitle("Werkende " + this.webshopName + " kortingscode in " + monthYear);
         this.meta.updateMetaInfo("De nieuwste werkende kortingscode van " + this.webshopName + " in " + monthYear + "; Bespaar met deze kortingscode op online shoppen bij " + this.webshopName, "diski.nl", this.webshopName + ", Kortingscode, Korting");

@@ -18,6 +18,7 @@ import { CodeDetailModalComponent } from './code-detail-modal/code-detail-modal.
 import { ClipboardModule } from 'ngx-clipboard';
 import { AffiliateLinkService } from './data/affiliate-link.service';
 import { WebshopNameService } from './data/webshop-name.service';
+import { CompanySeoTextService } from './data/company-seo-text.service';
 import { CompanyCodesComponent } from './company-codes/company-codes.component';
 
 import { registerLocaleData } from '@angular/common';
@@ -80,7 +81,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
   providers: [
     {provide: LocationStrategy, useClass: PathLocationStrategy},
     AffiliateLinkService,
-    WebshopNameService
+    WebshopNameService,
+    CompanySeoTextService
   ],
   bootstrap: [AppComponent]
 })

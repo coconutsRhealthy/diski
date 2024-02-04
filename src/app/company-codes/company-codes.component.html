@@ -57,6 +57,10 @@
         <p>No discount codes available for this company.</p>
       </div>
 
+      <div *ngIf="companySeoText !== undefined">
+        <p [innerHTML]="companySeoText"></p>
+      </div>
+
       <div class="footer row">
         <div class="col-sm-12 text-center">
           <a href="https://www.instagram.com/wiegeeftkorting" onclick="ga('send', 'event', 'Social', 'insta', 'insta_bottom');">
