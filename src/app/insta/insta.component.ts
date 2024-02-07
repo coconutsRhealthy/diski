@@ -126,8 +126,9 @@ export class InstaComponent {
     dateString = dateString + "";
     var dateStringArray = dateString.split("-");
     var month = dateStringArray[0];
+    month = month - 1;
     var day = dateStringArray[1];
-    return new Date(2023, month, day);
+    return new Date(new Date().getFullYear(), month, day);
   }
 
   getCompanyFromBaseInputLine(baseInputLine) {
