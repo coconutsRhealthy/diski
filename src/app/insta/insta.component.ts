@@ -35,6 +35,20 @@ export class InstaComponent {
 
   aspectRatio = "-1";
 
+  rowStyles = {
+    'height.px': this.tableRowHeight,
+    'line-height.px': this.tableRowLineHeight,
+    'min-height.px': this.tableRowMinHeight,
+    'border-color': this.tableLineAndFontColor,
+    'font-size.px': 40,
+    'padding-left': this.tablePaddingLeft,
+    'padding-right': this.tablePaddingRight
+  };
+
+  showTheFloorIsYoursLines = false;
+
+  theFloorIsYoursValue = "Dummy thefloorisyours value";
+
   constructor() { }
 
   setTableBackgroundColour(hex) {
@@ -160,5 +174,9 @@ export class InstaComponent {
           firstBy("company")
           .thenBy("tracker", "desc")
       );
+  }
+
+  toggleTheFloorIsYoursLines() {
+    this.showTheFloorIsYoursLines = !this.showTheFloorIsYoursLines;
   }
 }

@@ -44,6 +44,12 @@
           <div>
             <button class="small-button" type="button" (click)="sortTable()">Sorteer</button>
           </div>
+          <div>
+            <button class="small-button" type="button" (click)="toggleTheFloorIsYoursLines()">TheFloorIsYours</button>
+          </div>
+          <div *ngIf="showTheFloorIsYoursLines">
+            <input type="text" [(ngModel)]="theFloorIsYoursValue">
+          </div>
         </div>
       </div>
 
@@ -73,21 +79,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let entry of instaDiscountEntries" [ngStyle]="{
-                  'height.px' : tableRowHeight,
-                  'line-height.px' : tableRowLineHeight,
-                  'min-height.px' : tableRowMinHeight
-                  }">
+            <tr *ngFor="let entry of instaDiscountEntries" [ngStyle]="rowStyles">
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-left' : tablePaddingLeft }"></td>
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{entry.company}}</td>
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.code}}</td>
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.percentage}}</td>
             </tr>
-            <tr [ngClass]="{ last : tiktokSize }" [ngStyle]="{
-                  'height.px' : tableRowHeight,
-                  'line-height.px' : tableRowLineHeight,
-                  'min-height.px' : tableRowMinHeight
-                  }">
+            <tr *ngIf="showTheFloorIsYoursLines" class="no-counter" [ngStyle]="rowStyles">
+              <td colspan="4" [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight, 'text-align' : 'center' }">Wil je iets kwijt hieronder? Mail naar thefloorisyours@outlook.com (max 80 char)</td>
+            </tr>
+            <tr *ngIf="showTheFloorIsYoursLines" class="no-counter" [ngStyle]="rowStyles">
+              <td colspan="4" [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight, 'text-align' : 'center' }">{{theFloorIsYoursValue}}</td>
+            </tr>
+            <tr class="no-counter" [ngClass]="{ last : tiktokSize }" [ngStyle]="rowStyles">
               <td colspan="4" [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight, 'text-align' : 'center' }">google 'diski kortingscode' voor meer codes</td>
             </tr>
           </tbody>
