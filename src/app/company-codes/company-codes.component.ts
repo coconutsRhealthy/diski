@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 import { DataDirective } from '../data/data.directive';
+import { ArchiveDataDirective } from '../data/archivedata.directive';
 import { MetaService } from '../meta/meta.service';
 
 import { LOCALE_ID } from '@angular/core';
@@ -53,7 +54,11 @@ export class CompanyCodesComponent implements OnInit {
   }
 
   private extractDiscountCodes(company: string): void {
-    this.discountCodes = DataDirective.getDataArray()
+    var recentDiscountCodes = DataDirective.getDataArray();
+    var archiveDiscountCodes = ArchiveDataDirective.getDataArrayArchive();
+    var allDiscountCodes = recentDiscountCodes.concat(archiveDiscountCodes);
+
+    this.discountCodes = allDiscountCodes
       .filter(line => line.startsWith(company + ', '))
       .map(line => {
         const elements = line.split(', ');

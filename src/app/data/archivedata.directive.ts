@@ -31,6 +31,17 @@ export class ArchiveDataDirective {
     return DataDirective.getPosition(string, subString, index);
   }
 
+  public static getUniqueWebshops(): string[] {
+    const webshopsSet = new Set<string>();
+
+    this.dataArrayArchive.forEach(entry => {
+      const webshop = entry.split(',')[0].trim();
+      webshopsSet.add(webshop);
+    });
+
+    return Array.from(webshopsSet).sort();
+  }
+
   static dataArrayArchive = [
     "shein, 23farah15, 15, farah_dubois, 01-15",
     "loavies, FAVES-SANNE, 15, sannekuur, 01-15",

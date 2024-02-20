@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { DataDirective } from '../data/data.directive';
 
+import { ArchiveDataDirective } from '../data/archivedata.directive';
+
 import { MetaService } from '../meta/meta.service';
 
 @Component({
@@ -11,15 +13,20 @@ import { MetaService } from '../meta/meta.service';
 })
 export class WinkelsComponent implements OnInit {
 
-  winkels: string[];
-
   groupedWinkels: { letter: string, winkels: string[] }[];
 
   isMenuCollapsed = true;
 
   constructor(private meta: MetaService) {
-    this.winkels = DataDirective.getUniqueWebshops();
-    this.groupedWinkels = this.groupWinkelsByLetter(this.winkels);
+    var winkels = DataDirective.getUniqueWebshops();
+    var archiveWinkels = ArchiveDataDirective.getUniqueWebshops();
+    var combinedWinkels = winkels.concat(archiveWinkels);
+
+    winkels = combinedWinkels.filter((item, index) => {
+        return combinedWinkels.indexOf(item) === index;
+    });
+
+    this.groupedWinkels = this.groupWinkelsByLetter(winkels);
   }
 
   ngOnInit(): void {
