@@ -22,7 +22,12 @@ export class WinkelsComponent implements OnInit {
     var archiveWinkels = ArchiveDataDirective.getUniqueWebshops();
     var combinedWinkels = winkels.concat(archiveWinkels);
 
+    var webshopsWithoutBrackets = combinedWinkels.filter(item => !item.includes('(') && !item.includes(')'));
+
     winkels = combinedWinkels.filter((item, index) => {
+        if (item.includes('(') || item.includes(')')) {
+            return !webshopsWithoutBrackets.includes(item.split(' ')[0]);
+        }
         return combinedWinkels.indexOf(item) === index;
     });
 
