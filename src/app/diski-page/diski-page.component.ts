@@ -45,7 +45,14 @@ export class DiskiPageComponent implements OnInit {
           { },
           { },
           { },
-          { }
+          {
+            render: function(data, type, row) {
+              if (type === 'display') {
+                return new Date("2024-" + data).toLocaleDateString('nl-NL', { day: '2-digit', month: 'short' });
+              }
+              return data;
+            }
+          }
       ],
       order: [],
       language: {

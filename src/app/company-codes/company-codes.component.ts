@@ -6,6 +6,7 @@ import { DataDirective } from '../data/data.directive';
 import { MetaService } from '../meta/meta.service';
 
 import { LOCALE_ID } from '@angular/core';
+import { ElementRef } from '@angular/core';
 
 import { WebshopNameService } from '../data/webshop-name.service';
 import { CompanySeoTextService } from '../data/company-seo-text.service';
@@ -29,7 +30,8 @@ export class CompanyCodesComponent implements OnInit {
   isMenuCollapsed = true;
 
   constructor(private route: ActivatedRoute, private datePipe: DatePipe, private meta: MetaService,
-      private webshopNameService: WebshopNameService, private companySeoTextService: CompanySeoTextService) { }
+      private webshopNameService: WebshopNameService, private companySeoTextService: CompanySeoTextService,
+      private elementRef: ElementRef) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -47,6 +49,7 @@ export class CompanyCodesComponent implements OnInit {
         this.meta.updateMetaInfo("404 Deze pagina bestaat niet op diski.nl", "diski.nl", "404");
       }
     });
+    this.elementRef.nativeElement.scrollTop = 0;
   }
 
   private extractDiscountCodes(company: string): void {
