@@ -95,4 +95,14 @@ export class CompanyCodesComponent implements OnInit {
 
     return webshopName;
   }
+
+  shouldDisplayPercent(discount) {
+    var shouldDisplayPercent = false;
+
+    if(isFinite(discount) && discount.indexOf('€') === -1) {
+      shouldDisplayPercent = true;
+    }
+
+    return shouldDisplayPercent;
+  }
 }
