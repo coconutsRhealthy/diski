@@ -1,0 +1,8 @@
+.hidden-cell {
+  display: none;
+}
+
+.banner-table-cell {
+  text-align: center;
+  background-color: rgb(243, 243, 243);
+}
