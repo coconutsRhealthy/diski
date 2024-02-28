@@ -17,7 +17,7 @@ declare global {
 @Component({
   selector: 'app-diski-page',
   templateUrl: './diski-page.component.html',
-  styleUrls: ['./diski-page.component.css', './../app.component.css']
+  styleUrls: ['./../app.component.css']
 })
 export class DiskiPageComponent implements OnInit {
   dtOptions: DataTables.Settings = {};

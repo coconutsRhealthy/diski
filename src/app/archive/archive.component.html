@@ -30,6 +30,21 @@
 
     <h1>Archief recente kortingscodes</h1>
 
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <div class="social-banner alert alert-success" role="alert">
+          Volg mij op <a href="https://www.instagram.com/wiegeeftkorting/" onclick="ga('send', 'event', 'Social', 'insta', 'insta_top'); gtag('event', 'insta', {'event_category': 'Social', 'event_label': 'insta_top'});">insta</a> en
+          <a href="https://www.tiktok.com/@wiegeeftkorting2" onclick="ga('send', 'event', 'Social', 'tiktok', 'tiktok_top'); gtag('event', 'tiktok', {'event_category': 'Social', 'event_label': 'tiktok_top'});">tiktok</a> voor code updates
+        </div>
+
+        <div class="social-banner alert alert-success" role="alert">
+          €100 shoptegoed en 30% korting bij Temu, klik <a href="https://temu.to/m/u0p32ew176i" target="_blank" onclick="gtag('event', 'temu', {'event_category': 'Temu', 'event_label': 'try_temu'});">hier</a>
+        </div>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+
     <div id="diski-table" class="row">
       <div class="col-sm-1"></div>
       <div class="col-sm-10">
@@ -43,12 +58,20 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let korting of allKorting; let i=index">
-            <td id="companyRow{{i}}">{{ korting.company }}</td>
-            <td><button class="diski-table-button btn btn-outline-secondary" (click)="sendToGa(i); affiliateModalAction(korting.company, i)">pak code</button></td>
-            <td>{{ korting.percentage }}</td>
-            <td>{{ korting.date }}</td>
-          </tr>
+            <ng-container *ngFor="let korting of allKorting; let i=index">
+              <tr>
+                <td id="companyRow{{i}}">{{ korting.company }}</td>
+                <td><button class="diski-table-button btn btn-outline-secondary" (click)="sendToGa(i); affiliateModalAction(korting.company, i)">pak code</button></td>
+                <td>{{ korting.percentage }}</td>
+                <td>{{ korting.date }}</td>
+              </tr>
+              <tr *ngIf="i === 4">
+                <td class="banner-table-cell" colspan="4">Bespaar ruim €500 per jaar met de slimme financiële app <a href="https://woolsocks.uinterbox.com/tracking/clk?act=20489&gel=148478&pub=30197&org=3409" target="_blank" onclick="gtag('event', 'woolsocks_home', {'event_category': 'Woolsocks_Home', 'event_label': 'woolsocks_home1'})" style="text-decoration: underline;">Woolsocks</a></td>
+                <td class="hidden-cell"></td>
+                <td class="hidden-cell">{{ korting.percentage }}</td>
+                <td class="hidden-cell">{{ korting.date }}</td>
+              </tr>
+            </ng-container>
           </tbody>
         </table>
       </div>

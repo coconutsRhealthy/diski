@@ -66,8 +66,9 @@ h3 {
 }
 
 .modal-row {
-  height: 35px;
   font-size: 14px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 .copy-button {
@@ -89,6 +90,15 @@ h3 {
 
 .copy-button:active {
   background-color: #7CB342;
+}
+
+.hidden-cell {
+  display: none;
+}
+
+.banner-table-cell {
+  text-align: center;
+  background-color: rgb(243, 243, 243);
 }
 
 @media (max-width: 767px) {
