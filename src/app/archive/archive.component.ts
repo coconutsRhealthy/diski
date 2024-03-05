@@ -10,7 +10,7 @@ import { AffiliateLinkService } from '../data/affiliate-link.service';
 
 declare global {
   interface Window {
-    sendToGa: (element_id_index: number) => void;
+    sendCopyCodeToGa: (element_id_index: number) => void;
   }
 }
 
@@ -27,7 +27,7 @@ export class ArchiveComponent implements OnInit {
 
   allKorting = [];
 
-  sendToGa = window.sendToGa;
+  sendCopyCodeToGa = window.sendCopyCodeToGa;
 
   constructor(private meta: MetaService, private modalService: NgbModal, private affiliateLinkService: AffiliateLinkService) {
     this.meta.updateTitle("Kortingscode archief diski.nl");

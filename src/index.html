@@ -10,42 +10,29 @@
   <meta name="e4af5b949117dd3" content="dd848d6302d8480338a7e06729c50af1" />
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!--<script>-->
-      <!--(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){-->
-      <!--(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),-->
-      <!--m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)-->
-      <!--})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');-->
 
-      <!--ga('create', 'UA-104362522-1', 'auto');-->
-      <!--ga('send', 'pageview');-->
-  <!--</script>-->
-
-
-  <!--&lt;!&ndash; Google tag (gtag.js) &ndash;&gt;-->
+  <!-- Google tag (gtag.js) -->
   <!--<script async src="https://www.googletagmanager.com/gtag/js?id=G-DVP906XC65"></script>-->
   <!--<script>-->
     <!--window.dataLayer = window.dataLayer || [];-->
     <!--function gtag(){dataLayer.push(arguments);}-->
     <!--gtag('js', new Date());-->
-  <!---->
+
     <!--gtag('config', 'G-DVP906XC65');-->
   <!--</script>-->
 
-
   <script>
-    function sendToGa(element_id_index) {
+    function sendCopyCodeToGa(element_id_index) {
       var company = document.getElementById('companyRow' + element_id_index).textContent;
       if(company === undefined) {
         company = "unknown";
       }
-      ga('send','event','CopyCode',company ,company);
       gtag('event', 'CopyCode', {'event_category': 'CopyCode', 'event_label': company});
     }
   </script>
 
   <script>
     function sendEventToGa(eventName, eventLabel) {
-      ga('send','event',eventName,eventLabel,eventLabel);
       gtag('event', eventName, {'event_category': eventName, eventLabel: eventLabel});
     }
   </script>

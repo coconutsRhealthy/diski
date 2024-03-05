@@ -34,8 +34,8 @@
       <div class="col-sm-4"></div>
       <div class="col-sm-4">
         <div class="social-banner alert alert-success" role="alert">
-          Volg mij op <a href="https://www.instagram.com/wiegeeftkorting/" onclick="ga('send', 'event', 'Social', 'insta', 'insta_top'); gtag('event', 'insta', {'event_category': 'Social', 'event_label': 'insta_top'});">insta</a> en
-          <a href="https://www.tiktok.com/@wiegeeftkorting2" onclick="ga('send', 'event', 'Social', 'tiktok', 'tiktok_top'); gtag('event', 'tiktok', {'event_category': 'Social', 'event_label': 'tiktok_top'});">tiktok</a> voor code updates
+          Volg mij op <a href="https://www.instagram.com/wiegeeftkorting/" onclick="gtag('event', 'insta', {'event_category': 'Social', 'event_label': 'insta_top'});">insta</a> en
+          <a href="https://www.tiktok.com/@wiegeeftkorting2" onclick="gtag('event', 'tiktok', {'event_category': 'Social', 'event_label': 'tiktok_top'});">tiktok</a> voor code updates
         </div>
 
         <div class="social-banner alert alert-success" role="alert">
@@ -61,7 +61,7 @@
             <ng-container *ngFor="let korting of allKorting; let i=index">
               <tr>
                 <td id="companyRow{{i}}">{{ korting.company }}</td>
-                <td><button class="diski-table-button btn btn-outline-secondary" (click)="sendToGa(i); affiliateModalAction(korting.company, i)">pak code</button></td>
+                <td><button class="diski-table-button btn btn-outline-secondary" (click)="sendCopyCodeToGa(i); affiliateModalAction(korting.company, i)">pak code</button></td>
                 <td>{{ korting.percentage }}</td>
                 <td>{{ korting.date }}</td>
               </tr>
