@@ -45,9 +45,9 @@ export class InstaComponent {
     'padding-right': this.tablePaddingRight
   };
 
-  showTheFloorIsYoursLines = false;
+  showExtraBottomLine = false;
 
-  theFloorIsYoursValue = "Dummy thefloorisyours value";
+  extraBottomLineValue = "*download Temu app via link in bio en ontvang €100 shoptegoed en 30% korting";
 
   constructor() { }
 
@@ -82,6 +82,22 @@ export class InstaComponent {
       var element = document.querySelector('#insta-table') as HTMLElement;
       var tableHeight = element.offsetHeight;
       var desiredTableWidth = ((tableHeight / 5) * 4);
+      this.tableWidth = desiredTableWidth;
+  }
+
+  setAspectRatio(ratio: string) {
+      var element = document.querySelector('#insta-table') as HTMLElement;
+      var tableHeight = element.offsetHeight;
+      var desiredTableWidth;
+
+      if (ratio === '4:5') {
+          desiredTableWidth = (tableHeight / 5) * 4;
+      } else if (ratio === '9:16') {
+          desiredTableWidth = (tableHeight / 16) * 9;
+      } else {
+          return;
+      }
+
       this.tableWidth = desiredTableWidth;
   }
 
@@ -176,7 +192,7 @@ export class InstaComponent {
       );
   }
 
-  toggleTheFloorIsYoursLines() {
-    this.showTheFloorIsYoursLines = !this.showTheFloorIsYoursLines;
+  toggleExtraBottomLine() {
+    this.showExtraBottomLine = !this.showExtraBottomLine;
   }
 }
