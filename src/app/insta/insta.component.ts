@@ -51,6 +51,8 @@ export class InstaComponent {
 
   extraBottomLineValue = "*download Temu app via link in bio en ontvang €100 shoptegoed en 30% korting";
 
+  isEditing: boolean = false;
+
   constructor() { }
 
   setTableBackgroundColour(hex) {
@@ -226,5 +228,14 @@ export class InstaComponent {
     link.download = file.name;
     link.click();
     URL.revokeObjectURL(url);
+  }
+
+  editCellContent(event: MouseEvent) {
+    const cell = event.target as HTMLElement;
+    this.isEditing = true;
+
+    cell.addEventListener('blur', () => {
+      this.isEditing = false;
+    });
   }
 }
