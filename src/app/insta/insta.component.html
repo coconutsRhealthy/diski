@@ -53,6 +53,9 @@
           <div *ngIf="showExtraBottomLine">
             <textarea [(ngModel)]="extraBottomLineValue" style="font-size: 9px;" rows="5"></textarea>
           </div>
+          <div>
+            <button class="small-button" type="button" (click)="captureScreenshotFromTable()">Prtscrn</button>
+          </div>
         </div>
       </div>
 
@@ -83,7 +86,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let entry of instaDiscountEntries" [ngStyle]="rowStyles">
-              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-left' : tablePaddingLeft }"></td>
+              <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-left' : tablePaddingLeft }">{{ entry.rowNumber }}</td>
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{entry.company}}</td>
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.code}}</td>
               <td [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.percentage}}</td>

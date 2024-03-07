@@ -1,3 +1,5 @@
+import html2canvas from 'html2canvas';
+
 import { Component } from '@angular/core';
 
 import { DataDirective } from '../data/data.directive';
@@ -150,6 +152,7 @@ export class InstaComponent {
     }
 
     this.instaDiscountEntries = this.instaDiscountEntries.slice(0, parseInt(this.maxAmountForPost));
+    this.addRowNumbers();
   }
 
   getDateFromDateString(dateString) {
@@ -190,9 +193,38 @@ export class InstaComponent {
           firstBy("company")
           .thenBy("tracker", "desc")
       );
+      this.addRowNumbers();
   }
 
   toggleExtraBottomLine() {
     this.showExtraBottomLine = !this.showExtraBottomLine;
+  }
+
+  addRowNumbers(): void {
+    let rowNumber = 1;
+    this.instaDiscountEntries.forEach(entry => {
+      entry.rowNumber = rowNumber;
+      rowNumber++;
+    });
+  }
+
+  captureScreenshotFromTable() {
+    const element = document.getElementById('insta-table');
+
+    html2canvas(element).then(canvas => {
+      canvas.toBlob(blob => {
+        const screenshotFile = new File([blob], 'screenshot.png', { type: 'image/png' });
+        this.saveScreenshot(screenshotFile);
+      }, 'image/png');
+    });
+  }
+
+  saveScreenshot(file: File) {
+    const url = URL.createObjectURL(file);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = file.name;
+    link.click();
+    URL.revokeObjectURL(url);
   }
 }
