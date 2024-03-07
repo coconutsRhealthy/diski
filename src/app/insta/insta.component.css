@@ -28,8 +28,8 @@ table tr {
   font-size:8px;
 }
 
-input[type="text"] {
-  font-size:8px;
+input {
+  font-size: 8px;
 }
 
 .last td {

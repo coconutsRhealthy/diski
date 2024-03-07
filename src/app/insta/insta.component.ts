@@ -48,10 +48,9 @@ export class InstaComponent {
   };
 
   showExtraBottomLine = false;
-
   extraBottomLineValue = "*download Temu app via link in bio en ontvang €100 shoptegoed en 30% korting";
-
   isEditing: boolean = false;
+  rowToDelete: number = 0;
 
   constructor() { }
 
@@ -237,5 +236,16 @@ export class InstaComponent {
     cell.addEventListener('blur', () => {
       this.isEditing = false;
     });
+  }
+
+  deleteRow(): void {
+    const indexToDelete = this.rowToDelete - 1;
+    if (indexToDelete >= 0 && indexToDelete < this.instaDiscountEntries.length) {
+      this.instaDiscountEntries.splice(indexToDelete, 1);
+      this.rowToDelete = 0;
+      this.addRowNumbers();
+    } else {
+      alert('Invalid row number');
+    }
   }
 }

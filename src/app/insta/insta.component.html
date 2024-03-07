@@ -56,6 +56,10 @@
           <div>
             <button class="small-button" type="button" (click)="captureScreenshotFromTable()">Prtscrn</button>
           </div>
+          <div>
+            <button class="small-button" (click)="deleteRow()">Del line</button>
+            <input type="text" [(ngModel)]="rowToDelete" style="margin-left: 5px;">
+          </div>
         </div>
       </div>
 
