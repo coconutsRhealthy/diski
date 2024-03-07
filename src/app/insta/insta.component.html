@@ -58,7 +58,14 @@
           </div>
           <div>
             <button class="small-button" (click)="deleteRow()">Del line</button>
-            <input type="text" [(ngModel)]="rowToDelete" style="margin-left: 5px;">
+            <input type="text" [(ngModel)]="rowToDelete" style="margin-left: 5px; width: 32px;">
+          </div>
+          <div>
+            <button class="small-button" (click)="changeRowBackgroundColor()" style="margin-right: 5px;">Set rgb</button>
+            <input *ngIf="showRgbInputs" type="text" [(ngModel)]="selectedRowToChangeColour" style="margin-right: 5px; width: 32px;" placeholder="#">
+            <input *ngIf="showRgbInputs" type="text" [(ngModel)]="rgbRed" style="margin-right: 5px; width: 32px;" placeholder="R">
+            <input *ngIf="showRgbInputs" type="text" [(ngModel)]="rgbGreen" style="margin-right: 5px; width: 32px;" placeholder="G">
+            <input *ngIf="showRgbInputs" type="text" [(ngModel)]="rgbBlue" style="margin-right: 5px; width: 32px;" placeholder="B">
           </div>
         </div>
       </div>

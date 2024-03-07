@@ -51,6 +51,11 @@ export class InstaComponent {
   extraBottomLineValue = "*download Temu app via link in bio en ontvang €100 shoptegoed en 30% korting";
   isEditing: boolean = false;
   rowToDelete: number = 0;
+  selectedRowToChangeColour: number;
+  rgbRed: number;
+  rgbGreen: number;
+  rgbBlue: number;
+  showRgbInputs: boolean = false;
 
   constructor() { }
 
@@ -246,6 +251,25 @@ export class InstaComponent {
       this.addRowNumbers();
     } else {
       alert('Invalid row number');
+    }
+  }
+
+  changeRowBackgroundColor() {
+    if (!this.showRgbInputs) {
+      this.showRgbInputs = true;
+      return;
+    }
+
+    const tableElement = document.getElementById('insta-table') as HTMLTableElement;
+
+    if (tableElement) {
+      const rowIndex = this.selectedRowToChangeColour;
+
+      if (rowIndex >= 0 && rowIndex < tableElement.rows.length) {
+        const tableRow = tableElement.rows[rowIndex];
+        const rgbColor = "rgb(" + this.rgbRed + ", " + this.rgbGreen + ", " + this.rgbBlue + ")";
+        tableRow.style.backgroundColor = rgbColor;
+      }
     }
   }
 }
