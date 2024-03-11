@@ -97,16 +97,16 @@
           </thead>
           <tbody>
             <tr *ngFor="let entry of instaDiscountEntries" [ngStyle]="rowStyles">
-              <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-left' : tablePaddingLeft }">{{ entry.rowNumber }}</td>
-              <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize }">{{entry.company}}</td>
-              <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.code}}</td>
-              <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.percentage}}</td>
+              <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" [ngStyle]="{'border-color' : 'rgb(152, 152, 152)', 'font-size.px' : bodyFontSize, 'padding-left' : tablePaddingLeft }">{{ entry.rowNumber }}</td>
+              <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" [ngStyle]="{'border-color' : 'rgb(152, 152, 152)', 'font-size.px' : bodyFontSize }">{{entry.company}}</td>
+              <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" [ngStyle]="{'border-color' : 'rgb(152, 152, 152)', 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.code}}</td>
+              <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" [ngStyle]="{'border-color' : 'rgb(152, 152, 152)', 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight }">{{entry.percentage}}</td>
             </tr>
             <tr *ngIf="showExtraBottomLine" class="no-counter" [ngStyle]="rowStyles">
-              <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" colspan="4" [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight, 'text-align' : 'center' }">{{extraBottomLineValue}}</td>
+              <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" colspan="4" [ngStyle]="{'border-color' : 'rgb(152, 152, 152)', 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight, 'text-align' : 'center' }">{{extraBottomLineValue}}</td>
             </tr>
             <tr class="no-counter" [ngClass]="{ last : tiktokSize }" [ngStyle]="rowStyles">
-              <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" colspan="4" [ngStyle]="{'border-color' : tableLineAndFontColor, 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight, 'text-align' : 'center' }">google 'diski kortingscode' voor meer codes</td>
+              <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" colspan="4" [ngStyle]="{'border-color' : 'rgb(152, 152, 152)', 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight, 'text-align' : 'center' }">google 'diski kortingscode' voor meer codes</td>
             </tr>
           </tbody>
         </table>
