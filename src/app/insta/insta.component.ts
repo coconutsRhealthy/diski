@@ -47,7 +47,7 @@ export class InstaComponent {
     'padding-right': this.tablePaddingRight
   };
 
-  showExtraBottomLine = false;
+  showExtraBottomLine = true;
   extraBottomLineValue = "*download Temu app via link in bio en ontvang €100 shoptegoed en 30% korting";
   isEditing: boolean = false;
   rowToDelete: number = 0;
@@ -76,6 +76,7 @@ export class InstaComponent {
 
       var desiredTiktokTableHeight = ((tableWidth / 9) * 16);
       this.tableHeight = desiredTiktokTableHeight;
+      this.extraBottomLineValue = "*download Temu app via link in bio voor €100 shoptegoed en 30% off";
     } else {
       this.tablePaddingLeft = "12px";
       this.tablePaddingTop = "12px";
@@ -83,6 +84,7 @@ export class InstaComponent {
 
       this.tableWidth = 500;
       this.tableHeight = 500;
+      this.extraBottomLineValue = "*download Temu app via link in bio en ontvang €100 shoptegoed en 30% korting";
     }
   }
 
