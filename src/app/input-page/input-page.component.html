@@ -48,6 +48,9 @@
         <div class="col-12">
           <button type="button" (click)="displayInput()" class="btn btn-primary btn-sm">Display input</button>
         </div>
+        <div class="col-12">
+          <input type="checkbox" [(ngModel)]="isTiktokInput" (change)="toggleTiktokInput()">
+        </div>
       </div>
       <div *ngFor="let duplicate of multipleOccurrencesInData;">
         {{duplicate}}

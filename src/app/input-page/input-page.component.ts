@@ -16,6 +16,7 @@ export class InputComponent implements OnInit {
   newInput = [];
   existingInput = [];
   multipleOccurrencesInData = [];
+  isTiktokInput = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
 
@@ -213,5 +214,22 @@ export class InputComponent implements OnInit {
     firstpart = firstpart.substring(0, firstpart.lastIndexOf(", "));
     var lineWithoutDateAndPercentage = firstpart + ", " + codegiver;
     return lineWithoutDateAndPercentage;
+  }
+
+  toggleTiktokInput() {
+    const influencersArray = this.influencers;
+    var tiktokAddition = "_tiktok";
+    for(let i = 0; i < influencersArray.length; i++) {
+      let value = influencersArray.at(i).value;
+      if(this.isTiktokInput) {
+        if(!value.endsWith(tiktokAddition)) {
+          influencersArray.at(i).setValue(value + tiktokAddition);
+        }
+      } else {
+        if(value.endsWith(tiktokAddition)) {
+          influencersArray.at(i).setValue(value.slice(0, -7));
+        }
+      }
+    }
   }
 }
