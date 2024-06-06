@@ -26,7 +26,8 @@ export class WinkelsComponent implements OnInit {
 
     winkels = combinedWinkels.filter((item, index) => {
         if (item.includes('(') || item.includes(')')) {
-            return !webshopsWithoutBrackets.includes(item.split(' ')[0]);
+            const companyNameBeforeBrackets = item.split(' ')[0];
+            return !webshopsWithoutBrackets.includes(companyNameBeforeBrackets);
         }
         return combinedWinkels.indexOf(item) === index;
     });

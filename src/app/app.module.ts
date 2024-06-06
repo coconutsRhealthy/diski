@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { DataTablesModule } from "angular-datatables";
 import { AppComponent } from './app.component';
 import { DiskiPageComponent } from './diski-page/diski-page.component';
@@ -27,6 +27,46 @@ import localeNl from '@angular/common/locales/nl';
 import { WinkelsComponent } from './winkels/winkels.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
+import { environment } from '../environments/environment';
+
+const routes: Routes = [
+    {
+      path: '',
+      component: DiskiPageComponent
+    },
+    {
+      path: 'archief',
+      component: ArchiveComponent
+    },
+    {
+      path: 'contact',
+      component: ContactComponent
+    },
+    {
+      path: 'winkels',
+      component: WinkelsComponent
+    },
+
+]
+
+if(!environment.production) {
+    routes.push(
+      {path: 'input', component: InputComponent},
+      {path: 'insta', component: InstaComponent},
+    );
+}
+
+routes.push(
+    {
+      path: ':company',
+      component: CompanyCodesComponent
+    },
+    {
+      path: '**',
+      component: NotFoundComponent
+    },
+);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,34 +89,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ReactiveFormsModule,
     NgbModule,
     ClipboardModule,
-    RouterModule.forRoot([
-      {
-        path: '',
-        component: DiskiPageComponent
-      },
-      {path: 'input', component: InputComponent},
-      {path: 'insta', component: InstaComponent},
-      {
-        path: 'archief',
-        component: ArchiveComponent
-      },
-      {
-        path: 'contact',
-        component: ContactComponent
-      },
-      {
-        path: 'winkels',
-        component: WinkelsComponent
-      },
-      {
-        path: ':company',
-        component: CompanyCodesComponent
-      },
-      {
-        path: '**',
-        component: NotFoundComponent
-      },
-    ]),
+    RouterModule.forRoot(routes),
   ],
   providers: [
     {provide: LocationStrategy, useClass: PathLocationStrategy},

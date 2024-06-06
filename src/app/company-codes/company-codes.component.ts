@@ -59,7 +59,7 @@ export class CompanyCodesComponent implements OnInit {
     var allDiscountCodes = recentDiscountCodes.concat(archiveDiscountCodes);
 
     this.discountCodes = allDiscountCodes
-      .filter(line => line.startsWith(company))
+      .filter(line => line.startsWith(company + ", ") || line.startsWith(company + " ("))
       .map(line => {
         const elements = line.split(', ');
         const code = elements[1];
@@ -68,7 +68,7 @@ export class CompanyCodesComponent implements OnInit {
         return { code, discount, date };
       });
 
-    if (company === 'desenio' || company === 'bodyandfit.com') {
+    if (company === 'desenio') {
       this.discountCodes.shift();
     }
   }
