@@ -21,17 +21,7 @@ export class WinkelsComponent implements OnInit {
     var winkels = DataDirective.getUniqueWebshops();
     var archiveWinkels = ArchiveDataDirective.getUniqueWebshops();
     var combinedWinkels = winkels.concat(archiveWinkels);
-
-    var webshopsWithoutBrackets = combinedWinkels.filter(item => !item.includes('(') && !item.includes(')'));
-
-    winkels = combinedWinkels.filter((item, index) => {
-        if (item.includes('(') || item.includes(')')) {
-            const companyNameBeforeBrackets = item.split(' ')[0];
-            return !webshopsWithoutBrackets.includes(companyNameBeforeBrackets);
-        }
-        return combinedWinkels.indexOf(item) === index;
-    });
-
+    winkels = this.removePartsInBracketsAndDoubleEntries(combinedWinkels);
     this.groupedWinkels = this.groupWinkelsByLetter(winkels);
   }
 
@@ -60,4 +50,19 @@ export class WinkelsComponent implements OnInit {
     return groupedWinkels;
   }
 
+  removePartsInBracketsAndDoubleEntries(combinedWinkels) {
+    const seen = new Set<string>();
+    return combinedWinkels.map(shop => {
+        const index = shop.indexOf(" (");
+        return index !== -1 ? shop.substring(0, index) : shop;
+    })
+    .filter(shop => {
+        if (seen.has(shop)) {
+            return false;
+        } else {
+            seen.add(shop);
+            return true;
+        }
+    });
+  }
 }
