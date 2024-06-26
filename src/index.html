@@ -27,6 +27,7 @@
       if(company === undefined) {
         company = "unknown";
       }
+      company = company.split(" (")[0];
       gtag('event', 'CopyCode', {'event_category': 'CopyCode', 'event_label': company});
     }
   </script>
