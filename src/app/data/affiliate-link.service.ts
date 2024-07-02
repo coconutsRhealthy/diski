@@ -37,6 +37,7 @@ export class AffiliateLinkService {
     'loopearplugs': 'https://community.loopearplugs.com/s/kleinpepertje',
     'easytoys': 'https://www.stylink.it/gNp4OigJPOA',
     'iciparisxl': 'https://www.stylink.it/wPQ4YtJRwZe',
+    'shein': 'https://www.stylink.it/qnXdxT3eLrj',
   };
 
   constructor() { }
