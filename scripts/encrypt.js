@@ -1,5 +1,5 @@
 const fs = require('fs');
-const dataDirectivePath = 'src/app/data/data.directive.ts';
+const dataDirectivePaths = ['src/app/data/data.directive.ts', 'src/app/data/archivedata.directive.ts'];
 
 function encrypt(lineToEncrypt) {
     function shiftChar(char, start, end, shift) {
@@ -49,37 +49,39 @@ function encryptSegment(line) {
   return segments.join(',');
 }
 
-fs.readFile(dataDirectivePath, 'utf8', (err, data) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-
-  const lines = data.split('\n');
-  let inDataArray = false;
-  const encryptedLines = lines.map(line => {
-    if (line.trim().startsWith('static dataArray = [')) {
-        inDataArray = true;
-        return line;
-    }
-    if (inDataArray && line.trim().endsWith('];')) {
-        inDataArray = false;
-        return line;
-    }
-    if (inDataArray) {
-        return encryptSegment(line);
-    }
-    return line;
-  });
-
-  const encryptedData = encryptedLines.join('\n');
-
-  fs.writeFile(dataDirectivePath, encryptedData, 'utf8', err => {
+dataDirectivePaths.forEach(dataDirectivePath => {
+  fs.readFile(dataDirectivePath, 'utf8', (err, data) => {
     if (err) {
-        console.error(err);
-        return;
+      console.error(err);
+      return;
     }
 
-    console.log('File has been encrypted successfully.');
+    const lines = data.split('\n');
+    let inDataArray = false;
+    const encryptedLines = lines.map(line => {
+      if (line.trim().startsWith('static dataArray = [') || line.trim().startsWith('static dataArrayArchive = [')) {
+          inDataArray = true;
+          return line;
+      }
+      if (inDataArray && line.trim().endsWith('];')) {
+          inDataArray = false;
+          return line;
+      }
+      if (inDataArray) {
+          return encryptSegment(line);
+      }
+      return line;
+    });
+
+    const encryptedData = encryptedLines.join('\n');
+
+    fs.writeFile(dataDirectivePath, encryptedData, 'utf8', err => {
+      if (err) {
+          console.error(err);
+          return;
+      }
+
+      console.log('File has been encrypted successfully.');
+    });
   });
 });

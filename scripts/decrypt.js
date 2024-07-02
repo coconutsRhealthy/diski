@@ -1,5 +1,5 @@
 const fs = require('fs');
-const dataDirectivePath = 'src/app/data/data.directive.ts';
+const dataDirectivePaths = ['src/app/data/data.directive.ts', 'src/app/data/archivedata.directive.ts'];
 
 function decrypt(lineToDecrypt) {
     lineToDecrypt = lineToDecrypt.split('').reverse().join('');
@@ -43,37 +43,39 @@ function decryptSegment(line) {
   return segments.join(',');
 }
 
-fs.readFile(dataDirectivePath, 'utf8', (err, data) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-
-  const lines = data.split('\n');
-  let inDataArray = false;
-  const decryptedLines = lines.map(line => {
-    if (line.trim().startsWith('static dataArray = [')) {
-        inDataArray = true;
-        return line;
-    }
-    if (inDataArray && line.trim().endsWith('];')) {
-        inDataArray = false;
-        return line;
-    }
-    if (inDataArray) {
-        return decryptSegment(line);
-    }
-    return line;
-  });
-
-  const decryptedData = decryptedLines.join('\n');
-
-  fs.writeFile(dataDirectivePath, decryptedData, 'utf8', err => {
+dataDirectivePaths.forEach(dataDirectivePath => {
+  fs.readFile(dataDirectivePath, 'utf8', (err, data) => {
     if (err) {
-        console.error(err);
-        return;
+      console.error(err);
+      return;
     }
 
-    console.log('File has been decrypted successfully.');
+    const lines = data.split('\n');
+    let inDataArray = false;
+    const decryptedLines = lines.map(line => {
+      if (line.trim().startsWith('static dataArray = [') || line.trim().startsWith('static dataArrayArchive = [')) {
+          inDataArray = true;
+          return line;
+      }
+      if (inDataArray && line.trim().endsWith('];')) {
+          inDataArray = false;
+          return line;
+      }
+      if (inDataArray) {
+          return decryptSegment(line);
+      }
+      return line;
+    });
+
+    const decryptedData = decryptedLines.join('\n');
+
+    fs.writeFile(dataDirectivePath, decryptedData, 'utf8', err => {
+      if (err) {
+          console.error(err);
+          return;
+      }
+
+      console.log('File has been decrypted successfully.');
+    });
   });
 });
