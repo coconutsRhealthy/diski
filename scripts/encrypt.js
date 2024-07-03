@@ -1,87 +1,60 @@
 const fs = require('fs');
+const path = require('path');
 const dataDirectivePaths = ['src/app/data/data.directive.ts', 'src/app/data/archivedata.directive.ts'];
-
-function encrypt(lineToEncrypt) {
-    function shiftChar(char, start, end, shift) {
-        let code = char.charCodeAt(0);
-        let shifted = code + shift;
-
-        if (shifted > end) {
-            shifted = start + (shifted - end - 1);
-        }
-
-        return String.fromCharCode(shifted);
-    }
-
-    let encrypted = '';
-    for (let char of lineToEncrypt) {
-        if (char >= 'a' && char <= 'z') {
-            encrypted += shiftChar(char, 'a'.charCodeAt(0), 'z'.charCodeAt(0), 3);
-        } else if (char >= 'A' && char <= 'Z') {
-            encrypted += shiftChar(char, 'A'.charCodeAt(0), 'Z'.charCodeAt(0), 3);
-        } else if (char >= '0' && char <= '9') {
-            if (char === '0') {
-                encrypted += '#';
-            } else {
-                encrypted += (parseInt(char) - 1).toString();
-            }
-        } else {
-            encrypted += char;
-        }
-    }
-
-    if(encrypted.includes(",") || encrypted.includes('"') || encrypted.includes("'") || encrypted.includes(" ")) {
-      console.log(encrypted);
-    }
-
-    encrypted = encrypted.split('').reverse().join('');
-
-    return " " + encrypted;
-}
 
 function encryptSegment(line) {
   const segments = line.split(',');
   if (segments.length >= 4) {
-      const segmentToEncrypt = segments[3].trim();
-      const encryptedSegment = encrypt(segmentToEncrypt);
-      segments[3] = encryptedSegment;
+      segments[3] = " zzz";
   }
   return segments.join(',');
 }
 
 dataDirectivePaths.forEach(dataDirectivePath => {
-  fs.readFile(dataDirectivePath, 'utf8', (err, data) => {
+  const dir = path.dirname(dataDirectivePath);
+  const base = path.basename(dataDirectivePath);
+  const backupPath = path.join(dir, `backup_${base}`);
+
+  fs.copyFile(dataDirectivePath, backupPath, err => {
     if (err) {
-      console.error(err);
+      console.error(`Error copying file ${dataDirectivePath} to ${backupPath}:`, err);
       return;
     }
+    console.log(`File copied from ${dataDirectivePath} to ${backupPath}`);
 
-    const lines = data.split('\n');
-    let inDataArray = false;
-    const encryptedLines = lines.map(line => {
-      if (line.trim().startsWith('static dataArray = [') || line.trim().startsWith('static dataArrayArchive = [')) {
+    fs.readFile(dataDirectivePath, 'utf8', (err, data) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+
+      const lines = data.split('\n');
+      let inDataArray = false;
+      const encryptedLines = lines.map(line => {
+        if (line.trim().startsWith('static dataArray = [') || line.trim().startsWith('static dataArrayArchive = [')) {
           inDataArray = true;
           return line;
-      }
-      if (inDataArray && line.trim().endsWith('];')) {
+        }
+        if (inDataArray && line.trim().endsWith('];')) {
           inDataArray = false;
           return line;
-      }
-      if (inDataArray) {
+        }
+        if (inDataArray) {
           return encryptSegment(line);
-      }
-      return line;
-    });
+        }
+        return line;
+      });
 
-    const encryptedData = encryptedLines.join('\n');
+      const encryptedData = encryptedLines.join('\n');
 
-    fs.writeFile(dataDirectivePath, encryptedData, 'utf8', err => {
-      if (err) {
+      fs.writeFile(dataDirectivePath, encryptedData, 'utf8', err => {
+        if (err) {
           console.error(err);
           return;
-      }
+        }
 
-      console.log('File has been encrypted successfully.');
+        console.log('File ' + dataDirectivePath + ' has been encrypted successfully.');
+      });
     });
   });
 });
