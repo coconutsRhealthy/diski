@@ -65,12 +65,23 @@ dataDirectivePaths.forEach(dataDirectivePath => {
     });
 
     if (dataDirectivePath === dataDirectivePaths[dataDirectivePaths.length - 1]) {
-      fs.writeFile('diskidata.json', JSON.stringify(extractedData, null, 2), 'utf8', err => {
+      const basePath = path.join(__dirname, '..');
+      const outputPath = path.join(basePath, 'dist/diski/api/diskidata.json');
+      const dir = path.dirname(outputPath);
+
+      fs.mkdir(dir, { recursive: true }, err => {
         if (err) {
-          console.error(err);
+          console.error('Error creating directories:', err);
           return;
         }
-        console.log('Extracted data has been written to diskidata.json');
+
+        fs.writeFile(outputPath, JSON.stringify(extractedData, null, 2), 'utf8', err => {
+          if (err) {
+            console.error('Error writing file:', err);
+            return;
+          }
+          console.log('Extracted data has been written to ' + outputPath);
+        });
       });
     }
   });
