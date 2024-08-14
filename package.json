@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prebuild:prod": "node scripts/encrypt.js",
+    "prebuild:prod": "node scripts/jsoncreate.js && node scripts/encrypt.js",
     "build:prod": "ng build --prod",
     "postbuild:prod": "node scripts/decrypt.js"
   },
