@@ -36,7 +36,18 @@
 
       <h1>{{ webshopName }} kortingscode</h1>
 
-      <table class="table table-bordered table-hover">
+      <div class="row mb-4">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+          <div class="social-banner alert alert-success" role="alert">
+            Volg mij op <a href="https://www.instagram.com/wiegeeftkorting/" onclick="gtag('event', 'insta', {'event_category': 'Social', 'event_label': 'insta_top'});">insta</a> en
+            <a href="https://www.tiktok.com/@wiegeeftkorting2" onclick="gtag('event', 'tiktok', {'event_category': 'Social', 'event_label': 'tiktok_top'});">tiktok</a> voor de nieuwste {{ webshopName }} kortingscodes
+          </div>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+
+      <table *ngIf="webshopName !== 'Le Olive'" class="table table-bordered table-hover">
         <thead>
         <tr>
           <th>Kortingscode</th>

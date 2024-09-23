@@ -199,6 +199,7 @@ export class InstaComponent {
   sortTable() {
       this.instaDiscountEntries.sort(
           firstBy("company")
+          //firstBy("company", { direction: -1 })
           .thenBy("tracker", "desc")
       );
       this.addRowNumbers();

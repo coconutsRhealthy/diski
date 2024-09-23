@@ -21,7 +21,6 @@ export class AffiliateLinkService {
     'westwing': 'https://www.stylink.it/ZqG7gSdn0q',
     'lightinthebox': 'https://www.stylink.it/nkP3nIRNj0',
     'idealofsweden': 'https://www.idealofsweden.eu/?utm_medium=brand-ambassador&ref=bb-m47m59',
-    'rihoas': 'https://www.dpbolvw.net/click-100864181-15289205',
     'zaful': 'https://lt45.net/c/?si=14546&li=1774866&wi=387380&ws=zaful',
     'superdry': 'https://rkn3.net/c/?si=14965&li=1650750&wi=387380&ws=superdry',
     'aliexpress': 'https://tc.tradetracker.net/?c=15640&m=12&a=448474&r=disax&u=%2F',
@@ -33,17 +32,19 @@ export class AffiliateLinkService {
     'prozis': 'https://prozis.com/NfHG',
     'stylevana': 'https://vana.ly/KmZChm',
     'temu': 'https://temu.to/m/u0p32ew176i',
+    'temu (gratis producten)': 'https://temu.to/m/e74veq9vg5u',
     'arket': 'https://www.stylink.it/BvdPmTQNoq',
-    'loopearplugs': 'https://community.loopearplugs.com/s/kleinpepertje',
     'easytoys': 'https://www.stylink.it/gNp4OigJPOA',
     'iciparisxl': 'https://www.stylink.it/wPQ4YtJRwZe',
-    'shein': 'https://www.stylink.it/qnXdxT3eLrj',
+    'yehwang_wholesale': 'https://bit.ly/43fOjKa',
+    'desenio': 'https://desen.io/?ref=bb-m47m59',
+    'ullapopken.nl': 'https://www.stylink.it/e7pw4TQlrym',
   };
 
   constructor() { }
 
   public getAffiliateLink(company: string): string | undefined {
-    if(company.includes('(')) {
+    if(company.includes('(') && !company.includes('(gratis')) {
       var parts = company.split('(');
       company = parts[0].trim();
     }
