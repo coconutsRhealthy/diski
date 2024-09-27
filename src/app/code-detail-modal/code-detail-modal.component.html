@@ -8,10 +8,15 @@
   <div class="modal-row row">
     <div class="col-4">Code:</div>
     <div class="col-8">
-      {{code}}
-      <button type="button" class="copy-button btn btn-outline-secondary" (click)="copyToClipboard(code); sendEventToGa('CodeDetailModal', company)" ngbTooltip="Copied!" triggers="click:blur">
-        Copy
-      </button>
+      <ng-container *ngIf="code.startsWith('http'); else showCode">
+        <a [href]="code" target="_blank">KLIK</a>
+      </ng-container>
+      <ng-template #showCode>
+        {{ code }}
+        <button type="button" class="copy-button btn btn-outline-secondary" (click)="copyToClipboard(code); sendEventToGa('CodeDetailModal', company)" ngbTooltip="Copied!" triggers="click:blur">
+          Copy
+        </button>
+      </ng-template>
     </div>
   </div>
   <div class="modal-row row">
@@ -22,12 +27,21 @@
     <div class="col-4">Gespot op:</div>
     <div class="col-8">{{codeDate}}</div>
   </div>
-  <div *ngIf="company === 'ALIEXPRESS'" class="modal-row row">
-    <div class="col-12" style="color: blue;">Code geldig op geselecteerde producten. Zie <a href="https://www.aliexpress.com/gcp/300001628/mainvenue?spm=a2g0o.best.sale_618euro_banner.2.292b1267NXcCv9&disableNav=YES&pha_manifest=ssr&_immersiveMode=true" target="_blank" style="text-decoration: underline;">hier</a></div>
+  <div *ngIf="company.startsWith('ALIEXPRESS')" class="modal-row row">
+    <div class="col-12" style="color: blue;">Code geldig op geselecteerde producten. Zie <a href="https://best.aliexpress.com/" target="_blank" style="text-decoration: underline;">hier</a></div>
   </div>
-  <div *ngIf="company.startsWith('TEMU')" class="modal-row row">
-    <div class="col-12" style="color: blue;">
-      Code te gebruiken in de Temu app met een nieuwe account. Code geeft €100 shoptegoed en 30% korting. Download de app <a href="https://temu.to/m/u0p32ew176i" target="_blank" style="text-decoration: underline;">hier</a>
+  <div *ngIf="company.startsWith('TEMU')">
+    <div *ngIf="company.includes('GRATIS'); else temuNormal" class="modal-row row">
+      <div class="col-12" style="color: blue;">
+        Code te gebruiken in de Temu app (zoekbalk) met een nieuwe account. Code geeft gratis producten. Download de app <a href="https://temu.to/m/e74veq9vg5u" target="_blank" style="text-decoration: underline;">hier</a>
+      </div>
     </div>
+    <ng-template #temuNormal>
+      <div class="modal-row row">
+        <div class="col-12" style="color: blue;">
+          Code te gebruiken in de Temu app met een nieuwe account. Code geeft €100 shoptegoed en 30% korting. Download de app <a href="https://temu.to/m/u0p32ew176i" target="_blank" style="text-decoration: underline;">hier</a>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>

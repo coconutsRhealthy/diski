@@ -77,7 +77,7 @@ export class CodeDetailModalComponent implements OnInit {
   }
 
   setCorrectFormatDiscountPercentage(rawDiscountPercentage) {
-    if(!rawDiscountPercentage.includes("€") && !rawDiscountPercentage.includes("vzk")) {
+    if(!rawDiscountPercentage.includes("€") && !rawDiscountPercentage.includes("vzk") && !rawDiscountPercentage.includes("gifts")) {
       this.discountPercentage = this.discountPercentage + "%";
     }
   }

@@ -65,6 +65,12 @@
                 <td>{{ korting.percentage }}</td>
                 <td>{{ korting.date }}</td>
               </tr>
+              <tr *ngIf="i === 4">
+                <td class="banner-table-cell" colspan="4">€7.50 gift cards voor heel veel shops! (o.a. Zalando, My Jewellery) <a href="https://linktr.ee/wiegeeftkorting" target="_blank">KLIK</a></td>
+                <td class="hidden-cell"></td>
+                <td class="hidden-cell">{{ korting.percentage }}</td>
+                <td class="hidden-cell">{{ korting.date }}</td>
+              </tr>
             </ng-container>
           </tbody>
         </table>

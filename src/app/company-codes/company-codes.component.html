@@ -45,6 +45,14 @@
           </div>
         </div>
         <div class="col-sm-4"></div>
+
+        <div *ngIf="hasHttpCodes" class="col-sm-4"></div>
+        <div *ngIf="hasHttpCodes" class="col-sm-4">
+          <div class="social-banner alert alert-success" role="alert" style="background-color: yellow;">
+            Gift card werkt bovenop eventuele andere kortingscodes
+          </div>
+        </div>
+        <div *ngIf="hasHttpCodes" class="col-sm-4"></div>
       </div>
 
       <table *ngIf="webshopName !== 'Le Olive'" class="table table-bordered table-hover">
@@ -56,8 +64,15 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let code of discountCodes">
-          <td>{{ code.code }}</td>
+        <tr *ngFor="let code of discountCodes" [ngStyle]="{'background-color': code.code.startsWith('http') ? 'yellow' : 'transparent'}">
+          <td>
+            <ng-container *ngIf="code.code.startsWith('http'); else showCode">
+              <a [href]="code.code" target="_blank">GIFT CARD</a> ({{fingerToLeftEmoji}} klik)
+            </ng-container>
+            <ng-template #showCode>
+              {{ code.code }}
+            </ng-template>
+          </td>
           <td>{{ shouldDisplayPercent(code.discount) ? (code.discount + '%') : code.discount }}</td>
           <td>{{ formatDate(code.date) }}</td>
         </tr>

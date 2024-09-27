@@ -105,6 +105,9 @@
             <tr *ngIf="showExtraBottomLine" class="no-counter" [ngStyle]="rowStyles">
               <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" colspan="4" [ngStyle]="{'border-color' : 'rgb(152, 152, 152)', 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight, 'text-align' : 'center' }">{{extraBottomLineValue}}</td>
             </tr>
+            <tr *ngIf="showExtraBottomLine" class="no-counter" [ngStyle]="rowStyles">
+              <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" colspan="4" [ngStyle]="{'border-color' : 'rgb(152, 152, 152)', 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight, 'text-align' : 'center' }">{{giftCardBottomLineValue}}</td>
+            </tr>
             <tr class="no-counter" [ngClass]="{ last : tiktokSize }" [ngStyle]="rowStyles">
               <td (dblclick)="editCellContent($event)" [contentEditable]="isEditing" colspan="4" [ngStyle]="{'border-color' : 'rgb(152, 152, 152)', 'font-size.px' : bodyFontSize, 'padding-right' : tablePaddingRight, 'text-align' : 'center' }">google 'diski kortingscode' voor meer codes</td>
             </tr>

@@ -30,6 +30,8 @@ export class CompanyCodesComponent implements OnInit {
 
   isMenuCollapsed = true;
 
+  fingerToLeftEmoji = "\u{1F448}";
+
   constructor(private route: ActivatedRoute, private datePipe: DatePipe, private meta: MetaService,
       private webshopNameService: WebshopNameService, private companySeoTextService: CompanySeoTextService,
       private elementRef: ElementRef) { }
@@ -100,5 +102,9 @@ export class CompanyCodesComponent implements OnInit {
     }
 
     return shouldDisplayPercent;
+  }
+
+  get hasHttpCodes(): boolean {
+    return this.discountCodes.some(code => code.code.startsWith('http'));
   }
 }

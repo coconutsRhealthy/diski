@@ -98,7 +98,7 @@ h3 {
 
 .banner-table-cell {
   text-align: center;
-  background-color: rgb(243, 243, 243);
+  background-color: yellow;
 }
 
 @media (max-width: 767px) {
