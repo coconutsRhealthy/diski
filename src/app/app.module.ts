@@ -28,6 +28,7 @@ import { WinkelsComponent } from './winkels/winkels.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 import { environment } from '../environments/environment';
+import { GiftcardsComponent } from './giftcards/giftcards.component';
 
 const routes: Routes = [
     {
@@ -45,6 +46,10 @@ const routes: Routes = [
     {
       path: 'winkels',
       component: WinkelsComponent
+    },
+    {
+      path: 'giftcards',
+      component: GiftcardsComponent
     },
 
 ]
@@ -79,7 +84,8 @@ routes.push(
     CodeDetailModalComponent,
     CompanyCodesComponent,
     WinkelsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    GiftcardsComponent
   ],
   imports: [
     BrowserModule,

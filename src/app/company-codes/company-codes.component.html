@@ -46,13 +46,18 @@
         </div>
         <div class="col-sm-4"></div>
 
-        <div *ngIf="hasHttpCodes" class="col-sm-4"></div>
-        <div *ngIf="hasHttpCodes" class="col-sm-4">
-          <div class="social-banner alert alert-success" role="alert" style="background-color: yellow;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+          <div *ngIf="hasHttpCodes; else noHttpCodes" class="social-banner alert alert-success" role="alert" style="background-color: yellow;">
             Gift card werkt bovenop eventuele andere kortingscodes
           </div>
+          <ng-template #noHttpCodes>
+            <div class="social-banner alert alert-success" role="alert" style="background-color: yellow;">
+              €7.50 gift cards voor heel veel shops! (o.a. Zalando, My Jewellery) <a href="https://linktr.ee/wiegeeftkorting" target="_blank" onclick="gtag('event', 'giftcard', {'event_category': 'Giftcard', 'event_label': 'giftcard_companypage_topteaser'});">KLIK</a>
+            </div>
+          </ng-template>
         </div>
-        <div *ngIf="hasHttpCodes" class="col-sm-4"></div>
+        <div class="col-sm-4"></div>
       </div>
 
       <table *ngIf="webshopName !== 'Le Olive'" class="table table-bordered table-hover">
@@ -67,7 +72,7 @@
         <tr *ngFor="let code of discountCodes" [ngStyle]="{'background-color': code.code.startsWith('http') ? 'yellow' : 'transparent'}">
           <td>
             <ng-container *ngIf="code.code.startsWith('http'); else showCode">
-              <a [href]="code.code" target="_blank">GIFT CARD</a> ({{fingerToLeftEmoji}} klik)
+              <a [href]="code.code" target="_blank" onclick="gtag('event', 'giftcard', {'event_category': 'Giftcard', 'event_label': 'giftcard_companypage_table'});">GIFT CARD</a> ({{fingerToLeftEmoji}} klik, en zie <a href="https://diski.nl/giftcards" target="_blank">hier</a> hoe het werkt)
             </ng-container>
             <ng-template #showCode>
               {{ code.code }}

@@ -1,0 +1,25 @@
+.steps-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.step {
+  margin-bottom: 20px;
+  text-align: center;
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.step-image {
+  width: 60%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #888;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 16px;
+}

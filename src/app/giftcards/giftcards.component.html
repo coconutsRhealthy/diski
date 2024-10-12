@@ -21,34 +21,30 @@
           <li class="nav-item">
             <a class="nav-link" [routerLink]="'/archief'" (click)="isMenuCollapsed = true">Archief</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" [routerLink]="'/contact'" (click)="isMenuCollapsed = true">Contact</a>
           </li>
         </ul>
       </div>
     </nav>
 
-    <h1>Contact</h1>
+    <h1>Handleiding €7.50 giftcards</h1>
 
-    <div class="container mt-3">
-      <div class="card">
-        <div class="card-body">
-          <p class="card-text">
-            Na een paar jaar Instagram en TikTok afstruinen op zoek naar kortingscodes,
-            bevat mijn database nu een schat aan informatie:
-          </p>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{flameEmoji}} <strong>18.000</strong> kortingscodes</li>
-            <li class="list-group-item">{{influencerEmoji}} ruim <strong>4.000</strong> influencers</li>
-            <li class="list-group-item">{{companyEmoji}} die samenwerkingen hebben met meer dan <strong>1.700</strong> bedrijven</li>
-          </ul>
-          <p class="card-text mt-3">
-            Duizenden online shoppers maken gebruik van de kortingscodes die ik op deze site en via <a href="https://www.instagram.com/wiegeeftkorting">@wiegeeftkorting</a>
-            deel. Heb je vragen, verzoeken of ideeën voor een samenwerking? Ik hoor graag van je!
-          </p>
-          <p class="card-text mt-3">
-            Neem snel contact op via <strong><a href="mailto:info@diski.nl">info@diski.nl</a></strong> (Natuurlijk ook als je gewoon een kortingscode wil doorgeven {{eyesEmoji}})
-          </p>
+    <div class="row mb-4">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <div class="social-banner alert alert-success" role="alert" style="background-color: yellow;">
+          De links naar de giftcards vind je <a href="https://linktr.ee/wiegeeftkorting" target="_blank">HIER</a>
+        </div>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-4" *ngFor="let step of steps">
+        <div class="step">
+          <p><strong>{{ step.title }}</strong> {{ step.description }}</p>
+          <img [src]="step.imageUrl" alt="Step Image" class="step-image">
         </div>
       </div>
     </div>

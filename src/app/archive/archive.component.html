@@ -66,7 +66,7 @@
                 <td>{{ korting.date }}</td>
               </tr>
               <tr *ngIf="i === 4">
-                <td class="banner-table-cell" colspan="4">€7.50 gift cards voor heel veel shops! (o.a. Zalando, My Jewellery) <a href="https://linktr.ee/wiegeeftkorting" target="_blank">KLIK</a></td>
+                <td class="banner-table-cell" colspan="4">€7.50 gift cards voor heel veel shops! (o.a. Zalando, My Jewellery) <a href="https://linktr.ee/wiegeeftkorting" target="_blank" onclick="gtag('event', 'giftcard', {'event_category': 'Giftcard', 'event_label': 'giftcard_intable_archive'});">KLIK</a></td>
                 <td class="hidden-cell"></td>
                 <td class="hidden-cell">{{ korting.percentage }}</td>
                 <td class="hidden-cell">{{ korting.date }}</td>
