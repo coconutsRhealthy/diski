@@ -9,7 +9,7 @@
     <div class="col-4">Code:</div>
     <div class="col-8">
       <ng-container *ngIf="code.startsWith('http'); else showCode">
-        <a [href]="code" target="_blank" onclick="gtag('event', 'giftcard', {'event_category': 'Giftcard', 'event_label': 'giftcard_inmodal'});">KLIK</a> (en zie <a href="https://diski.nl/giftcards" target="_blank">hier</a> hoe het werkt)
+        <a [href]="code" target="_blank" onclick="gtag('event', 'giftcard', {'event_category': 'Giftcard', 'event_label': 'giftcard_inmodal'});">KLIK</a> (en zie <a [routerLink]="'/giftcards'" target="_blank">hier</a> hoe het werkt)
       </ng-container>
       <ng-template #showCode>
         {{ code }}

@@ -66,7 +66,7 @@ dataDirectivePaths.forEach(dataDirectivePath => {
 
     if (dataDirectivePath === dataDirectivePaths[dataDirectivePaths.length - 1]) {
       const basePath = path.join(__dirname, '..');
-      const outputPath = path.join(basePath, 'dist/diski/api/diskidata.json');
+      const outputPath = path.join(basePath, 'dist/diski/api/diskicodes.json');
       const dir = path.dirname(outputPath);
 
       fs.mkdir(dir, { recursive: true }, err => {

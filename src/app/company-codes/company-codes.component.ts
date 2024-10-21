@@ -56,9 +56,10 @@ export class CompanyCodesComponent implements OnInit {
   }
 
   private extractDiscountCodes(company: string): void {
-    var recentDiscountCodes = DataDirective.getDataArray();
-    var archiveDiscountCodes = ArchiveDataDirective.getDataArrayArchive();
-    var allDiscountCodes = recentDiscountCodes.concat(archiveDiscountCodes);
+    const recentDiscountCodes = DataDirective.getDataArray();
+    const archiveDiscountCodes = ArchiveDataDirective.getDataArrayArchive();
+    const allDiscountCodes = recentDiscountCodes.concat(archiveDiscountCodes);
+    const urlString = 'https://';
 
     this.discountCodes = allDiscountCodes
       .filter(line => line.startsWith(company + ", ") || line.startsWith(company + " ("))
@@ -66,9 +67,19 @@ export class CompanyCodesComponent implements OnInit {
         const elements = line.split(', ');
         const code = elements[1];
         const discount = elements[2];
-        const date = elements[elements.length - 1];
+        let date;
+
+        if (code.startsWith(urlString)) {
+          const currentDate = new Date();
+          date = String(currentDate.getMonth() + 1).padStart(2, '0') + '-' + String(currentDate.getDate()).padStart(2, '0');
+        } else {
+          date = elements[elements.length - 1];
+        }
+
         return { code, discount, date };
       });
+
+    this.discountCodes.sort((a, b) => a.code.startsWith(urlString) ? -1 : 1);
   }
 
   formatDate(date: string): string {
