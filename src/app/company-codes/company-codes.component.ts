@@ -12,6 +12,8 @@ import { ElementRef } from '@angular/core';
 import { WebshopNameService } from '../data/webshop-name.service';
 import { CompanySeoTextService } from '../data/company-seo-text.service';
 
+declare let gtag: Function;
+
 @Component({
   selector: 'app-company-codes',
   templateUrl: './company-codes.component.html',
@@ -117,5 +119,21 @@ export class CompanyCodesComponent implements OnInit {
 
   get hasHttpCodes(): boolean {
     return this.discountCodes.some(code => code.code.startsWith('http'));
+  }
+
+  sendGiftcardEventsToGa() {
+    if (typeof gtag === 'function') {
+      gtag('event', 'giftcard', {
+        'event_category': 'Giftcard',
+        'event_label': 'giftcard_companypage_table'
+      });
+
+      gtag('event', 'giftcard', {
+        'event_category': 'Giftcard',
+        'event_label': 'giftcard_companypage_table_' + this.company
+      });
+    } else {
+      console.error('gtag is not defined');
+    }
   }
 }

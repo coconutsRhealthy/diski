@@ -4,6 +4,8 @@ import { ClipboardService } from 'ngx-clipboard';
 
 import { AnalyticsEventService } from '../data/analytics-event.service';
 
+declare let gtag: Function;
+
 @Component({
   selector: 'app-modal-content',
   templateUrl: './code-detail-modal.component.html',
@@ -87,4 +89,20 @@ export class CodeDetailModalComponent implements OnInit {
     this.analyticsEventService.sendEventToGa(eventName, eventLabelToUse);
   }
 
+  sendGiftcardEventsToGa() {
+    if (typeof gtag === 'function') {
+      const companyLowerCase = this.company.toLowerCase();
+      gtag('event', 'giftcard', {
+        'event_category': 'Giftcard',
+        'event_label': 'giftcard_inmodal'
+      });
+
+      gtag('event', 'giftcard', {
+        'event_category': 'Giftcard',
+        'event_label': 'giftcard_inmodal_' + companyLowerCase
+      });
+    } else {
+      console.error('gtag is not defined');
+    }
+  }
 }

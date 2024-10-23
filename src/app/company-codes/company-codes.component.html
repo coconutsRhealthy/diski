@@ -72,7 +72,7 @@
         <tr *ngFor="let code of discountCodes" [ngStyle]="{'background-color': code.code.startsWith('http') ? 'yellow' : 'transparent'}">
           <td>
             <ng-container *ngIf="code.code.startsWith('http'); else showCode">
-              <a [href]="code.code" target="_blank" onclick="gtag('event', 'giftcard', {'event_category': 'Giftcard', 'event_label': 'giftcard_companypage_table'});">{{ webshopName | uppercase }} GIFT CARD</a> ({{fingerToLeftEmoji}} klik, en zie <a [routerLink]="'/giftcards'" target="_blank">hier</a> hoe het werkt)
+              <a [href]="code.code" target="_blank" (click)="sendGiftcardEventsToGa()">{{ webshopName | uppercase }} GIFT CARD</a> ({{fingerToLeftEmoji}} klik, en zie <a [routerLink]="'/giftcards'" target="_blank">hier</a> hoe het werkt)
             </ng-container>
             <ng-template #showCode>
               {{ code.code }}
