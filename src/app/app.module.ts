@@ -12,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataDirective } from './data/data.directive';
 import { InstaComponent } from './insta/insta.component';
 import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
-import { ArchiveComponent } from './archive/archive.component';
 import { ContactComponent } from './contact/contact.component';
 import { CodeDetailModalComponent } from './code-detail-modal/code-detail-modal.component';
 import { ClipboardModule } from 'ngx-clipboard';
@@ -37,7 +36,7 @@ const routes: Routes = [
     },
     {
       path: 'archief',
-      component: ArchiveComponent
+      loadChildren: () => import('./archive/archive.module').then(m => m.ArchiveModule)
     },
     {
       path: 'contact',
@@ -79,7 +78,6 @@ routes.push(
     InputComponent,
     DataDirective,
     InstaComponent,
-    ArchiveComponent,
     ContactComponent,
     CodeDetailModalComponent,
     CompanyCodesComponent,
