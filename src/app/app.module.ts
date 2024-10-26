@@ -1,13 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { DataDirective } from './data/data.directive';
-import { InstaComponent } from './insta/insta.component';
 import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
 import { CodeDetailModalComponent } from './code-detail-modal/code-detail-modal.component';
 import { ClipboardModule } from 'ngx-clipboard';
@@ -50,7 +47,7 @@ const routes: Routes = [
 if(!environment.production) {
     routes.push(
       {path: 'input', loadChildren: () => import('./input-page/input-page.module').then(m => m.InputModule)},
-      {path: 'insta', component: InstaComponent},
+      {path: 'insta', loadChildren: () => import('./insta/insta.module').then(m => m.InstaModule)},
     );
 }
 
@@ -69,7 +66,6 @@ routes.push(
   declarations: [
     AppComponent,
     DataDirective,
-    InstaComponent,
     CodeDetailModalComponent,
     WinkelsComponent,
     NotFoundComponent
@@ -77,8 +73,6 @@ routes.push(
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
     NgbModule,
     ClipboardModule,
     RouterModule.forRoot(routes),
