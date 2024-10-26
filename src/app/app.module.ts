@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { InputComponent } from './input-page/input-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { DataDirective } from './data/data.directive';
@@ -50,7 +49,7 @@ const routes: Routes = [
 
 if(!environment.production) {
     routes.push(
-      {path: 'input', component: InputComponent},
+      {path: 'input', loadChildren: () => import('./input-page/input-page.module').then(m => m.InputModule)},
       {path: 'insta', component: InstaComponent},
     );
 }
@@ -69,7 +68,6 @@ routes.push(
 @NgModule({
   declarations: [
     AppComponent,
-    InputComponent,
     DataDirective,
     InstaComponent,
     CodeDetailModalComponent,
