@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 
 import { DataDirective } from '../data/data.directive';
 
@@ -18,7 +17,7 @@ export class InputComponent implements OnInit {
   multipleOccurrencesInData = [];
   isTiktokInput = false;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder) {
 
   }
 

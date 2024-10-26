@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
 import { DataDirective } from './data/data.directive';
 import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
 import { CodeDetailModalComponent } from './code-detail-modal/code-detail-modal.component';
@@ -70,7 +69,6 @@ routes.push(
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     NgbModule,
     ClipboardModule,
     RouterModule.forRoot(routes),
