@@ -3,9 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { DataTablesModule } from "angular-datatables";
 import { AppComponent } from './app.component';
-import { DiskiPageComponent } from './diski-page/diski-page.component';
 import { InputComponent } from './input-page/input-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,7 +28,7 @@ import { GiftcardsComponent } from './giftcards/giftcards.component';
 const routes: Routes = [
     {
       path: '',
-      component: DiskiPageComponent
+      loadChildren: () => import('./diski-page/diski-page.module').then(m => m.DiskiPageModule)
     },
     {
       path: 'archief',
@@ -72,7 +70,6 @@ routes.push(
 @NgModule({
   declarations: [
     AppComponent,
-    DiskiPageComponent,
     InputComponent,
     DataDirective,
     InstaComponent,
@@ -84,7 +81,6 @@ routes.push(
   imports: [
     BrowserModule,
     HttpClientModule,
-    DataTablesModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
