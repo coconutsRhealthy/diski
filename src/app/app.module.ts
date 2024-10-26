@@ -15,7 +15,6 @@ import { CompanySeoTextService } from './data/company-seo-text.service';
 import { registerLocaleData } from '@angular/common';
 import localeNl from '@angular/common/locales/nl';
 
-import { WinkelsComponent } from './winkels/winkels.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 import { environment } from '../environments/environment';
@@ -35,7 +34,7 @@ const routes: Routes = [
     },
     {
       path: 'winkels',
-      component: WinkelsComponent
+      loadChildren: () => import('./winkels/winkels.module').then(m => m.WinkelsModule)
     },
     {
       path: 'giftcards',
@@ -67,7 +66,6 @@ routes.push(
     AppComponent,
     DataDirective,
     CodeDetailModalComponent,
-    WinkelsComponent,
     NotFoundComponent
   ],
   imports: [
