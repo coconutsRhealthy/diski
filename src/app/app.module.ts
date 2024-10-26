@@ -18,7 +18,6 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { AffiliateLinkService } from './data/affiliate-link.service';
 import { WebshopNameService } from './data/webshop-name.service';
 import { CompanySeoTextService } from './data/company-seo-text.service';
-import { CompanyCodesComponent } from './company-codes/company-codes.component';
 
 import { registerLocaleData } from '@angular/common';
 import localeNl from '@angular/common/locales/nl';
@@ -63,7 +62,7 @@ if(!environment.production) {
 routes.push(
     {
       path: ':company',
-      component: CompanyCodesComponent
+      loadChildren: () => import('./company-codes/company-codes.module').then(m => m.CompanyCodesModule)
     },
     {
       path: '**',
@@ -80,7 +79,6 @@ routes.push(
     InstaComponent,
     ContactComponent,
     CodeDetailModalComponent,
-    CompanyCodesComponent,
     WinkelsComponent,
     NotFoundComponent,
     GiftcardsComponent
