@@ -23,7 +23,6 @@ import { WinkelsComponent } from './winkels/winkels.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 import { environment } from '../environments/environment';
-import { GiftcardsComponent } from './giftcards/giftcards.component';
 
 const routes: Routes = [
     {
@@ -44,7 +43,7 @@ const routes: Routes = [
     },
     {
       path: 'giftcards',
-      component: GiftcardsComponent
+      loadChildren: () => import('./giftcards/giftcards.module').then(m => m.GiftcardsModule)
     },
 
 ]
@@ -75,8 +74,7 @@ routes.push(
     InstaComponent,
     CodeDetailModalComponent,
     WinkelsComponent,
-    NotFoundComponent,
-    GiftcardsComponent
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
