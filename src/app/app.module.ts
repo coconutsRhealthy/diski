@@ -12,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataDirective } from './data/data.directive';
 import { InstaComponent } from './insta/insta.component';
 import { PathLocationStrategy,  LocationStrategy } from '@angular/common';
-import { ContactComponent } from './contact/contact.component';
 import { CodeDetailModalComponent } from './code-detail-modal/code-detail-modal.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import { AffiliateLinkService } from './data/affiliate-link.service';
@@ -39,7 +38,7 @@ const routes: Routes = [
     },
     {
       path: 'contact',
-      component: ContactComponent
+      loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
     },
     {
       path: 'winkels',
@@ -77,7 +76,6 @@ routes.push(
     InputComponent,
     DataDirective,
     InstaComponent,
-    ContactComponent,
     CodeDetailModalComponent,
     WinkelsComponent,
     NotFoundComponent,
