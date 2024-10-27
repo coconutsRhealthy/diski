@@ -23,3 +23,31 @@ p {
   margin-top: 10px;
   font-size: 16px;
 }
+
+.big-link {
+  font-size: 24px;
+  font-weight: bold;
+  color: blue;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.big-link:hover {
+  color: darkblue;
+}
+
+.text-center {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.steps-notice {
+  font-size: 16px;
+  font-weight: 600;
+  color: #28a745;
+  margin-top: 15px;
+  text-align: center;
+  background-color: #e9f7ef;
+  padding: 10px 15px;
+  border-radius: 5px;
+}

@@ -51,6 +51,10 @@ const routes: Routes = [
       path: 'giftcards',
       component: GiftcardsComponent
     },
+    {
+      path: 'giftcards/:company',
+      component: GiftcardsComponent
+    },
 
 ]
 

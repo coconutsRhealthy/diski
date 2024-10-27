@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { DataDirective } from '../data/data.directive';
+import { MetaService } from '../meta/meta.service';
 
 @Component({
   selector: 'app-giftcards',
@@ -8,12 +12,14 @@ import { Component, OnInit } from '@angular/core';
 export class GiftcardsComponent implements OnInit {
 
   isMenuCollapsed = true;
+  giftCardCompany: string | null = null;
+  giftCardUrl: string | null = null;
 
   steps = [
       {
         imageUrl: 'https://i.ibb.co/2nBfzFx/Screenshot-20241009-193905-2.png',
         title: 'Stap 1:',
-        description: "Klik op 'Doorgaan met e-mail'. Vul je mailadres in en klik op doorgaan. Download de Woolsocks app."
+        description: "Klik hierboven op de link 'haal hier de giftcard op'. Het venster opent in een nieuwe tab. Klik op 'Doorgaan met e-mail'. Vul je mailadres in en klik op doorgaan. Download de Woolsocks app."
       },
       {
         imageUrl: 'https://i.ibb.co/JmpDR3D/Screenshot-20241009-195007-2.png',
@@ -47,9 +53,55 @@ export class GiftcardsComponent implements OnInit {
       },
   ];
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private meta: MetaService) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.setCompanyAndUrl(params.get('company'));
+    });
+
+    this.addNotificationToFirstStepIfNeeded();
+    this.updateMeta();
   }
 
+  private setCompanyAndUrl(company: string): void {
+    const dataDirectiveCodes = DataDirective.getDataArray();
+    const giftCardEntries = dataDirectiveCodes.filter(line => line.includes("woolsocks.eu"));
+    const lineForCompany = giftCardEntries.find(line => line.includes(company));
+
+    if(lineForCompany) {
+      this.giftCardCompany = company;
+      this.giftCardUrl = lineForCompany.split(",")[1]?.trim();
+    }
+  }
+
+  addNotificationToFirstStepIfNeeded() {
+    if (this.giftCardCompany && this.giftCardCompany.toLowerCase() !== 'zalando') {
+      this.steps[0].description += " (NB: in onderstaande screenshots zie je als voorbeeld Zalando, maar de stappen zijn hetzelfde voor " + this.getFormattedGiftCardCompany() + ")";
+    }
+  }
+
+  getFormattedGiftCardCompany(): string {
+    const company = this.giftCardCompany || '';
+
+    if (company.toLowerCase() === 'h&m' || company.toLowerCase() === 'esn') {
+      return company.toUpperCase();
+    }
+
+    return this.toTitleCase(company);
+  }
+
+  private toTitleCase(str: string): string {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
+  private updateMeta() {
+     if(this.giftCardCompany) {
+        this.meta.updateTitle(this.getFormattedGiftCardCompany() + " €7.50 giftcard");
+        this.meta.updateMetaInfo("Bespaar met deze giftcard €7.50 bij " + this.getFormattedGiftCardCompany(), "diski.nl", this.getFormattedGiftCardCompany() + ", Giftcard, Besparen, Tegoedbon");
+     } else {
+        this.meta.updateTitle("Diski €7.50 giftcards voor heel veel webshops");
+        this.meta.updateMetaInfo("Bespaar met deze giftcards €7.50 bij heel veel webshops zoals Zalando, MyJewellery en Wehkamp", "diski.nl", "Tegoedbon, Giftcard, Besparen");
+     }
+  }
 }
