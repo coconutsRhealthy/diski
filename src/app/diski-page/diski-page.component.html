@@ -10,7 +10,7 @@
         &#9776;
       </button>
 
-      <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse justify-content-end">
+      <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">Home</a>
@@ -28,7 +28,7 @@
       </div>
     </nav>
 
-    <h1>Online shoppen met kortingscodes</h1>
+    <h1>Online shoppen met kortingscodes RRRRRR</h1>
 
     <div class="row">
       <div class="col-sm-4"></div>
@@ -48,7 +48,7 @@
     <div id="diski-table" class="row">
       <div class="col-sm-1"></div>
       <div class="col-sm-10">
-        <table datatable [dtOptions]="dtOptions" class="display compact dataTable">
+        <table class="display compact">
           <thead>
           <tr>
             <th>Korting bij</th>
@@ -61,7 +61,7 @@
             <ng-container *ngFor="let korting of allKorting; let i=index">
               <tr>
                 <td id="companyRow{{i}}">{{ korting.company }}</td>
-                <td><button class="diski-table-button btn btn-outline-secondary" (click)="sendCopyCodeToGa(i); affiliateModalAction(korting.company, i)">pak code</button></td>
+                <td><button class="diski-table-button btn btn-outline-secondary" (click)="affiliateModalAction(korting.company, i)">pak code</button></td>
                 <td>{{ korting.percentage }}</td>
                 <td>{{ korting.date }}</td>
               </tr>

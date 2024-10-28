@@ -42,13 +42,6 @@ const routes: Routes = [
 
 ]
 
-if(!environment.production) {
-    routes.push(
-      {path: 'input', loadChildren: () => import('./input-page/input-page.module').then(m => m.InputModule)},
-      {path: 'insta', loadChildren: () => import('./insta/insta.module').then(m => m.InstaModule)},
-    );
-}
-
 routes.push(
     {
       path: ':company',

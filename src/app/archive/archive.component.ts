@@ -21,8 +21,6 @@ declare global {
 })
 export class ArchiveComponent implements OnInit {
 
-  dtOptions: DataTables.Settings = {};
-
   isMenuCollapsed = true;
 
   allKorting = [];
@@ -36,43 +34,6 @@ export class ArchiveComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeAllKorting();
-
-    this.dtOptions = {
-      responsive: false,
-      lengthChange: false,
-      pageLength: 50,
-      columns: [
-          { },
-          { },
-          { },
-          {
-            render: function(data, type, row) {
-              if (type === 'display') {
-                return new Date("2024-" + data).toLocaleDateString('nl-NL', { day: '2-digit', month: 'short' });
-              }
-              return data;
-            }
-          }
-      ],
-      order: [],
-      language: {
-        search: "Zoek:",
-        lengthMenu: "Toon _MENU_ resultaten",
-        info: "Toont _START_ tot _END_ van de _TOTAL_ resultaten",
-        infoEmpty: "Geen resultaten gevonden",
-        infoFiltered: "(gefilterd uit _MAX_ elementen)",
-        infoPostFix: "",
-        loadingRecords: "Laden van resultaten...",
-        zeroRecords: "Geen resultaten gevonden",
-        emptyTable: "Deze tabel is leeg",
-        paginate: {
-          first: "Eerste",
-          previous: "Vorige",
-          next: "Volgende",
-          last: "Laatste"
-        },
-      }
-    };
 
     const queryParams = new URLSearchParams(window.location.search);
     if(queryParams.has('i')) {
