@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { DataDirective } from '../data/data.directive';
 import { MetaService } from '../meta/meta.service';
 
+declare let gtag: Function;
+
 @Component({
   selector: 'app-giftcards',
   templateUrl: './giftcards.component.html',
@@ -84,6 +86,12 @@ export class GiftcardsComponent implements OnInit {
       }
 
       if (this.giftCardCompany) {
+        this.steps[0].description = this.steps[0].description.replace(
+          'Ontvang je Giftcard', 'Ontvang ' + this.getFormattedGiftCardCompany() + ' Giftcard'
+        );
+      }
+
+      if (this.giftCardCompany) {
         this.steps[5].description = this.steps[5].description.replace(
           'de shop waar de giftcard voor is', this.getFormattedGiftCardCompany()
         );
@@ -119,5 +127,21 @@ export class GiftcardsComponent implements OnInit {
      }
 
      this.meta.setNoIndex();
+  }
+
+  sendGiftcardEventsToGa() {
+    if (typeof gtag === 'function') {
+      gtag('event', 'giftcard', {
+        'event_category': 'Giftcard',
+        'event_label': 'giftcard_page_actionbutton'
+      });
+
+      gtag('event', 'giftcard', {
+        'event_category': 'Giftcard',
+        'event_label': 'giftcard_page_actionbutton_' + this.giftCardCompany
+      });
+    } else {
+      console.error('gtag is not defined');
+    }
   }
 }

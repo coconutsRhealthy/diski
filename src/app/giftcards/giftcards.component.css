@@ -41,8 +41,7 @@ p {
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-
-  margin-bottom: 12px;
+  margin-bottom: 7px;
 }
 
 .big-button:hover {
@@ -65,4 +64,5 @@ p {
   background-color: #e9f7ef;
   padding: 10px 15px;
   border-radius: 5px;
+  margin-bottom: 20px;
 }
