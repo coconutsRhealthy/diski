@@ -15,11 +15,14 @@ export class GiftcardsComponent implements OnInit {
   giftCardCompany: string | null = null;
   giftCardUrl: string | null = null;
 
+  starsEmoji = "\u{2728}";
+  checkmarkEmoji = "\u{2705}";
+
   steps = [
       {
         imageUrl: 'https://i.ibb.co/2nBfzFx/Screenshot-20241009-193905-2.png',
         title: 'Stap 1:',
-        description: "Klik hierboven op de link 'haal hier de giftcard op'. Het venster opent in een nieuwe tab. Klik op 'Doorgaan met e-mail'. Vul je mailadres in en klik op doorgaan. Download de Woolsocks app."
+        description: "Klik hierboven op de knop 'Ontvang je Giftcard'. Het venster opent in een nieuwe tab. Klik op 'Doorgaan met e-mail'. Vul je mailadres in en klik op doorgaan. Download de Woolsocks app."
       },
       {
         imageUrl: 'https://i.ibb.co/JmpDR3D/Screenshot-20241009-195007-2.png',
@@ -60,7 +63,7 @@ export class GiftcardsComponent implements OnInit {
       this.setCompanyAndUrl(params.get('company'));
     });
 
-    this.addNotificationToFirstStepIfNeeded();
+    this.alterStepDescriptions();
     this.updateMeta();
   }
 
@@ -75,10 +78,21 @@ export class GiftcardsComponent implements OnInit {
     }
   }
 
-  addNotificationToFirstStepIfNeeded() {
-    if (this.giftCardCompany && this.giftCardCompany.toLowerCase() !== 'zalando') {
-      this.steps[0].description += " (NB: in onderstaande screenshots zie je als voorbeeld Zalando, maar de stappen zijn hetzelfde voor " + this.getFormattedGiftCardCompany() + ")";
-    }
+  alterStepDescriptions() {
+      if (this.giftCardCompany && this.giftCardCompany.toLowerCase() !== 'zalando') {
+        this.steps[0].description += " (NB: in onderstaande screenshots zie je als voorbeeld Zalando, maar de stappen zijn hetzelfde voor " + this.getFormattedGiftCardCompany() + ")";
+      }
+
+      if (this.giftCardCompany) {
+        this.steps[5].description = this.steps[5].description.replace(
+          'de shop waar de giftcard voor is', this.getFormattedGiftCardCompany()
+        );
+      }
+
+      if (!this.giftCardCompany) {
+        this.steps[0].description = this.steps[0].description.replace(
+          "Klik hierboven op de knop 'Ontvang je Giftcard'. Het venster opent in een nieuwe tab. ", '');
+      }
   }
 
   getFormattedGiftCardCompany(): string {
@@ -101,7 +115,9 @@ export class GiftcardsComponent implements OnInit {
         this.meta.updateMetaInfo("Bespaar met deze giftcard €7.50 bij " + this.getFormattedGiftCardCompany(), "diski.nl", this.getFormattedGiftCardCompany() + ", Giftcard, Besparen, Tegoedbon");
      } else {
         this.meta.updateTitle("Diski €7.50 giftcards voor heel veel webshops");
-        this.meta.updateMetaInfo("Bespaar met deze giftcards €7.50 bij heel veel webshops zoals Zalando, MyJewellery en Wehkamp", "diski.nl", "Tegoedbon, Giftcard, Besparen");
+        this.meta.updateMetaInfo("Bespaar met giftcards €7.50 bij heel veel webshops zoals Zalando, MyJewellery en Wehkamp", "diski.nl", "Tegoedbon, Giftcard, Besparen");
      }
+
+     this.meta.setNoIndex();
   }
 }

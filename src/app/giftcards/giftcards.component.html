@@ -30,8 +30,8 @@
 
     <div *ngIf="giftCardCompany" class="text-center">
       <h1>{{ getFormattedGiftCardCompany() }} €7.50 giftcard</h1>
-      <a [href]="giftCardUrl" class="big-link" target="_blank">HAAL HIER DE GIFTCARD OP</a>
-      <div class="steps-notice">Voer vervolgens onderstaande stappen uit (simpel en snel, en het werkt!)</div>
+      <a [href]="giftCardUrl" class="big-button" target="_blank">Ontvang je Giftcard {{ starsEmoji }}</a>
+      <div class="steps-notice">Voer vervolgens onderstaande stappen uit (simpel en snel!) {{ checkmarkEmoji }}</div>
     </div>
 
     <ng-container *ngIf="!giftCardCompany">

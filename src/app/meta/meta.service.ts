@@ -17,6 +17,10 @@ export class MetaService {
         this.titleService.setTitle(title);
     }
 
+    setNoIndex() {
+        this.meta.addTag({ name: 'robots', content: 'noindex' });
+    }
+
     getDateString() {
       const currentDate = new Date();
       const monthNames = [

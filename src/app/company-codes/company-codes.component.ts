@@ -17,7 +17,7 @@ declare let gtag: Function;
 @Component({
   selector: 'app-company-codes',
   templateUrl: './company-codes.component.html',
-  styleUrls: ['./../app.component.css'],
+  styleUrls: ['./company-codes.component.css', './../app.component.css'],
   providers: [
     DatePipe,
     { provide: LOCALE_ID, useValue: 'nl' }, // Set the locale to Dutch
@@ -31,8 +31,6 @@ export class CompanyCodesComponent implements OnInit {
   discountCodes: { code: string, discount: string, date: string }[] = [];
 
   isMenuCollapsed = true;
-
-  fingerToLeftEmoji = "\u{1F448}";
 
   constructor(private route: ActivatedRoute, private datePipe: DatePipe, private meta: MetaService,
       private webshopNameService: WebshopNameService, private companySeoTextService: CompanySeoTextService,

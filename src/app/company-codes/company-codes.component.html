@@ -48,14 +48,9 @@
 
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-          <div *ngIf="hasHttpCodes; else noHttpCodes" class="social-banner alert alert-success" role="alert" style="background-color: yellow;">
-            Gift card werkt bovenop eventuele andere kortingscodes
+          <div *ngIf="!hasHttpCodes" class="social-banner alert alert-success giftcard-highlight" role="alert">
+            €7.50 gift cards voor heel veel shops! (o.a. Zalando, My Jewellery) <a href="https://linktr.ee/wiegeeftkorting" target="_blank" onclick="gtag('event', 'giftcard', {'event_category': 'Giftcard', 'event_label': 'giftcard_companypage_topteaser'});">KLIK</a>
           </div>
-          <ng-template #noHttpCodes>
-            <div class="social-banner alert alert-success" role="alert" style="background-color: yellow;">
-              €7.50 gift cards voor heel veel shops! (o.a. Zalando, My Jewellery) <a href="https://linktr.ee/wiegeeftkorting" target="_blank" onclick="gtag('event', 'giftcard', {'event_category': 'Giftcard', 'event_label': 'giftcard_companypage_topteaser'});">KLIK</a>
-            </div>
-          </ng-template>
         </div>
         <div class="col-sm-4"></div>
       </div>
@@ -69,17 +64,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let code of discountCodes" [ngStyle]="{'background-color': code.code.startsWith('http') ? 'yellow' : 'transparent'}">
+        <tr *ngFor="let code of discountCodes" [ngClass]="{'giftcard-highlight': code.code.startsWith('http')}">
           <td>
             <ng-container *ngIf="code.code.startsWith('http'); else showCode">
-              <a [routerLink]="['/giftcards', company]" target="_blank" (click)="sendGiftcardEventsToGa()">{{ webshopName | uppercase }} GIFT CARD</a> ({{fingerToLeftEmoji}} klik)
+              <a [routerLink]="['/giftcards', company]" target="_blank" (click)="sendGiftcardEventsToGa()" class="bold-underlined-link">{{ webshopName | uppercase }} GIFTCARD</a>
+              <div class="footnote">Werkt bovenop eventuele andere kortingscodes</div>
             </ng-container>
             <ng-template #showCode>
               {{ code.code }}
             </ng-template>
           </td>
-          <td>{{ shouldDisplayPercent(code.discount) ? (code.discount + '%') : code.discount }}</td>
-          <td>{{ formatDate(code.date) }}</td>
+          <td [ngClass]="{'vertical-centered': code.code.startsWith('http')}">{{ shouldDisplayPercent(code.discount) ? (code.discount + '%') : code.discount }}</td>
+          <td [ngClass]="{'vertical-centered': code.code.startsWith('http')}">{{ formatDate(code.date) }}</td>
         </tr>
         </tbody>
       </table>
