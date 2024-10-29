@@ -55,7 +55,7 @@
         <div class="col-sm-4"></div>
       </div>
 
-      <table *ngIf="webshopName !== 'Le Olive'" class="table table-bordered table-hover">
+      <table class="table table-bordered table-hover">
         <thead>
         <tr>
           <th>Kortingscode</th>
@@ -69,6 +69,7 @@
             <ng-container *ngIf="code.code.startsWith('http'); else showCode">
               <a [routerLink]="['/giftcards', company]" target="_blank" (click)="sendGiftcardEventsToGa()" class="bold-underlined-link">{{ webshopName | uppercase }} GIFTCARD</a>
               <div class="footnote">Werkt bovenop eventuele andere kortingscodes</div>
+              <div *ngIf="company === 'leolive'" class="footnote">(zie laatste post <a href="https://www.instagram.com/wiegeeftkorting/" onclick="gtag('event', 'leolive', {'event_category': 'Leolive', 'event_label': 'leolive_link_insta'});">@wiegeeftkorting</a> voor actieve Le Olive kortingscodes)</div>
             </ng-container>
             <ng-template #showCode>
               {{ code.code }}

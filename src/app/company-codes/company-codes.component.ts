@@ -70,8 +70,7 @@ export class CompanyCodesComponent implements OnInit {
         let date;
 
         if (code.startsWith(urlString)) {
-          const currentDate = new Date();
-          date = String(currentDate.getMonth() + 1).padStart(2, '0') + '-' + String(currentDate.getDate()).padStart(2, '0');
+          date = this.getCurrentDateAsString();
         } else {
           date = elements[elements.length - 1];
         }
@@ -80,11 +79,25 @@ export class CompanyCodesComponent implements OnInit {
       });
 
     this.discountCodes.sort((a, b) => a.code.startsWith(urlString) ? -1 : 1);
+
+    if(this.company === 'leolive') {
+      const firstGiftCard = this.discountCodes.find(code => code.code.startsWith(urlString));
+      this.discountCodes = firstGiftCard ? [firstGiftCard] : [{
+          code: 'Zie laatste insta post @wiegeeftkorting voor Le Olive code',
+          discount: '10',
+          date: this.getCurrentDateAsString()
+      }];
+    }
   }
 
   formatDate(date: string): string {
     const formattedDate = this.getDateFromDateString(date);
     return this.datePipe.transform(formattedDate, 'd MMM', '', 'nl');
+  }
+
+  getCurrentDateAsString(): string {
+    const currentDate = new Date();
+    return String(currentDate.getMonth() + 1).padStart(2, '0') + '-' + String(currentDate.getDate()).padStart(2, '0');
   }
 
   getDateFromDateString(dateString) {
