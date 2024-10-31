@@ -29,6 +29,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 import { environment } from '../environments/environment';
 import { GiftcardsComponent } from './giftcards/giftcards.component';
+import { DiskiPageLightComponent } from './diski-page-light/diski-page-light.component';
 
 const routes: Routes = [
     {
@@ -46,6 +47,10 @@ const routes: Routes = [
     {
       path: 'winkels',
       component: WinkelsComponent
+    },
+    {
+      path: 'diski-light',
+      component: DiskiPageLightComponent
     },
     {
       path: 'giftcards',
@@ -89,7 +94,8 @@ routes.push(
     CompanyCodesComponent,
     WinkelsComponent,
     NotFoundComponent,
-    GiftcardsComponent
+    GiftcardsComponent,
+    DiskiPageLightComponent
   ],
   imports: [
     BrowserModule,
