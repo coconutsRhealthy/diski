@@ -11,7 +11,7 @@ interface Discount {
 @Component({
   selector: 'app-diski-page-light',
   templateUrl: './diski-page-light.component.html',
-  styleUrls: ['./diski-page-light.component.css']
+  styleUrls: ['./diski-page-light.component.css', './../app.component.css']
 })
 export class DiskiPageLightComponent implements OnInit {
   discounts: Discount[] = [];
@@ -19,6 +19,8 @@ export class DiskiPageLightComponent implements OnInit {
   searchTerm: string = '';
   page: number = 1;
   itemsPerPage: number = 50;
+
+  isMenuCollapsed = true;
 
   constructor(private discountsService: DiscountsService) {}
 
