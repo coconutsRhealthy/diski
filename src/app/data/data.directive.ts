@@ -57,10 +57,11 @@ export class DataDirective {
   }
 
   static dataArray = [
+    "nakdfashion, marinaj, 25+10, allaboutmaerry, 11-07",
+
     "shein, Q4wendyy, 15, wendynoe, 11-06",
     "asos, LAYERS, 20, asos, 11-06",
     "idealofsweden, BBVERS, 40+10, wgk, 11-06",
-    "nakdfashion, laurenabarber, 20, laurenabarber, 11-06",
     "airup, MEGAN10, 10, honey, 11-06",
     "temu (pre blckfriday), apu12458, €200, wgk, 11-06",
     "leolive, diski10, 10, wgk, 11-06",
@@ -81,6 +82,7 @@ export class DataDirective {
     "otrium, O-C8J4Y9H, 30, honey, 11-06",
     "loopearplugs, loopxsarahstory, 15, sarahstory, 11-06",
     "esn, HANNAHW, 20, hannahwares, 11-06",
+    "nakdfashion, laurenabarber, 20, laurenabarber, 11-06",
     "nakdfashion, caro.sx, 20, caro.sx, 11-06",
     "flink (va €20 / nw klnt), LISAC10, €10, lisa.christinax_tiktok, 11-06",
     "myproteinnl, JESSICANL, 45, jessicakuijpers, 11-06",
