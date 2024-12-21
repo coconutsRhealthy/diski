@@ -116,6 +116,20 @@ export class GiftcardsComponent implements OnInit {
       'uber eats': 'https://i.ibb.co/xSNmtfD/1000037855.png',
       'wehkamp': 'https://i.ibb.co/P19bKzV/1000037851.png',
       'zalando': 'https://i.ibb.co/2nBfzFx/Screenshot-20241009-193905-2.png',
+      'shein': 'https://i.ibb.co/HrfKfTV/shein.png',
+      'nakdfashion': 'https://i.ibb.co/30gntWt/nakd.png',
+      'bijenkorf': 'https://i.ibb.co/vcynxhD/bijenkorf.png',
+      'zara': 'https://i.ibb.co/p123FfP/zara.png',
+      'asos': 'https://i.ibb.co/q5fBQm9/asos.png',
+      'aliexpress': 'https://i.ibb.co/ggtR95G/aliexpress.png',
+      'bol.com': 'https://i.ibb.co/znRqSGm/bol-com.png',
+      'bershka': 'https://i.ibb.co/WHzJwh9/bershka.png',
+      'stradivarius': 'https://i.ibb.co/vjynr50/stradivarius.png',
+      'hunkemoller': 'https://i.ibb.co/4V1L5yp/hunkemoller.png',
+      'mostwanted': 'https://i.ibb.co/zG1gYcj/mostwanted.png',
+      'iciparisxl': 'https://i.ibb.co/NWHj1dD/iciparisxl.png',
+      'douglas': 'https://i.ibb.co/qM6F3Zs/douglas.png',
+      'nike': 'https://i.ibb.co/ch0R74N/nike.png',
     };
   }
 
